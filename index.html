@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>StudyNest Library</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f7efe5;
+      color: #38252d;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ================= NAVBAR ================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(251, 244, 234, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #ead9ca;
+    }
+
+    .nav {
+      max-width: 1180px;
+      height: 74px;
+      margin: auto;
+      padding: 0 22px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #4b2638;
+    }
+
+    .logo span {
+      color: #a88b6a;
+      font-style: italic;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    nav a:hover {
+      color: #8a4b67;
+    }
+
+    .nav-btn {
+      background: #5a2943;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 5px;
+
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+    }
+
+    .nav-btn:hover {
+      background: #713650;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      max-width: 1180px;
+      min-height: 560px;
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      overflow: hidden;
+    }
+
+    .hero-copy {
+      padding: 90px 55px 70px 30px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .kicker {
+      margin-bottom: 18px;
+
+      color: #9b765d;
+
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    h1 {
+      margin-bottom: 24px;
+
+      font-size: 62px;
+      line-height: 1.02;
+      font-weight: 500;
+    }
+
+    h1 em {
+      color: #9c8068;
+    }
+
+    .hero-copy p {
+      max-width: 470px;
+      margin-bottom: 28px;
+
+      color: #5f5550;
+
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .primary {
+      align-self: flex-start;
+
+      background: #57283f;
+      color: white;
+
+      padding: 15px 24px;
+      border-radius: 5px;
+
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .primary:hover {
+      background: #713650;
+    }
+
+    /* ================= HERO IMAGE AREA ================= */
+
+    .hero-art {
+      min-height: 560px;
+
+      position: relative;
+      overflow: hidden;
+
+      background: linear-gradient(
+        135deg,
+        #d7c1ae,
+        #eadccf
+      );
+    }
+
+    .hero-art::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        radial-gradient(
+          circle at 70% 30%,
+          #fff9 0 7%,
+          transparent 8%
+        ),
+        linear-gradient(
+          110deg,
+          transparent 0 42%,
+          #654151 43% 76%,
+          #3d2930 77%
+        );
+
+      opacity: 0.85;
+    }
+
+    .books {
+      position: absolute;
+
+      right: 10%;
+      bottom: 9%;
+
+      width: 70%;
+      height: 60%;
+
+      transform: rotate(-3deg);
+    }
+
+    .book {
+      position: absolute;
+      bottom: 0;
+
+      width: 24%;
+      height: 88%;
+
+      border-radius: 4px 8px 8px 4px;
+
+      box-shadow:
+        8px 8px 18px #4b303333;
+    }
+
+    .book:nth-child(1) {
+      left: 5%;
+      height: 70%;
+      background: #7b5362;
+      transform: rotate(-7deg);
+    }
+
+    .book:nth-child(2) {
+      left: 28%;
+      height: 94%;
+      background: #563447;
+      transform: rotate(2deg);
+    }
+
+    .book:nth-child(3) {
+      left: 52%;
+      height: 78%;
+      background: #9b785f;
+      transform: rotate(7deg);
+    }
+
+    .book:nth-child(4) {
+      left: 72%;
+      height: 68%;
+      background: #46313a;
+      transform: rotate(10deg);
+    }
+
+    .book-title {
+      position: absolute;
+
+      top: 35%;
+      left: 15%;
+      right: 15%;
+
+      color: #f6e9d7;
+      text-align: center;
+      font-size: 17px;
+    }
+
+    .coffee {
+      position: absolute;
+
+      left: 10%;
+      bottom: 10%;
+
+      width: 105px;
+      height: 72px;
+
+      background: #8e6753;
+
+      border-radius: 0 0 45px 45px;
+
+      box-shadow: 0 10px 15px #4b303344;
+    }
+
+    .coffee::before {
+      content: "";
+
+      position: absolute;
+
+      width: 88px;
+      height: 17px;
+
+      left: 9px;
+      top: -5px;
+
+      background: #4a2d29;
+      border-radius: 50%;
+    }
+
+    .coffee::after {
+      content: "";
+
+      position: absolute;
+
+      width: 26px;
+      height: 36px;
+
+      right: -24px;
+      top: 10px;
+
+      border: 8px solid #8e6753;
+      border-left: 0;
+
+      border-radius: 0 22px 22px 0;
+    }
+
+    .quote {
+      position: absolute;
+
+      right: 5%;
+      top: 9%;
+
+      width: 190px;
+      padding: 24px;
+
+      background: #63394d;
+      color: #f6e9d7;
+
+      font-size: 16px;
+      line-height: 1.5;
+
+      box-shadow: 0 10px 20px #40243344;
+
+      z-index: 2;
+    }
+
+    /* ================= FACILITIES ================= */
+
+    .services {
+      padding: 55px 22px;
+
+      background: #52283e;
+      color: #f7eadb;
+    }
+
+    .service-inner {
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    .section-line {
+      margin-bottom: 30px;
+
+      text-align: center;
+      font-size: 22px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .card {
+      min-height: 220px;
+      padding: 28px 20px;
+
+      background: #f7eee4;
+      color: #4c3a39;
+
+      border-radius: 8px;
+
+      text-align: center;
+    }
+
+    .icon {
+      width: 58px;
+      height: 58px;
+
+      margin: 0 auto 15px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid #b99786;
+      border-radius: 50%;
+
+      font-size: 26px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 17px;
+    }
+
+    .card p {
+      color: #6c625e;
+
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 16px;
+
+      color: #6d3b53;
+
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    /* ================= FEATURES ================= */
+
+    .intro {
+      max-width: 1180px;
+      margin: auto;
+      padding: 65px 22px;
+    }
+
+    .intro-title {
+      margin-bottom: 45px;
+
+      text-align: center;
+
+      font-size: 30px;
+      font-weight: 500;
+    }
+
+    .intro-title em {
+      color: #9b8068;
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+
+      text-align: center;
+    }
+
+    .value .vicon {
+      margin-bottom: 10px;
+
+      color: #7f5366;
+      font-size: 28px;
+    }
+
+    .value h4 {
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .value p {
+      color: #6d625c;
+
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* ================= BOOKING ================= */
+
+    .booking {
+      padding: 70px 22px;
+
+      background: #efe0d1;
+    }
+
+    .booking-inner {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .booking h2 {
+      margin-bottom: 10px;
+
+      text-align: center;
+
+      font-size: 34px;
+      font-weight: 500;
+    }
+
+    .sub {
+      margin-bottom: 28px;
+
+      color: #756760;
+
+      text-align: center;
+
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    form {
+      padding: 28px;
+
+      background: #fffaf4;
+
+      border: 1px solid #ead7c6;
+      border-radius: 10px;
+
+      box-shadow: 0 10px 30px #5a294315;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+
+      color: #5c4748;
+
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+
+      padding: 13px;
+
+      background: white;
+
+      border: 1px solid #d9c6b6;
+      border-radius: 5px;
+
+      outline: none;
+
+      color: #3d3030;
+
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #8a526a;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .submit {
+      width: 100%;
+
+      padding: 15px;
+
+      background: #57283f;
+      color: white;
+
+      border: 0;
+      border-radius: 5px;
+
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    .submit:hover {
+      background: #713650;
+    }
+
+    .note {
+      margin-top: 12px;
+
+      color: #796c65;
+
+      text-align: center;
+
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+    }
+
+    /* ================= ABOUT ================= */
+
+    .about {
+      max-width: 1180px;
+      margin: auto;
+      padding: 65px 22px;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+
+      align-items: center;
+    }
+
+    .about-box h2 {
+      margin-bottom: 18px;
+
+      font-size: 38px;
+      font-weight: 500;
+    }
+
+    .about-box p {
+      margin-bottom: 15px;
+
+      color: #665b56;
+
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .photo {
+      height: 350px;
+
+      position: relative;
+      overflow: hidden;
+
+      border-radius: 8px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #d8c3b0,
+          #806170
+        );
+    }
+
+    .photo::after {
+      content: "STUDY\A NEST";
+
+      white-space: pre;
+
+      position: absolute;
+      inset: 0;
+
+      display: grid;
+      place-items: center;
+
+      background: #4f2b3d99;
+
+      color: #f8eadc;
+
+      text-align: center;
+
+      font-size: 45px;
+      line-height: 1.1;
+      letter-spacing: 5px;
+    }
+
+    /* ================= CONTACT ================= */
+
+    .contact {
+      max-width: 1180px;
+      margin: auto;
+      padding: 40px 22px 70px;
+    }
+
+    .contact-title {
+      margin-bottom: 35px;
+
+      text-align: center;
+      font-size: 32px;
+      font-weight: 500;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .contact-card {
+      padding: 25px;
+
+      background: #fffaf4;
+
+      border: 1px solid #ead7c6;
+      border-radius: 8px;
+
+      text-align: center;
+    }
+
+    .contact-icon {
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    .contact-card h3 {
+      margin-bottom: 7px;
+      font-size: 16px;
+    }
+
+    .contact-card p {
+      color: #6d625c;
+
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      padding: 45px 22px 20px;
+
+      background: #351b2a;
+      color: #e9dacc;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 35px;
+    }
+
+    footer h3 {
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    footer p,
+    footer a {
+      display: block;
+
+      margin: 4px 0;
+
+      color: #cdbab0;
+
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    .copy {
+      margin-top: 30px;
+      padding-top: 18px;
+
+      border-top: 1px solid #654452;
+
+      color: #a99188;
+
+      text-align: center;
+
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 850px) {
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        padding: 65px 25px 45px;
+      }
+
+      h1 {
+        font-size: 48px;
+      }
+
+      .hero-art {
+        min-height: 430px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .values {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+
+      .nav-btn {
+        display: none;
+      }
+
+      .hero-copy {
+        padding: 50px 20px 35px;
+      }
+
+      h1 {
+        font-size: 43px;
+      }
+
+      .cards,
+      .values,
+      .grid,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-art {
+        min-height: 380px;
+      }
+
+      .quote {
+        width: 155px;
+        font-size: 13px;
+      }
+
+      .books {
+        width: 85%;
+        right: 2%;
+      }
+
+      .booking {
+        padding: 50px 15px;
+      }
+
+      .about {
+        padding: 50px 20px;
+      }
+
+      .intro {
+        padding: 50px 20px;
+      }
+
+      .contact {
+        padding: 40px 20px 60px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+
+  <header>
+
+    <div class="nav">
+
+      <div class="logo">
+        StudyNest <span>Library</span>
+      </div>
+
+      <nav>
+
+        <a href="#home">Home</a>
+
+        <a href="#facilities">Facilities</a>
+
+        <a href="#membership">Membership</a>
+
+        <a href="#about">About</a>
+
+        <a href="#contact">Contact</a>
+
+      </nav>
+
+      <a href="#booking" class="nav-btn">
+        BOOK A SEAT
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- ================= HOME ================= -->
+
+  <main id="home">
+
+    <section class="hero">
+
+      <div class="hero-copy">
+
+        <div class="kicker">
+          A quiet place for focused minds
+        </div>
+
+        <h1>
+          Every hour of study
+          <em>matters.</em>
+        </h1>
+
+        <p>
+          StudyNest is a peaceful, premium study library
+          where students can focus, prepare and move closer
+          to their goals.
+        </p>
+
+        <a href="#booking" class="primary">
+          Book Your Seat
+        </a>
+
+      </div>
+
+
+      <div class="hero-art">
+
+        <div class="quote">
+          “A calm space. A clear mind.
+          A better future.”
+        </div>
+
+
+        <div class="books">
+
+          <div class="book">
+            <div class="book-title">
+              FOCUS
+            </div>
+          </div>
+
+          <div class="book">
+            <div class="book-title">
+              STUDY<br>
+              SMART
+            </div>
+          </div>
+
+          <div class="book">
+            <div class="book-title">
+              DREAM
+            </div>
+          </div>
+
+          <div class="book">
+            <div class="book-title">
+              ACHIEVE
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="coffee"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= FACILITIES ================= -->
+
+    <section class="services" id="facilities">
+
+      <div class="service-inner">
+
+        <div class="section-line">
+          Everything you need for a productive study session.
+        </div>
+
+
+        <div class="cards">
+
+          <div class="card">
+
+            <div class="icon">
+              📚
+            </div>
+
+            <h3>
+              Dedicated Seat
+            </h3>
+
+            <p>
+              Comfortable personal study space
+              designed for long sessions.
+            </p>
+
+            <a href="#booking">
+              BOOK NOW →
+            </a>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="icon">
+              ❄
+            </div>
+
+            <h3>
+              AC Environment
+            </h3>
+
+            <p>
+              Clean, calm and comfortable
+              environment for focused preparation.
+            </p>
+
+            <a href="#booking">
+              LEARN MORE →
+            </a>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="icon">
+              📶
+            </div>
+
+            <h3>
+              Fast Wi-Fi
+            </h3>
+
+            <p>
+              Reliable internet and charging
+              access for digital study needs.
+            </p>
+
+            <a href="#booking">
+              LEARN MORE →
+            </a>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="icon">
+              🤫
+            </div>
+
+            <h3>
+              Silent Zone
+            </h3>
+
+            <p>
+              A disciplined atmosphere
+              with minimal distractions.
+            </p>
+
+            <a href="#booking">
+              JOIN US →
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= FEATURES ================= -->
+
+    <section class="intro" id="membership">
+
+      <h2 class="intro-title">
+        For students. For <em>dreams.</em>
+        For a future that matters.
+      </h2>
+
+
+      <div class="values">
+
+        <div class="value">
+
+          <div class="vicon">
+            ♡
+          </div>
+
+          <h4>
+            Focused Study
+          </h4>
+
+          <p>
+            A peaceful environment
+            that helps you stay consistent.
+          </p>
+
+        </div>
+
+
+        <div class="value">
+
+          <div class="vicon">
+            ▱
+          </div>
+
+          <h4>
+            Comfortable Space
+          </h4>
+
+          <p>
+            Ergonomic seating, lighting
+            and charging at your desk.
+          </p>
+
+        </div>
+
+
+        <div class="value">
+
+          <div class="vicon">
+            ⌁
+          </div>
+
+          <h4>
+            Flexible Plans
+          </h4>
+
+          <p>
+            Daily, weekly, monthly
+            and yearly membership options.
+          </p>
+
+        </div>
+
+
+        <div class="value">
+
+          <div class="vicon">
+            ✦
+          </div>
+
+          <h4>
+            Student Friendly
+          </h4>
+
+          <p>
+            Built around the needs of
+            school and competitive-exam students.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= BOOKING ================= -->
+
+    <section class="booking" id="booking">
+
+      <div class="booking-inner">
+
+        <h2>
+          Book Your Study Seat
+        </h2>
+
+        <p class="sub">
+          Submit your details and the booking
+          message will open in WhatsApp.
+        </p>
+
+
+        <form id="bookingForm">
+
+          <div class="grid">
+
+            <div class="field">
+
+              <label>
+                Full Name
+              </label>
+
+              <input
+                id="name"
+                type="text"
+                placeholder="Your name"
+                required
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label>
+                Mobile Number
+              </label>
+
+              <input
+                id="mobile"
+                type="tel"
+                inputmode="numeric"
+                placeholder="Your mobile number"
+                required
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="grid">
+
+            <div class="field">
+
+              <label>
+                Date
+              </label>
+
+              <input
+                id="date"
+                type="date"
+                required
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label>
+                Seat
+              </label>
+
+              <select id="seat" required>
+
+                <option value="">
+                  Select seat
+                </option>
+
+                <option>A01</option>
+                <option>A02</option>
+                <option>A03</option>
+                <option>A04</option>
+                <option>A05</option>
+                <option>A06</option>
+                <option>A07</option>
+                <option>A08</option>
+
+                <option>B01</option>
+                <option>B02</option>
+                <option>B03</option>
+                <option>B04</option>
+                <option>B05</option>
+                <option>B06</option>
+                <option>B07</option>
+                <option>B08</option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+
+          <div class="grid">
+
+            <div class="field">
+
+              <label>
+                Membership
+              </label>
+
+              <select id="plan" required>
+
+                <option value="">
+                  Select plan
+                </option>
+
+                <option>
+                  Daily
+                </option>
+
+                <option>
+                  Weekly
+                </option>
+
+                <option>
+                  Monthly
+                </option>
+
+                <option>
+                  Yearly
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="field">
+
+              <label>
+                Preferred Time
+              </label>
+
+              <input
+                id="time"
+                type="time"
+                required
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Message
+            </label>
+
+            <textarea
+              id="message"
+              placeholder="Any special request?"
+            ></textarea>
+
+          </div>
+
+
+          <button
+            class="submit"
+            type="submit"
+          >
+            SEND BOOKING ON WHATSAPP
+          </button>
+
+
+          <div class="note">
+            Your booking details will be prepared
+            as a WhatsApp message for the library.
+          </div>
+
+        </form>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section class="about" id="about">
+
+      <div class="about-box">
+
+        <h2>
+          Study better.
+          Achieve more.
+        </h2>
+
+        <p>
+          StudyNest gives students a dedicated
+          place to study without the distractions
+          of home or a busy public space.
+        </p>
+
+        <p>
+          Whether you are preparing for board exams,
+          JEE, NEET or other competitive examinations,
+          our goal is simple: give you the environment
+          to stay focused.
+        </p>
+
+        <a href="#booking" class="primary">
+          GET STARTED TODAY
+        </a>
+
+      </div>
+
+
+      <div class="photo"></div>
+
+    </section>
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section class="contact" id="contact">
+
+      <h2 class="contact-title">
+        Visit <em>StudyNest</em>
+      </h2>
+
+
+      <div class="contact-grid">
+
+        <div class="contact-card">
+
+          <div class="contact-icon">
+            📍
+          </div>
+
+          <h3>
+            Location
+          </h3>
+
+          <p>
+            Your City, Rajasthan, India
+          </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+          <div class="contact-icon">
+            📞
+          </div>
+
+          <h3>
+            Call / WhatsApp
+          </h3>
+
+          <p>
+            7726938070
+          </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+          <div class="contact-icon">
+            ✉️
+          </div>
+
+          <h3>
+            Email
+          </h3>
+
+          <p>
+            info@studynestlibrary.com
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div class="footer-inner">
+
+      <div>
+
+        <h3>
+          StudyNest Library
+        </h3>
+
+        <p>
+          A quiet place for focused minds.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Quick Links
+        </h3>
+
+        <a href="#home">
+          Home
+        </a>
+
+        <a href="#facilities">
+          Facilities
+        </a>
+
+        <a href="#membership">
+          Membership
+        </a>
+
+        <a href="#booking">
+          Book a Seat
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Contact
+        </h3>
+
+        <p>
+          WhatsApp: 7726938070
+        </p>
+
+        <p>
+          Instagram: @studynestlibrary
+        </p>
+
+        <p>
+          Your City, Rajasthan
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="copy">
+
+      © 2026 StudyNest Library.
+      All Rights Reserved.
+
+    </div>
+
+  </footer>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    /*
+      TODAY'S DATE
+      Past dates are not allowed.
+    */
+
+    const today =
+      new Date()
+        .toISOString()
+        .split("T")[0];
+
+    document.getElementById("date").min =
+      today;
+
+
+    /*
+      BOOKING FORM
+    */
+
+    document
+      .getElementById("bookingForm")
+      .addEventListener(
+        "submit",
+        function(event) {
+
+          event.preventDefault();
+
+
+          const name =
+            document
+              .getElementById("name")
+              .value
+              .trim();
+
+
+          const mobile =
+            document
+              .getElementById("mobile")
+              .value
+              .trim();
+
+
+          const date =
+            document
+              .getElementById("date")
+              .value;
+
+
+          const seat =
+            document
+              .getElementById("seat")
+              .value;
+
+
+          const plan =
+            document
+              .getElementById("plan")
+              .value;
+
+
+          const time =
+            document
+              .getElementById("time")
+              .value;
+
+
+          const message =
+            document
+              .getElementById("message")
+              .value
+              .trim();
+
+
+          /*
+            IMPORTANT:
+
+            Your library WhatsApp number
+            is written here.
+
+            91 = India country code
+            7726938070 = your number
+          */
+
+          const libraryNumber =
+            "917726938070";
+
+
+          /*
+            WhatsApp message
+          */
+
+          const whatsappMessage =
+`📚 *StudyNest Library - New Booking*
+
+👤 *Name:* ${name}
+
+📱 *Student Mobile:* ${mobile}
+
+📅 *Date:* ${date}
+
+⏰ *Time:* ${time}
+
+💺 *Seat:* ${seat}
+
+💳 *Membership:* ${plan}
+
+📝 *Message:* ${message || "None"}
+
+Please confirm this booking.`;
+
+
+          /*
+            Open WhatsApp
+          */
+
+          const whatsappURL =
+            "https://wa.me/" +
+            libraryNumber +
+            "?text=" +
+            encodeURIComponent(
+              whatsappMessage
+            );
+
+
+          window.open(
+            whatsappURL,
+            "_blank"
+          );
+
+        }
+      );
+
+  </script>
+
+</body>
+</html>
