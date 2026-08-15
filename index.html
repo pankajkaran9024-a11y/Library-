@@ -1,1683 +1,2591 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>StudyNest Library</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      background: #f7efe5;
-      color: #38252d;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* ================= NAVBAR ================= */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(251, 244, 234, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #ead9ca;
-    }
-
-    .nav {
-      max-width: 1180px;
-      height: 74px;
-      margin: auto;
-      padding: 0 22px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-size: 25px;
-      font-weight: bold;
-      color: #4b2638;
-    }
-
-    .logo span {
-      color: #a88b6a;
-      font-style: italic;
-    }
-
-    nav {
-      display: flex;
-      gap: 25px;
-
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-    }
-
-    nav a:hover {
-      color: #8a4b67;
-    }
-
-    .nav-btn {
-      background: #5a2943;
-      color: white;
-      padding: 12px 18px;
-      border-radius: 5px;
-
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-    }
-
-    .nav-btn:hover {
-      background: #713650;
-    }
-
-    /* ================= HERO ================= */
-
-    .hero {
-      max-width: 1180px;
-      min-height: 560px;
-      margin: auto;
-
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      overflow: hidden;
-    }
-
-    .hero-copy {
-      padding: 90px 55px 70px 30px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .kicker {
-      margin-bottom: 18px;
-
-      color: #9b765d;
-
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-    }
-
-    h1 {
-      margin-bottom: 24px;
-
-      font-size: 62px;
-      line-height: 1.02;
-      font-weight: 500;
-    }
-
-    h1 em {
-      color: #9c8068;
-    }
-
-    .hero-copy p {
-      max-width: 470px;
-      margin-bottom: 28px;
-
-      color: #5f5550;
-
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.8;
-    }
-
-    .primary {
-      align-self: flex-start;
-
-      background: #57283f;
-      color: white;
-
-      padding: 15px 24px;
-      border-radius: 5px;
-
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      text-transform: uppercase;
-    }
-
-    .primary:hover {
-      background: #713650;
-    }
-
-    /* ================= HERO IMAGE AREA ================= */
-
-    .hero-art {
-      min-height: 560px;
-
-      position: relative;
-      overflow: hidden;
-
-      background: linear-gradient(
-        135deg,
-        #d7c1ae,
-        #eadccf
-      );
-    }
-
-    .hero-art::before {
-      content: "";
-
-      position: absolute;
-      inset: 0;
-
-      background:
-        radial-gradient(
-          circle at 70% 30%,
-          #fff9 0 7%,
-          transparent 8%
-        ),
-        linear-gradient(
-          110deg,
-          transparent 0 42%,
-          #654151 43% 76%,
-          #3d2930 77%
-        );
-
-      opacity: 0.85;
-    }
-
-    .books {
-      position: absolute;
-
-      right: 10%;
-      bottom: 9%;
-
-      width: 70%;
-      height: 60%;
-
-      transform: rotate(-3deg);
-    }
-
-    .book {
-      position: absolute;
-      bottom: 0;
-
-      width: 24%;
-      height: 88%;
-
-      border-radius: 4px 8px 8px 4px;
-
-      box-shadow:
-        8px 8px 18px #4b303333;
-    }
-
-    .book:nth-child(1) {
-      left: 5%;
-      height: 70%;
-      background: #7b5362;
-      transform: rotate(-7deg);
-    }
-
-    .book:nth-child(2) {
-      left: 28%;
-      height: 94%;
-      background: #563447;
-      transform: rotate(2deg);
-    }
-
-    .book:nth-child(3) {
-      left: 52%;
-      height: 78%;
-      background: #9b785f;
-      transform: rotate(7deg);
-    }
-
-    .book:nth-child(4) {
-      left: 72%;
-      height: 68%;
-      background: #46313a;
-      transform: rotate(10deg);
-    }
-
-    .book-title {
-      position: absolute;
-
-      top: 35%;
-      left: 15%;
-      right: 15%;
-
-      color: #f6e9d7;
-      text-align: center;
-      font-size: 17px;
-    }
-
-    .coffee {
-      position: absolute;
-
-      left: 10%;
-      bottom: 10%;
-
-      width: 105px;
-      height: 72px;
-
-      background: #8e6753;
-
-      border-radius: 0 0 45px 45px;
-
-      box-shadow: 0 10px 15px #4b303344;
-    }
-
-    .coffee::before {
-      content: "";
-
-      position: absolute;
-
-      width: 88px;
-      height: 17px;
-
-      left: 9px;
-      top: -5px;
-
-      background: #4a2d29;
-      border-radius: 50%;
-    }
-
-    .coffee::after {
-      content: "";
-
-      position: absolute;
-
-      width: 26px;
-      height: 36px;
-
-      right: -24px;
-      top: 10px;
-
-      border: 8px solid #8e6753;
-      border-left: 0;
-
-      border-radius: 0 22px 22px 0;
-    }
-
-    .quote {
-      position: absolute;
-
-      right: 5%;
-      top: 9%;
-
-      width: 190px;
-      padding: 24px;
-
-      background: #63394d;
-      color: #f6e9d7;
-
-      font-size: 16px;
-      line-height: 1.5;
-
-      box-shadow: 0 10px 20px #40243344;
-
-      z-index: 2;
-    }
-
-    /* ================= FACILITIES ================= */
-
-    .services {
-      padding: 55px 22px;
-
-      background: #52283e;
-      color: #f7eadb;
-    }
-
-    .service-inner {
-      max-width: 1180px;
-      margin: auto;
-    }
-
-    .section-line {
-      margin-bottom: 30px;
-
-      text-align: center;
-      font-size: 22px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .card {
-      min-height: 220px;
-      padding: 28px 20px;
-
-      background: #f7eee4;
-      color: #4c3a39;
-
-      border-radius: 8px;
-
-      text-align: center;
-    }
-
-    .icon {
-      width: 58px;
-      height: 58px;
-
-      margin: 0 auto 15px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid #b99786;
-      border-radius: 50%;
-
-      font-size: 26px;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 17px;
-    }
-
-    .card p {
-      color: #6c625e;
-
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-      line-height: 1.65;
-    }
-
-    .card a {
-      display: inline-block;
-      margin-top: 16px;
-
-      color: #6d3b53;
-
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      text-transform: uppercase;
-    }
-
-    /* ================= FEATURES ================= */
-
-    .intro {
-      max-width: 1180px;
-      margin: auto;
-      padding: 65px 22px;
-    }
-
-    .intro-title {
-      margin-bottom: 45px;
-
-      text-align: center;
-
-      font-size: 30px;
-      font-weight: 500;
-    }
-
-    .intro-title em {
-      color: #9b8068;
-    }
-
-    .values {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 25px;
-
-      text-align: center;
-    }
-
-    .value .vicon {
-      margin-bottom: 10px;
-
-      color: #7f5366;
-      font-size: 28px;
-    }
-
-    .value h4 {
-      margin-bottom: 8px;
-      font-size: 15px;
-    }
-
-    .value p {
-      color: #6d625c;
-
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
-    /* ================= BOOKING ================= */
-
-    .booking {
-      padding: 70px 22px;
-
-      background: #efe0d1;
-    }
-
-    .booking-inner {
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .booking h2 {
-      margin-bottom: 10px;
-
-      text-align: center;
-
-      font-size: 34px;
-      font-weight: 500;
-    }
-
-    .sub {
-      margin-bottom: 28px;
-
-      color: #756760;
-
-      text-align: center;
-
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-    }
-
-    form {
-      padding: 28px;
-
-      background: #fffaf4;
-
-      border: 1px solid #ead7c6;
-      border-radius: 10px;
-
-      box-shadow: 0 10px 30px #5a294315;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .field {
-      margin-bottom: 16px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 7px;
-
-      color: #5c4748;
-
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-
-      padding: 13px;
-
-      background: white;
-
-      border: 1px solid #d9c6b6;
-      border-radius: 5px;
-
-      outline: none;
-
-      color: #3d3030;
-
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: #8a526a;
-    }
-
-    textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    .submit {
-      width: 100%;
-
-      padding: 15px;
-
-      background: #57283f;
-      color: white;
-
-      border: 0;
-      border-radius: 5px;
-
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-      font-weight: bold;
-
-      cursor: pointer;
-    }
-
-    .submit:hover {
-      background: #713650;
-    }
-
-    .note {
-      margin-top: 12px;
-
-      color: #796c65;
-
-      text-align: center;
-
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-    }
-
-    /* ================= ABOUT ================= */
-
-    .about {
-      max-width: 1180px;
-      margin: auto;
-      padding: 65px 22px;
-
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-
-      align-items: center;
-    }
-
-    .about-box h2 {
-      margin-bottom: 18px;
-
-      font-size: 38px;
-      font-weight: 500;
-    }
-
-    .about-box p {
-      margin-bottom: 15px;
-
-      color: #665b56;
-
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .photo {
-      height: 350px;
-
-      position: relative;
-      overflow: hidden;
-
-      border-radius: 8px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #d8c3b0,
-          #806170
-        );
-    }
-
-    .photo::after {
-      content: "STUDY\A NEST";
-
-      white-space: pre;
-
-      position: absolute;
-      inset: 0;
-
-      display: grid;
-      place-items: center;
-
-      background: #4f2b3d99;
-
-      color: #f8eadc;
-
-      text-align: center;
-
-      font-size: 45px;
-      line-height: 1.1;
-      letter-spacing: 5px;
-    }
-
-    /* ================= CONTACT ================= */
-
-    .contact {
-      max-width: 1180px;
-      margin: auto;
-      padding: 40px 22px 70px;
-    }
-
-    .contact-title {
-      margin-bottom: 35px;
-
-      text-align: center;
-      font-size: 32px;
-      font-weight: 500;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .contact-card {
-      padding: 25px;
-
-      background: #fffaf4;
-
-      border: 1px solid #ead7c6;
-      border-radius: 8px;
-
-      text-align: center;
-    }
-
-    .contact-icon {
-      margin-bottom: 10px;
-      font-size: 28px;
-    }
-
-    .contact-card h3 {
-      margin-bottom: 7px;
-      font-size: 16px;
-    }
-
-    .contact-card p {
-      color: #6d625c;
-
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-    }
-
-    /* ================= FOOTER ================= */
-
-    footer {
-      padding: 45px 22px 20px;
-
-      background: #351b2a;
-      color: #e9dacc;
-    }
-
-    .footer-inner {
-      max-width: 1180px;
-      margin: auto;
-
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 35px;
-    }
-
-    footer h3 {
-      margin-bottom: 12px;
-      font-size: 20px;
-    }
-
-    footer p,
-    footer a {
-      display: block;
-
-      margin: 4px 0;
-
-      color: #cdbab0;
-
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      line-height: 1.7;
-    }
-
-    footer a:hover {
-      color: white;
-    }
-
-    .copy {
-      margin-top: 30px;
-      padding-top: 18px;
-
-      border-top: 1px solid #654452;
-
-      color: #a99188;
-
-      text-align: center;
-
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-    }
-
-    /* ================= MOBILE ================= */
-
-    @media (max-width: 850px) {
-
-      nav {
-        display: none;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-copy {
-        padding: 65px 25px 45px;
-      }
-
-      h1 {
-        font-size: 48px;
-      }
-
-      .hero-art {
-        min-height: 430px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .values {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .about {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-inner {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 560px) {
-
-      .nav-btn {
-        display: none;
-      }
-
-      .hero-copy {
-        padding: 50px 20px 35px;
-      }
-
-      h1 {
-        font-size: 43px;
-      }
-
-      .cards,
-      .values,
-      .grid,
-      .footer-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-art {
-        min-height: 380px;
-      }
-
-      .quote {
-        width: 155px;
-        font-size: 13px;
-      }
-
-      .books {
-        width: 85%;
-        right: 2%;
-      }
-
-      .booking {
-        padding: 50px 15px;
-      }
-
-      .about {
-        padding: 50px 20px;
-      }
-
-      .intro {
-        padding: 50px 20px;
-      }
-
-      .contact {
-        padding: 40px 20px 60px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>StudyNest Library</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Georgia,"Times New Roman",serif;background:#f7efe5;color:#38252d}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+
+header{
+ position:sticky;top:0;z-index:1000;
+ background:rgba(251,244,234,.97);
+ border-bottom:1px solid #ead9ca
+}
+.nav{
+ max-width:1180px;height:74px;margin:auto;padding:0 22px;
+ display:flex;align-items:center;justify-content:space-between
+}
+.logo{font-size:25px;font-weight:bold;color:#4b2638}
+.logo span{color:#a88b6a;font-style:italic}
+nav{display:flex;gap:22px;font-family:Arial;font-size:12px;text-transform:uppercase}
+nav a:hover{color:#8a4b67}
+.nav-buttons{display:flex;gap:7px}
+.nav-btn,.primary,.submit,.auth-btn{
+ background:#57283f;color:white;border:0;border-radius:5px;
+ padding:12px 17px;font-family:Arial;font-size:12px
+}
+.nav-btn:hover,.primary:hover,.submit:hover,.auth-btn:hover{background:#713650}
+
+.hero{
+ max-width:1180px;min-height:560px;margin:auto;
+ display:grid;grid-template-columns:1fr 1fr
+}
+.hero-copy{
+ padding:90px 55px 70px 30px;
+ display:flex;flex-direction:column;justify-content:center
+}
+.kicker{
+ color:#9b765d;font:12px Arial;text-transform:uppercase;
+ letter-spacing:3px;margin-bottom:18px
+}
+h1{font-size:62px;line-height:1.02;font-weight:500;margin-bottom:24px}
+h1 em{color:#9c8068}
+.hero-copy p{
+ max-width:470px;margin-bottom:28px;color:#5f5550;
+ font:16px/1.8 Arial
+}
+.primary{align-self:flex-start}
+
+.hero-art{
+ min-height:560px;position:relative;overflow:hidden;
+ background:linear-gradient(135deg,#d7c1ae,#eadccf)
+}
+.hero-art:before{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(110deg,transparent 42%,#654151 43% 76%,#3d2930 77%);
+ opacity:.85
+}
+.books{position:absolute;right:10%;bottom:9%;width:70%;height:60%;transform:rotate(-3deg)}
+.book{
+ position:absolute;bottom:0;width:24%;height:88%;
+ border-radius:4px 8px 8px 4px;box-shadow:8px 8px 18px #4b303333
+}
+.book:nth-child(1){left:5%;height:70%;background:#7b5362;transform:rotate(-7deg)}
+.book:nth-child(2){left:28%;height:94%;background:#563447;transform:rotate(2deg)}
+.book:nth-child(3){left:52%;height:78%;background:#9b785f;transform:rotate(7deg)}
+.book:nth-child(4){left:72%;height:68%;background:#46313a;transform:rotate(10deg)}
+.book-title{
+ position:absolute;top:35%;left:15%;right:15%;
+ color:#f6e9d7;text-align:center;font-size:17px
+}
+.quote{
+ position:absolute;right:5%;top:9%;width:190px;padding:24px;
+ background:#63394d;color:#f6e9d7;font-size:16px;line-height:1.5;z-index:2
+}
+
+.services{padding:55px 22px;background:#52283e;color:#f7eadb}
+.service-inner{max-width:1180px;margin:auto}
+.section-line{text-align:center;font-size:22px;margin-bottom:30px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.card{
+ min-height:210px;padding:28px 20px;background:#f7eee4;
+ color:#4c3a39;border-radius:8px;text-align:center
+}
+.icon{
+ width:58px;height:58px;margin:0 auto 15px;display:grid;
+ place-items:center;border:1px solid #b99786;border-radius:50%;font-size:26px
+}
+.card h3{margin-bottom:10px;font-size:17px}
+.card p{color:#6c625e;font:13px/1.65 Arial}
+
+.intro{max-width:1180px;margin:auto;padding:65px 22px}
+.intro-title{text-align:center;font-size:30px;font-weight:500;margin-bottom:45px}
+.intro-title em{color:#9b8068}
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:25px;text-align:center}
+.vicon{color:#7f5366;font-size:28px;margin-bottom:10px}
+.value h4{margin-bottom:8px}
+.value p{color:#6d625c;font:12px/1.6 Arial}
+
+.booking{padding:70px 22px;background:#efe0d1}
+.booking-inner{max-width:900px;margin:auto}
+.booking h2{text-align:center;font-size:34px;font-weight:500;margin-bottom:10px}
+.sub{text-align:center;color:#756760;font:14px Arial;margin-bottom:28px}
+.form-box{
+ padding:28px;background:#fffaf4;border:1px solid #ead7c6;
+ border-radius:10px;box-shadow:0 10px 30px #5a294315
+}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:16px}
+label{
+ display:block;margin-bottom:7px;color:#5c4748;
+ font:12px Arial;text-transform:uppercase
+}
+input,select{
+ width:100%;padding:13px;background:white;border:1px solid #d9c6b6;
+ border-radius:5px;outline:none;color:#3d3030
+}
+.submit{width:100%;padding:15px;font-weight:bold}
+.success{
+ margin-top:15px;padding:13px;background:#dff0df;color:#28602d;
+ border-radius:5px;font:13px Arial;display:none
+}
+
+.about{
+ max-width:1180px;margin:auto;padding:65px 22px;
+ display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center
+}
+.about h2{font-size:38px;font-weight:500;margin-bottom:18px}
+.about p{color:#665b56;font:14px/1.8 Arial;margin-bottom:15px}
+.photo{
+ height:350px;border-radius:8px;
+ background:linear-gradient(135deg,#d8c3b0,#806170);
+ display:grid;place-items:center;color:#f8eadc;font-size:45px;
+ letter-spacing:5px;text-align:center
+}
+
+.contact{max-width:1180px;margin:auto;padding:40px 22px 70px}
+.contact h2{text-align:center;font-size:32px;font-weight:500;margin-bottom:35px}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.contact-card{
+ padding:25px;background:#fffaf4;border:1px solid #ead7c6;
+ border-radius:8px;text-align:center
+}
+.contact-card h3{margin:8px}
+.contact-card p{font:13px Arial;color:#6d625c}
+
+footer{padding:40px 22px 20px;background:#351b2a;color:#e9dacc}
+.footer-inner{
+ max-width:1180px;margin:auto;display:grid;
+ grid-template-columns:1.5fr 1fr 1fr;gap:35px
+}
+footer h3{margin-bottom:12px}
+footer p,footer a{display:block;color:#cdbab0;font:12px/1.7 Arial;margin:4px 0}
+.copy{
+ margin-top:30px;padding-top:18px;border-top:1px solid #654452;
+ color:#a99188;text-align:center;font:11px Arial
+}
+
+/* AUTH */
+.screen{
+ display:none;min-height:100vh;padding:30px 20px;
+ background:#f7efe5;align-items:center;justify-content:center
+}
+.auth-box{
+ width:100%;max-width:430px;padding:35px;background:#fffaf4;
+ border:1px solid #ead7c6;border-radius:12px;
+ box-shadow:0 15px 40px #5a294320
+}
+.auth-box h2{text-align:center;font-size:30px;font-weight:500;margin-bottom:8px}
+.auth-sub{text-align:center;color:#766963;font:13px Arial;margin-bottom:25px}
+.auth-btn{width:100%;padding:14px;font-weight:bold}
+.switch{text-align:center;font:13px Arial;color:#665b56;margin-top:16px}
+.switch button{border:0;background:none;color:#6d3b53;font-weight:bold}
+
+/* PORTAL */
+.portal{display:none;min-height:100vh;background:#f7efe5}
+.portal-header{
+ background:#351b2a;color:white;padding:17px 24px;
+ display:flex;justify-content:space-between;align-items:center
+}
+.portal-header h2{font-size:22px;font-weight:500}
+.logout{
+ padding:9px 15px;border:1px solid #c9aebc;
+ border-radius:5px;background:transparent;color:white
+}
+.layout{display:flex;min-height:calc(100vh - 63px)}
+.sidebar{width:235px;background:#52283e;padding:22px 14px}
+.sidebar button{
+ width:100%;padding:13px;margin-bottom:7px;border:0;border-radius:5px;
+ background:transparent;color:#f8eade;text-align:left
+}
+.sidebar button:hover,.sidebar button.active{background:#713650}
+.main{flex:1;padding:30px}
+.section{display:none}
+.section.active{display:block}
+.title{font-size:32px;font-weight:500;margin-bottom:25px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:25px}
+.stat{
+ padding:20px;background:#fffaf4;border:1px solid #ead7c6;border-radius:8px
+}
+.stat small{display:block;color:#766963;font:12px Arial;margin-bottom:8px}
+.stat strong{font-size:25px}
+.box{
+ padding:22px;background:#fffaf4;border:1px solid #ead7c6;
+ border-radius:8px;margin-bottom:20px
+}
+.box h3{margin-bottom:15px}
+.row{
+ display:flex;justify-content:space-between;
+ padding:13px 0;border-bottom:1px solid #ead7c6;
+ font:13px Arial
+}
+.present{
+ padding:14px 20px;background:#57283f;color:white;border:0;border-radius:5px
+}
+.status{
+ display:inline-block;padding:6px 10px;border-radius:20px;
+ font:11px Arial;font-weight:bold
+}
+.active{background:#dcefdc;color:#236328}
+.pending{background:#f8e9bd;color:#795a00}
+.approved{background:#d7f0dc;color:#24612e}
+.rejected{background:#f4d7d7;color:#842525}
+table{width:100%;border-collapse:collapse;font:13px Arial}
+th,td{padding:12px;border-bottom:1px solid #ead7c6;text-align:left}
+th{background:#f2e5d8}
+.table-wrap{overflow-x:auto}
+.ok,.reject{
+ border:0;border-radius:4px;color:white;padding:7px 11px;font-size:11px
+}
+.ok{background:#3f7046}
+.reject{background:#914545}
+.profile-id{
+ font-family:Arial;font-size:15px;color:#713650;font-weight:bold
+}
+.seat-grid{
+ display:grid;grid-template-columns:repeat(8,1fr);gap:8px
+}
+.seat{
+ padding:10px 3px;border-radius:5px;text-align:center;
+ font:12px Arial;border:1px solid #d9c6b6;background:#dff0df;color:#285e2d
+}
+.seat.booked{background:#f0cccc;color:#842525}
+.seat.mine{background:#d7d0ee;color:#4c356e}
+.notice{
+ padding:14px;background:#efe0d1;border-radius:6px;
+ font:13px Arial;margin-bottom:18px
+}
+
+@media(max-width:850px){
+ nav{display:none}
+ .hero{grid-template-columns:1fr}
+ .hero-art{min-height:400px}
+ .cards,.values{grid-template-columns:1fr 1fr}
+ .about{grid-template-columns:1fr}
+ .contact-grid{grid-template-columns:1fr}
+ .stats{grid-template-columns:1fr 1fr}
+ .layout{flex-direction:column}
+ .sidebar{width:100%;display:flex;overflow-x:auto;gap:5px}
+ .sidebar button{min-width:max-content}
+}
+@media(max-width:560px){
+ .hero-copy{padding:50px 20px 35px}
+ h1{font-size:43px}
+ .cards,.values,.grid,.footer-inner{grid-template-columns:1fr}
+ .stats{grid-template-columns:1fr}
+ .main{padding:20px 15px}
+ .title{font-size:27px}
+ .auth-box{padding:25px 20px}
+ .seat-grid{grid-template-columns:repeat(4,1fr)}
+}
+</style>
 </head>
 
 <body>
 
-  <!-- ================= NAVBAR ================= -->
+<!-- ==================================================
+     PUBLIC WEBSITE
+================================================== -->
 
-  <header>
+<div id="public">
 
-    <div class="nav">
+<header>
+<div class="nav">
 
-      <div class="logo">
-        StudyNest <span>Library</span>
-      </div>
+<div class="logo">StudyNest <span>Library</span></div>
 
-      <nav>
+<nav>
+<a href="#home">Home</a>
+<a href="#facilities">Facilities</a>
+<a href="#membership">Membership</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
 
-        <a href="#home">Home</a>
+<div class="nav-buttons">
+<button class="nav-btn" onclick="showStudentLogin()">LOGIN</button>
+<button class="nav-btn" onclick="showRegister()">REGISTER</button>
+</div>
 
-        <a href="#facilities">Facilities</a>
+</div>
+</header>
 
-        <a href="#membership">Membership</a>
+<section class="hero" id="home">
 
-        <a href="#about">About</a>
+<div class="hero-copy">
 
-        <a href="#contact">Contact</a>
+<div class="kicker">A quiet place for focused minds</div>
 
-      </nav>
+<h1>
+Every hour of study <em>matters.</em>
+</h1>
 
-      <a href="#booking" class="nav-btn">
-        BOOK A SEAT
-      </a>
+<p>
+StudyNest is a peaceful, premium study library
+where students can focus, prepare and move closer
+to their goals.
+</p>
+
+<button class="primary" onclick="showRegister()">REGISTER NOW</button>
+
+</div>
+
+<div class="hero-art">
+
+<div class="quote">
+“A calm space. A clear mind. A better future.”
+</div>
+
+<div class="books">
+<div class="book"><div class="book-title">FOCUS</div></div>
+<div class="book"><div class="book-title">STUDY<br>SMART</div></div>
+<div class="book"><div class="book-title">DREAM</div></div>
+<div class="book"><div class="book-title">ACHIEVE</div></div>
+</div>
+
+</div>
+</section>
+
+
+<section class="services" id="facilities">
+
+<div class="service-inner">
+
+<div class="section-line">
+Everything you need for a productive study session.
+</div>
+
+<div class="cards">
+
+<div class="card">
+<div class="icon">📚</div>
+<h3>Dedicated Seat</h3>
+<p>Comfortable personal study space designed for long sessions.</p>
+</div>
+
+<div class="card">
+<div class="icon">❄</div>
+<h3>AC Environment</h3>
+<p>Clean, calm and comfortable environment for focused preparation.</p>
+</div>
+
+<div class="card">
+<div class="icon">📶</div>
+<h3>Fast Wi-Fi</h3>
+<p>Reliable internet and charging access for digital study needs.</p>
+</div>
+
+<div class="card">
+<div class="icon">🤫</div>
+<h3>Silent Zone</h3>
+<p>A disciplined atmosphere with minimal distractions.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<section class="intro" id="membership">
+
+<h2 class="intro-title">
+For students. For <em>dreams.</em> For a future that matters.
+</h2>
+
+<div class="values">
+
+<div class="value">
+<div class="vicon">♡</div>
+<h4>Focused Study</h4>
+<p>A peaceful environment that helps you stay consistent.</p>
+</div>
+
+<div class="value">
+<div class="vicon">▱</div>
+<h4>Comfortable Space</h4>
+<p>Ergonomic seating, lighting and charging at your desk.</p>
+</div>
+
+<div class="value">
+<div class="vicon">⌁</div>
+<h4>Flexible Plans</h4>
+<p>Daily, weekly, monthly and yearly membership options.</p>
+</div>
+
+<div class="value">
+<div class="vicon">✦</div>
+<h4>Student Friendly</h4>
+<p>Built around the needs of school and competitive-exam students.</p>
+</div>
+
+</div>
+</section>
+
+
+<!-- PUBLIC BOOKING -->
+
+<section class="booking">
+
+<div class="booking-inner">
+
+<h2>Book Your Study Seat</h2>
+
+<p class="sub">
+Login/Register karke seat book karein.
+</p>
+
+<div class="form-box">
+
+<div class="grid">
+
+<div class="field">
+<label>Date</label>
+<input type="date" id="publicDate">
+</div>
+
+<div class="field">
+<label>Seat</label>
+<select id="publicSeat"></select>
+</div>
+
+</div>
+
+<button class="submit" onclick="publicBooking()">
+BOOK SEAT
+</button>
+
+<div class="success" id="bookingSuccess"></div>
+
+</div>
+</div>
+</section>
+
+
+<section class="about" id="about">
+
+<div>
+<h2>About StudyNest</h2>
+
+<p>
+StudyNest is designed for students who need a calm,
+disciplined and comfortable place to study.
+</p>
+
+<p>
+A focused environment for school, college and
+competitive-exam preparation.
+</p>
+</div>
+
+<div class="photo">
+STUDY<br>NEST
+</div>
+
+</section>
+
+
+<section class="contact" id="contact">
+
+<h2>Contact StudyNest</h2>
+
+<div class="contact-grid">
+
+<div class="contact-card">
+<div>📍</div>
+<h3>Location</h3>
+<p>StudyNest Library</p>
+</div>
+
+<div class="contact-card">
+<div>📞</div>
+<h3>Phone</h3>
+<p>Library In-charge</p>
+</div>
+
+<div class="contact-card">
+<div>✉️</div>
+<h3>Email</h3>
+<p>studynest@example.com</p>
+</div>
+
+</div>
+</section>
+
+
+<footer>
+
+<div class="footer-inner">
+
+<div>
+<h3>StudyNest Library</h3>
+<p>A calm place for focused minds.</p>
+</div>
+
+<div>
+<h3>Account</h3>
+<a href="#" onclick="showStudentLogin();return false">Student Login</a>
+<a href="#" onclick="showRegister();return false">Student Register</a>
+<a href="#" onclick="showAdminLogin();return false">In-charge Login</a>
+</div>
+
+<div>
+<h3>StudyNest</h3>
+<p>Study. Focus. Achieve.</p>
+</div>
+
+</div>
+
+<div class="copy">
+© 2026 StudyNest Library. All Rights Reserved.
+</div>
+
+</footer>
+
+</div>
+
+
+<!-- ==================================================
+     STUDENT REGISTER / LOGIN
+================================================== -->
+
+<section class="screen" id="studentAuth">
+
+<div class="auth-box">
+
+<h2 id="authTitle">Student Login</h2>
+
+<p class="auth-sub" id="authText">
+Login to access your Student Portal.
+</p>
+
+<form id="studentForm">
+
+<div id="registerOnly" style="display:none">
+
+<div class="field">
+<label>Full Name</label>
+<input id="regName" type="text" placeholder="Your full name">
+</div>
+
+<div class="field">
+<label>Mobile Number</label>
+<input id="regMobile" type="tel" inputmode="numeric"
+placeholder="Your mobile number">
+</div>
+
+</div>
+
+<div class="field">
+<label>Mobile / Login Number</label>
+<input id="loginMobile" type="tel" inputmode="numeric"
+placeholder="Your mobile number" required>
+</div>
+
+<div class="field">
+<label>Password</label>
+<input id="loginPassword" type="password"
+placeholder="Create / enter password" required>
+</div>
+
+<button class="auth-btn" id="studentSubmit">
+LOGIN
+</button>
+
+</form>
+
+<div class="switch" id="switchText">
+New student?
+<button onclick="showRegister()">Register</button>
+</div>
+
+<div class="switch">
+<button onclick="showPublic()">← Back to Website</button>
+</div>
+
+</div>
+</section>
+
+
+<!-- ==================================================
+     STUDENT PORTAL
+================================================== -->
+
+<section class="portal" id="studentPortal">
+
+<div class="portal-header">
+
+<h2>StudyNest Student Portal</h2>
+
+<div>
+<span id="headerStudentName"></span>
+<button class="logout" onclick="studentLogout()">Logout</button>
+</div>
+
+</div>
+
+
+<div class="layout">
+
+<aside class="sidebar">
+
+<button class="active" onclick="studentPage('sdashboard',this)">
+🏠 Dashboard
+</button>
+
+<button onclick="studentPage('sschedule',this)">
+📅 Monthly Schedule
+</button>
+
+<button onclick="studentPage('smembership',this)">
+💳 Membership
+</button>
+
+<button onclick="studentPage('sattendance',this)">
+✅ Attendance
+</button>
+
+<button onclick="studentPage('sprofile',this)">
+👤 Profile
+</button>
+
+<button onclick="studentPage('sseats',this)">
+💺 Seats
+</button>
+
+</aside>
+
+
+<main class="main">
+
+
+<!-- DASHBOARD -->
+
+<div class="section active" id="sdashboard">
+
+<h1 class="title">
+Welcome, <span id="welcomeName"></span>
+</h1>
+
+<div class="notice">
+Your Student ID: <strong id="welcomeId"></strong>
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<small>Student ID</small>
+<strong id="statId">---</strong>
+</div>
+
+<div class="stat">
+<small>Membership</small>
+<strong>Monthly</strong>
+</div>
+
+<div class="stat">
+<small>Attendance</small>
+<strong id="statAttendance">0%</strong>
+</div>
+
+<div class="stat">
+<small>Seat</small>
+<strong id="statSeat">Not Selected</strong>
+</div>
+
+</div>
+
+<div class="box">
+
+<h3>Today's Attendance</h3>
+
+<p id="todayAttendanceText">
+You have not marked attendance today.
+</p>
+
+<br>
+
+<button class="present" onclick="markPresent()">
+🟢 I AM PRESENT
+</button>
+
+</div>
+
+<div class="box">
+
+<h3>My Current Seat</h3>
+
+<div class="row">
+<span>Seat</span>
+<strong id="dashboardSeat">Not Selected</strong>
+</div>
+
+<div class="row">
+<span>Membership</span>
+<strong>Monthly</strong>
+</div>
+
+<div class="row">
+<span>Status</span>
+<span class="status active">ACTIVE</span>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- MONTHLY SCHEDULE -->
+
+<div class="section" id="sschedule">
+
+<h1 class="title">Monthly Schedule</h1>
+
+<div class="box">
+
+<h3>Library Schedule</h3>
+
+<div class="row">
+<span>Library Opening</span>
+<strong>08:00 AM</strong>
+</div>
+
+<div class="row">
+<span>Library Closing</span>
+<strong>08:00 PM</strong>
+</div>
+
+<div class="row">
+<span>Monthly Plan</span>
+<strong>Active</strong>
+</div>
+
+</div>
+
+<div class="box">
+
+<h3>My Booking Schedule</h3>
+
+<div id="studentBookings"></div>
+
+</div>
+
+</div>
+
+
+<!-- MEMBERSHIP -->
+
+<div class="section" id="smembership">
+
+<h1 class="title">My Membership</h1>
+
+<div class="box">
+
+<div class="row">
+<span>Student ID</span>
+<strong id="membershipId"></strong>
+</div>
+
+<div class="row">
+<span>Plan</span>
+<strong>Monthly</strong>
+</div>
+
+<div class="row">
+<span>Start Date</span>
+<strong id="membershipStart"></strong>
+</div>
+
+<div class="row">
+<span>Expiry Date</span>
+<strong id="membershipExpiry"></strong>
+</div>
+
+<div class="row">
+<span>Status</span>
+<span class="status active">ACTIVE</span>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ATTENDANCE -->
+
+<div class="section" id="sattendance">
+
+<h1 class="title">My Attendance</h1>
+
+<div class="stats">
+
+<div class="stat">
+<small>Total Requests</small>
+<strong id="totalAtt">0</strong>
+</div>
+
+<div class="stat">
+<small>Present</small>
+<strong id="presentAtt">0</strong>
+</div>
+
+<div class="stat">
+<small>Pending</small>
+<strong id="pendingAtt">0</strong>
+</div>
+
+<div class="stat">
+<small>Percentage</small>
+<strong id="percentAtt">0%</strong>
+</div>
+
+</div>
+
+<div class="box">
+
+<h3>Attendance History</h3>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>Date</th>
+<th>Time</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody id="studentAttTable"></tbody>
+
+</table>
+
+</div>
+</div>
+
+</div>
+
+
+<!-- PROFILE -->
+
+<div class="section" id="sprofile">
+
+<h1 class="title">My Profile</h1>
+
+<div class="box">
+
+<div class="row">
+<span>Name</span>
+<strong id="profileName"></strong>
+</div>
+
+<div class="row">
+<span>Student ID</span>
+<strong class="profile-id" id="profileId"></strong>
+</div>
+
+<div class="row">
+<span>Mobile</span>
+<strong id="profileMobile"></strong>
+</div>
+
+<div class="row">
+<span>Seat</span>
+<strong id="profileSeat"></strong>
+</div>
+
+<div class="row">
+<span>Membership</span>
+<strong>Monthly</strong>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SEATS -->
+
+<div class="section" id="sseats">
+
+<h1 class="title">Select Your Seat</h1>
+
+<div class="notice">
+Green = Available &nbsp; | &nbsp;
+Purple = Your Seat &nbsp; | &nbsp;
+Red = Booked
+</div>
+
+<div class="box">
+
+<h3>A Section — A01 to A26</h3>
+<div class="seat-grid" id="aSeats"></div>
+
+</div>
+
+<div class="box">
+
+<h3>B Section — B27 to B52</h3>
+<div class="seat-grid" id="bSeats"></div>
+
+</div>
+
+<div class="box">
+
+<h3>C Section — C53 to C80</h3>
+<div class="seat-grid" id="cSeats"></div>
+
+</div>
+
+</div>
+
+
+</main>
+</div>
+</section>
+
+
+<!-- ==================================================
+     ADMIN LOGIN
+================================================== -->
+
+<section class="screen" id="adminAuth">
+
+<div class="auth-box">
+
+<h2>In-charge Login</h2>
+
+<p class="auth-sub">
+StudyNest Library Main In-charge
+</p>
+
+<form id="adminForm">
+
+<div class="field">
+<label>In-charge Mobile</label>
+<input id="adminMobile" type="tel"
+value="7726938070" readonly>
+</div>
+
+<div id="adminCreate">
+
+<div class="field">
+<label>Create Password</label>
+<input id="adminNewPassword" type="password"
+placeholder="Create your password">
+</div>
+
+<div class="field">
+<label>Confirm Password</label>
+<input id="adminConfirmPassword" type="password"
+placeholder="Confirm password">
+</div>
+
+</div>
+
+<div id="adminLoginFields" style="display:none">
+
+<div class="field">
+<label>Password</label>
+<input id="adminPassword" type="password"
+placeholder="Enter password">
+</div>
+
+</div>
+
+<button class="auth-btn" id="adminSubmit">
+CREATE PASSWORD
+</button>
+
+</form>
+
+<div class="switch">
+<button onclick="showPublic()">← Back to Website</button>
+</div>
+
+</div>
+</section>
+
+
+<!-- ==================================================
+     ADMIN PORTAL
+================================================== -->
+
+<section class="portal" id="adminPortal">
+
+<div class="portal-header">
+
+<h2>StudyNest In-charge Portal</h2>
+
+<button class="logout" onclick="adminLogout()">Logout</button>
+
+</div>
+
+<div class="layout">
+
+<aside class="sidebar">
+
+<button class="active" onclick="adminPage('adashboard',this)">
+🏠 Dashboard
+</button>
+
+<button onclick="adminPage('astudents',this)">
+👥 Students
+</button>
+
+<button onclick="adminPage('aattendance',this)">
+✅ Attendance
+</button>
+
+<button onclick="adminPage('amembership',this)">
+💳 Membership
+</button>
+
+<button onclick="adminPage('aseats',this)">
+💺 Seats
+</button>
+
+<button onclick="adminPage('abookings',this)">
+📅 Bookings
+</button>
+
+</aside>
+
+
+<main class="main">
+
+
+<!-- ADMIN DASHBOARD -->
+
+<div class="section active" id="adashboard">
+
+<h1 class="title">Library Dashboard</h1>
+
+<div class="stats">
+
+<div class="stat">
+<small>Total Students</small>
+<strong id="adminStudents">0</strong>
+</div>
+
+<div class="stat">
+<small>Pending Attendance</small>
+<strong id="adminPending">0</strong>
+</div>
+
+<div class="stat">
+<small>Present Today</small>
+<strong id="adminPresent">0</strong>
+</div>
+
+<div class="stat">
+<small>Booked Seats</small>
+<strong id="adminBookedSeats">0</strong>
+</div>
+
+</div>
+
+<div class="box">
+
+<h3>Pending Attendance</h3>
+
+<div id="adminQuickAttendance">
+No pending attendance.
+</div>
+
+</div>
+
+</div>
+
+
+<!-- STUDENTS -->
+
+<div class="section" id="astudents">
+
+<h1 class="title">Students</h1>
+
+<div class="box">
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>Name</th>
+<th>Student ID</th>
+<th>Mobile</th>
+<th>Seat</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody id="studentsTable"></tbody>
+
+</table>
+
+</div>
+</div>
+
+</div>
+
+
+<!-- ATTENDANCE -->
+
+<div class="section" id="aattendance">
+
+<h1 class="title">Attendance</h1>
+
+<div class="box">
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>Student</th>
+<th>ID</th>
+<th>Date</th>
+<th>Time</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="adminAttendanceTable"></tbody>
+
+</table>
+
+</div>
+</div>
+
+</div>
+
+
+<!-- MEMBERSHIP -->
+
+<div class="section" id="amembership">
+
+<h1 class="title">Membership</h1>
+
+<div class="box">
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>Student</th>
+<th>ID</th>
+<th>Plan</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody id="membershipTable"></tbody>
+
+</table>
+
+</div>
+</div>
+
+</div>
+
+
+<!-- SEATS -->
+
+<div class="section" id="aseats">
+
+<h1 class="title">All Library Seats</h1>
+
+<div class="box">
+<h3>A Section — A01 to A26</h3>
+<div class="seat-grid" id="adminASeats"></div>
+</div>
+
+<div class="box">
+<h3>B Section — B27 to B52</h3>
+<div class="seat-grid" id="adminBSeats"></div>
+</div>
+
+<div class="box">
+<h3>C Section — C53 to C80</h3>
+<div class="seat-grid" id="adminCSeats"></div>
+</div>
+
+</div>
+
+
+<!-- BOOKINGS -->
+
+<div class="section" id="abookings">
+
+<h1 class="title">Bookings</h1>
+
+<div class="box">
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>Student</th>
+<th>ID</th>
+<th>Date</th>
+<th>Seat</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody id="bookingTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+
+</main>
+</div>
+</section>
+
+
+<script>
+
+/* ==================================================
+   DATA
+================================================== */
+
+let students =
+JSON.parse(localStorage.getItem("SN_students") || "[]");
+
+let attendance =
+JSON.parse(localStorage.getItem("SN_attendance") || "[]");
+
+let bookings =
+JSON.parse(localStorage.getItem("SN_bookings") || "[]");
+
+let currentStudent =
+JSON.parse(localStorage.getItem("SN_current") || "null");
+
+
+function save(){
+
+ localStorage.setItem("SN_students",JSON.stringify(students));
+ localStorage.setItem("SN_attendance",JSON.stringify(attendance));
+ localStorage.setItem("SN_bookings",JSON.stringify(bookings));
+
+}
+
+
+/* ==================================================
+   SCREEN CONTROL
+================================================== */
+
+function hideEverything(){
+
+ document.getElementById("public").style.display="none";
+ document.getElementById("studentAuth").style.display="none";
+ document.getElementById("studentPortal").style.display="none";
+ document.getElementById("adminAuth").style.display="none";
+ document.getElementById("adminPortal").style.display="none";
+
+}
+
+function showPublic(){
+
+ hideEverything();
+
+ document.getElementById("public").style.display="block";
+
+ window.scrollTo(0,0);
+
+}
+
+function showStudentLogin(){
+
+ hideEverything();
+
+ document.getElementById("studentAuth").style.display="flex";
+
+ document.getElementById("authTitle").innerText="Student Login";
+ document.getElementById("authText").innerText=
+ "Login with your mobile number and password.";
+
+ document.getElementById("registerOnly").style.display="none";
+
+ document.getElementById("studentSubmit").innerText="LOGIN";
+
+ document.getElementById("switchText").innerHTML=
+ `New student?
+ <button onclick="showRegister()">Register</button>`;
+
+ document.getElementById("studentForm").dataset.mode="login";
+
+}
+
+function showRegister(){
+
+ hideEverything();
+
+ document.getElementById("studentAuth").style.display="flex";
+
+ document.getElementById("authTitle").innerText="Student Registration";
+
+ document.getElementById("authText").innerText=
+ "Create your StudyNest student account.";
+
+ document.getElementById("registerOnly").style.display="block";
+
+ document.getElementById("studentSubmit").innerText="REGISTER";
+
+ document.getElementById("switchText").innerHTML=
+ `Already registered?
+ <button onclick="showStudentLogin()">Login</button>`;
+
+ document.getElementById("studentForm").dataset.mode="register";
+
+}
+
+
+/* ==================================================
+   STUDENT REGISTER / LOGIN
+================================================== */
+
+document.getElementById("studentForm").addEventListener(
+"submit",function(e){
+
+ e.preventDefault();
+
+ let mode=this.dataset.mode;
+
+ let mobile=document.getElementById("loginMobile").value.trim();
+
+ let password=document.getElementById("loginPassword").value;
+
+ if(!/^[0-9]{10}$/.test(mobile)){
+
+  alert("Please enter a valid 10 digit mobile number.");
+  return;
+
+ }
+
+
+ /* REGISTER */
+
+ if(mode==="register"){
+
+  let name=document.getElementById("regName").value.trim();
+
+  let registerMobile=
+  document.getElementById("regMobile").value.trim();
+
+  if(!name || !registerMobile){
+
+   alert("Please enter name and mobile number.");
+   return;
+
+  }
+
+  if(!/^[0-9]{10}$/.test(registerMobile)){
+
+   alert("Please enter a valid 10 digit mobile number.");
+   return;
+
+  }
+
+  if(password.length<4){
+
+   alert("Password must contain at least 4 characters.");
+   return;
+
+  }
+
+  if(students.some(s=>s.mobile===registerMobile)){
+
+   alert("This mobile number is already registered.");
+   return;
+
+  }
+
+
+  /*
+     ID:
+     @Name001
+     @Name002
+     ...
+     @Name953
+  */
+
+  if(students.length>=953){
+
+   alert("Student ID limit reached.");
+   return;
+
+  }
+
+  let number=
+  String(students.length+1).padStart(3,"0");
+
+  let cleanName=
+  name.replace(/[^a-zA-Z0-9]/g,"");
+
+  let studentId=
+  "@"+cleanName+number;
+
+
+  let student={
+
+   id:Date.now(),
+
+   studentId:studentId,
+
+   name:name,
+
+   mobile:registerMobile,
+
+   password:password,
+
+   seat:"",
+
+   membership:"Monthly",
+
+   membershipStatus:"Active",
+
+   createdAt:new Date().toLocaleDateString()
+
+  };
+
+
+  students.push(student);
+
+  save();
+
+  currentStudent=student;
+
+  localStorage.setItem(
+   "SN_current",
+   JSON.stringify(student)
+  );
+
+  alert(
+   "Registration successful!\n\nYour Student ID:\n"+
+   student.studentId
+  );
+
+  openStudent();
+
+ }
+
+
+ /* LOGIN */
+
+ else{
+
+  let student=students.find(
+   s=>s.mobile===mobile &&
+   s.password===password
+  );
+
+  if(!student){
+
+   alert("Mobile number or password is incorrect.");
+   return;
+
+  }
+
+  currentStudent=student;
+
+  localStorage.setItem(
+   "SN_current",
+   JSON.stringify(student)
+  );
+
+  openStudent();
+
+ }
+
+});
+
+
+/* ==================================================
+   STUDENT PORTAL
+================================================== */
+
+function openStudent(){
+
+ hideEverything();
+
+ document.getElementById("studentPortal").style.display="block";
+
+ loadStudent();
+
+}
+
+
+function loadStudent(){
+
+ if(!currentStudent)return;
+
+ document.getElementById("headerStudentName").innerText=
+ currentStudent.name;
+
+ document.getElementById("welcomeName").innerText=
+ currentStudent.name;
+
+ document.getElementById("welcomeId").innerText=
+ currentStudent.studentId;
+
+ document.getElementById("statId").innerText=
+ currentStudent.studentId;
+
+ document.getElementById("profileName").innerText=
+ currentStudent.name;
+
+ document.getElementById("profileId").innerText=
+ currentStudent.studentId;
+
+ document.getElementById("profileMobile").innerText=
+ currentStudent.mobile;
+
+ document.getElementById("profileSeat").innerText=
+ currentStudent.seat || "Not Selected";
+
+ document.getElementById("statSeat").innerText=
+ currentStudent.seat || "Not Selected";
+
+ document.getElementById("dashboardSeat").innerText=
+ currentStudent.seat || "Not Selected";
+
+ document.getElementById("membershipId").innerText=
+ currentStudent.studentId;
+
+ loadMembershipDates();
+
+ updateAttendance();
+
+ loadSeats();
+
+ loadStudentBookings();
+
+}
+
+
+/* ==================================================
+   MEMBERSHIP DATES
+================================================== */
+
+function loadMembershipDates(){
+
+ let now=new Date();
+
+ let start=
+ now.toLocaleDateString("en-IN");
+
+ let expiry=new Date(
+  now.getFullYear(),
+  now.getMonth()+1,
+  0
+ ).toLocaleDateString("en-IN");
+
+ document.getElementById("membershipStart").innerText=start;
+
+ document.getElementById("membershipExpiry").innerText=expiry;
+
+}
+
+
+/* ==================================================
+   STUDENT PAGE
+================================================== */
+
+function studentPage(id,button){
+
+ document.querySelectorAll("#studentPortal .section")
+ .forEach(x=>x.classList.remove("active"));
+
+ document.getElementById(id).classList.add("active");
+
+ document.querySelectorAll("#studentPortal .sidebar button")
+ .forEach(x=>x.classList.remove("active"));
+
+ button.classList.add("active");
+
+ loadStudent();
+
+}
+
+
+/* ==================================================
+   ATTENDANCE
+================================================== */
+
+function today(){
+
+ return new Date().toISOString().split("T")[0];
+
+}
+
+function timeNow(){
+
+ return new Date().toLocaleTimeString([],{
+  hour:"2-digit",
+  minute:"2-digit"
+ });
+
+}
+
+
+function markPresent(){
+
+ if(!currentStudent)return;
+
+ if(!currentStudent.seat){
+
+  alert("Please select/book your seat first.");
+  studentPage(
+   "sseats",
+   document.querySelector("#studentPortal .sidebar button:nth-child(6)")
+  );
+  return;
+
+ }
+
+ let old=attendance.find(
+  a=>a.studentId===currentStudent.id &&
+  a.date===today()
+ );
+
+ if(old){
+
+  if(old.status==="pending"){
+
+   alert("Your attendance is already waiting for In-charge approval.");
+   return;
+
+  }
+
+  if(old.status==="approved"){
+
+   alert("Your attendance is already approved today.");
+   return;
+
+  }
+
+ }
+
+
+ attendance.push({
+
+  id:Date.now(),
+
+  studentId:currentStudent.id,
+
+  studentName:currentStudent.name,
+
+  studentIdText:currentStudent.studentId,
+
+  seat:currentStudent.seat,
+
+  date:today(),
+
+  time:timeNow(),
+
+  status:"pending"
+
+ });
+
+ save();
+
+ updateAttendance();
+
+ alert(
+  "Attendance request sent successfully.\n\n"+
+  "Please wait for Library In-charge approval."
+ );
+
+}
+
+
+function updateAttendance(){
+
+ if(!currentStudent)return;
+
+ let list=attendance.filter(
+  a=>a.studentId===currentStudent.id
+ );
+
+ let present=list.filter(
+  a=>a.status==="approved"
+ ).length;
+
+ let pending=list.filter(
+  a=>a.status==="pending"
+ ).length;
+
+ let percent=list.length
+ ? Math.round(present/list.length*100)
+ : 0;
+
+ document.getElementById("totalAtt").innerText=list.length;
+
+ document.getElementById("presentAtt").innerText=present;
+
+ document.getElementById("pendingAtt").innerText=pending;
+
+ document.getElementById("percentAtt").innerText=percent+"%";
+
+ document.getElementById("statAttendance").innerText=
+ percent+"%";
+
+
+ let todayRecord=list.find(
+  a=>a.date===today()
+ );
+
+ let message=document.getElementById("todayAttendanceText");
+
+ if(!todayRecord){
+
+  message.innerText=
+  "You have not marked attendance today.";
+
+ }else if(todayRecord.status==="pending"){
+
+  message.innerHTML=
+  '<span class="status pending">WAITING FOR IN-CHARGE APPROVAL</span>';
+
+ }else if(todayRecord.status==="approved"){
+
+  message.innerHTML=
+  '<span class="status approved">PRESENT — APPROVED</span>';
+
+ }else{
+
+  message.innerHTML=
+  '<span class="status rejected">REJECTED</span>';
+
+ }
+
+
+ let table=document.getElementById("studentAttTable");
+
+ table.innerHTML="";
+
+ list.slice().reverse().forEach(a=>{
+
+  let status="";
+
+  if(a.status==="pending")
+   status='<span class="status pending">PENDING</span>';
+
+  if(a.status==="approved")
+   status='<span class="status approved">PRESENT</span>';
+
+  if(a.status==="rejected")
+   status='<span class="status rejected">REJECTED</span>';
+
+  table.innerHTML+=`
+   <tr>
+    <td>${a.date}</td>
+    <td>${a.time}</td>
+    <td>${status}</td>
+   </tr>
+  `;
+
+ });
+
+}
+
+
+/* ==================================================
+   SEATS
+================================================== */
+
+function allSeats(){
+
+ let seats=[];
+
+ for(let i=1;i<=26;i++)
+  seats.push("A"+String(i).padStart(2,"0"));
+
+ for(let i=27;i<=52;i++)
+  seats.push("B"+i);
+
+ for(let i=53;i<=80;i++)
+  seats.push("C"+i);
+
+ return seats;
+
+}
+
+
+function seatBooked(seat){
+
+ return bookings.some(
+  b=>b.seat===seat
+ );
+
+}
+
+
+function createSeatButtons(containerId,start,end){
+
+ let box=document.getElementById(containerId);
+
+ box.innerHTML="";
+
+ for(let i=start;i<=end;i++){
+
+  let prefix="";
+
+  if(start===1)prefix="A";
+
+  if(start===27)prefix="B";
+
+  if(start===53)prefix="C";
+
+  let seat=
+   prefix+
+   (prefix==="A"
+   ?String(i).padStart(2,"0")
+   :i);
+
+  let btn=document.createElement("button");
+
+  btn.className="seat";
+
+  btn.innerText=seat;
+
+  if(currentStudent && currentStudent.seat===seat){
+
+   btn.classList.add("mine");
+
+   btn.title="Your Seat";
+
+  }else if(seatBooked(seat)){
+
+   btn.classList.add("booked");
+
+   btn.disabled=true;
+
+  }
+
+  btn.onclick=function(){
+
+   chooseSeat(seat);
+
+  };
+
+  box.appendChild(btn);
+
+ }
+
+}
+
+
+function loadSeats(){
+
+ createSeatButtons("aSeats",1,26);
+
+ createSeatButtons("bSeats",27,52);
+
+ createSeatButtons("cSeats",53,80);
+
+}
+
+
+function chooseSeat(seat){
+
+ if(!currentStudent)return;
+
+ if(seatBooked(seat)){
+
+  alert("This seat is already booked.");
+  return;
+
+ }
+
+ currentStudent.seat=seat;
+
+ students=students.map(
+  s=>s.id===currentStudent.id
+  ?currentStudent
+  :s
+ );
+
+ localStorage.setItem(
+  "SN_current",
+  JSON.stringify(currentStudent)
+ );
+
+ save();
+
+ loadStudent();
+
+ alert(
+  "Seat "+seat+" selected successfully."
+ );
+
+}
+
+
+/* ==================================================
+   PUBLIC BOOKING
+================================================== */
+
+function loadPublicSeats(){
+
+ let select=document.getElementById("publicSeat");
+
+ select.innerHTML=
+ '<option value="">Select Seat</option>';
+
+ allSeats().forEach(seat=>{
+
+  let option=document.createElement("option");
+
+  option.value=seat;
+
+  option.innerText=seat+
+  (seatBooked(seat)?" — BOOKED":" — AVAILABLE");
+
+  option.disabled=seatBooked(seat);
+
+  select.appendChild(option);
+
+ });
+
+}
+
+
+document.getElementById("publicDate").min=today();
+
+loadPublicSeats();
+
+
+function publicBooking(){
+
+ if(!currentStudent){
+
+  alert(
+   "Please Register/Login first to book a seat."
+  );
+
+  showStudentLogin();
+
+  return;
+
+ }
+
+ let date=
+ document.getElementById("publicDate").value;
+
+ let seat=
+ document.getElementById("publicSeat").value;
+
+ if(!date || !seat){
+
+  alert("Please select date and seat.");
+  return;
+
+ }
+
+ if(date<today()){
+
+  alert("Past date booking is not allowed.");
+  return;
+
+ }
+
+ if(bookings.some(
+  b=>b.date===date && b.seat===seat
+ )){
+
+  alert(
+   "This seat is already booked for this date."
+  );
+
+  loadPublicSeats();
+
+  return;
+
+ }
+
+
+ bookings.push({
+
+  id:Date.now(),
+
+  studentId:currentStudent.id,
+
+  studentName:currentStudent.name,
+
+  studentIdText:currentStudent.studentId,
+
+  date:date,
+
+  seat:seat,
+
+  status:"Confirmed"
+
+ });
+
+
+ currentStudent.seat=seat;
+
+ students=students.map(
+  s=>s.id===currentStudent.id
+  ?currentStudent
+  :s
+ );
+
+ save();
+
+ localStorage.setItem(
+  "SN_current",
+  JSON.stringify(currentStudent)
+ );
+
+
+ let success=
+ document.getElementById("bookingSuccess");
+
+ success.style.display="block";
+
+ success.innerHTML=
+ "✅ Booking Successful!<br>"+
+ "Student: <strong>"+currentStudent.name+"</strong><br>"+
+ "Student ID: <strong>"+currentStudent.studentId+"</strong><br>"+
+ "Seat: <strong>"+seat+"</strong><br>"+
+ "Date: <strong>"+date+"</strong>";
+
+ loadPublicSeats();
+
+ loadStudent();
+
+}
+
+
+/* ==================================================
+   STUDENT BOOKINGS
+================================================== */
+
+function loadStudentBookings(){
+
+ let box=
+ document.getElementById("studentBookings");
+
+ let list=bookings.filter(
+  b=>b.studentId===currentStudent.id
+ );
+
+ if(!list.length){
+
+  box.innerHTML="No bookings yet.";
+  return;
+
+ }
+
+ box.innerHTML="";
+
+ list.slice().reverse().forEach(b=>{
+
+  box.innerHTML+=`
+   <div class="row">
+    <span>${b.date}</span>
+    <strong>Seat ${b.seat}</strong>
+   </div>
+  `;
+
+ });
+
+}
+
+
+/* ==================================================
+   STUDENT LOGOUT
+================================================== */
+
+function studentLogout(){
+
+ currentStudent=null;
+
+ localStorage.removeItem("SN_current");
+
+ showPublic();
+
+}
+
+
+/* ==================================================
+   ADMIN
+================================================== */
+
+const ADMIN_NUMBER="7726938070";
+
+
+function showAdminLogin(){
+
+ hideEverything();
+
+ document.getElementById("adminAuth").style.display="flex";
+
+ let saved=
+ localStorage.getItem("SN_adminPassword");
+
+ if(saved){
+
+  document.getElementById("adminCreate").style.display="none";
+
+  document.getElementById("adminLoginFields").style.display="block";
+
+  document.getElementById("adminSubmit").innerText=
+  "LOGIN";
+
+ }else{
+
+  document.getElementById("adminCreate").style.display="block";
+
+  document.getElementById("adminLoginFields").style.display="none";
+
+  document.getElementById("adminSubmit").innerText=
+  "CREATE PASSWORD";
+
+ }
+
+}
+
+
+document.getElementById("adminForm").addEventListener(
+"submit",function(e){
+
+ e.preventDefault();
+
+ let saved=
+ localStorage.getItem("SN_adminPassword");
+
+
+ /* FIRST TIME PASSWORD */
+
+ if(!saved){
+
+  let p=
+  document.getElementById("adminNewPassword").value;
+
+  let cp=
+  document.getElementById("adminConfirmPassword").value;
+
+  if(p.length<4){
+
+   alert("Password must contain at least 4 characters.");
+   return;
+
+  }
+
+  if(p!==cp){
+
+   alert("Passwords do not match.");
+   return;
+
+  }
+
+  localStorage.setItem("SN_adminPassword",p);
+
+  alert(
+   "In-charge password created successfully."
+  );
+
+  openAdmin();
+
+  return;
+
+ }
+
+
+ /* LOGIN */
+
+ let password=
+ document.getElementById("adminPassword").value;
+
+ if(password!==saved){
+
+  alert("Incorrect In-charge password.");
+  return;
+
+ }
+
+ openAdmin();
+
+});
+
+
+function openAdmin(){
+
+ hideEverything();
+
+ document.getElementById("adminPortal").style.display="block";
+
+ loadAdmin();
+
+}
+
+
+/* ==================================================
+   ADMIN PAGES
+================================================== */
+
+function adminPage(id,button){
+
+ document.querySelectorAll("#adminPortal .section")
+ .forEach(x=>x.classList.remove("active"));
+
+ document.getElementById(id).classList.add("active");
+
+ document.querySelectorAll("#adminPortal .sidebar button")
+ .forEach(x=>x.classList.remove("active"));
+
+ button.classList.add("active");
+
+ loadAdmin();
+
+}
+
+
+/* ==================================================
+   ADMIN DATA
+================================================== */
+
+function loadAdmin(){
+
+ document.getElementById("adminStudents").innerText=
+ students.length;
+
+ let pending=
+ attendance.filter(a=>a.status==="pending").length;
+
+ document.getElementById("adminPending").innerText=
+ pending;
+
+ let present=
+ attendance.filter(
+  a=>a.date===today() &&
+  a.status==="approved"
+ ).length;
+
+ document.getElementById("adminPresent").innerText=
+ present;
+
+ let booked=
+ bookings.filter(
+  b=>b.date===today()
+ ).length;
+
+ document.getElementById("adminBookedSeats").innerText=
+ booked;
+
+
+ /* STUDENTS */
+
+ let st=
+ document.getElementById("studentsTable");
+
+ st.innerHTML="";
+
+ students.forEach(s=>{
+
+  st.innerHTML+=`
+   <tr>
+    <td>${s.name}</td>
+    <td>${s.studentId}</td>
+    <td>${s.mobile}</td>
+    <td>${s.seat||"Not Selected"}</td>
+    <td><span class="status active">ACTIVE</span></td>
+   </tr>
+  `;
+
+ });
+
+
+ /* ATTENDANCE */
+
+ let at=
+ document.getElementById("adminAttendanceTable");
+
+ at.innerHTML="";
+
+ attendance.slice().reverse().forEach(a=>{
+
+  let status="";
+
+  if(a.status==="pending")
+   status='<span class="status pending">PENDING</span>';
+
+  if(a.status==="approved")
+   status='<span class="status approved">PRESENT</span>';
+
+  if(a.status==="rejected")
+   status='<span class="status rejected">REJECTED</span>';
+
+  let action="-";
+
+  if(a.status==="pending"){
+
+   action=`
+    <button class="ok"
+    onclick="approve(${a.id})">OK</button>
+
+    <button class="reject"
+    onclick="rejectAttendance(${a.id})">REJECT</button>
+   `;
+
+  }
+
+  at.innerHTML+=`
+   <tr>
+    <td>${a.studentName}</td>
+    <td>${a.studentIdText}</td>
+    <td>${a.date}</td>
+    <td>${a.time}</td>
+    <td>${status}</td>
+    <td>${action}</td>
+   </tr>
+  `;
+
+ });
+
+
+ /* MEMBERSHIP */
+
+ let mt=
+ document.getElementById("membershipTable");
+
+ mt.innerHTML="";
+
+ students.forEach(s=>{
+
+  mt.innerHTML+=`
+   <tr>
+    <td>${s.name}</td>
+    <td>${s.studentId}</td>
+    <td>Monthly</td>
+    <td>
+     <span class="status active">ACTIVE</span>
+    </td>
+   </tr>
+  `;
+
+ });
+
+
+ /* QUICK ATTENDANCE */
+
+ let quick=
+ document.getElementById("adminQuickAttendance");
+
+ let pendingList=
+ attendance.filter(a=>a.status==="pending");
+
+ if(!pendingList.length){
+
+  quick.innerText="No pending attendance.";
+
+ }else{
+
+  quick.innerHTML="";
+
+  pendingList.forEach(a=>{
+
+   quick.innerHTML+=`
+    <div class="row">
+
+     <span>
+      <strong>${a.studentName}</strong>
+      — ${a.studentIdText}
+      — Seat ${a.seat}
+     </span>
+
+     <span>
+
+      <button class="ok"
+      onclick="approve(${a.id})">OK</button>
+
+      <button class="reject"
+      onclick="rejectAttendance(${a.id})">
+      REJECT
+      </button>
+
+     </span>
 
     </div>
+   `;
 
-  </header>
+  });
 
+ }
 
-  <!-- ================= HOME ================= -->
 
-  <main id="home">
+ /* BOOKINGS */
 
-    <section class="hero">
+ let bt=
+ document.getElementById("bookingTable");
 
-      <div class="hero-copy">
+ bt.innerHTML="";
 
-        <div class="kicker">
-          A quiet place for focused minds
-        </div>
+ bookings.slice().reverse().forEach(b=>{
 
-        <h1>
-          Every hour of study
-          <em>matters.</em>
-        </h1>
+  bt.innerHTML+=`
+   <tr>
+    <td>${b.studentName}</td>
+    <td>${b.studentIdText}</td>
+    <td>${b.date}</td>
+    <td>${b.seat}</td>
+    <td>
+     <span class="status active">
+      ${b.status}
+     </span>
+    </td>
+   </tr>
+  `;
 
-        <p>
-          StudyNest is a peaceful, premium study library
-          where students can focus, prepare and move closer
-          to their goals.
-        </p>
+ });
 
-        <a href="#booking" class="primary">
-          Book Your Seat
-        </a>
 
-      </div>
+ /* ADMIN SEATS */
 
+ createAdminSeats("adminASeats",1,26);
 
-      <div class="hero-art">
+ createAdminSeats("adminBSeats",27,52);
 
-        <div class="quote">
-          “A calm space. A clear mind.
-          A better future.”
-        </div>
+ createAdminSeats("adminCSeats",53,80);
 
+}
 
-        <div class="books">
 
-          <div class="book">
-            <div class="book-title">
-              FOCUS
-            </div>
-          </div>
+/* ==================================================
+   ADMIN APPROVE / REJECT
+================================================== */
 
-          <div class="book">
-            <div class="book-title">
-              STUDY<br>
-              SMART
-            </div>
-          </div>
+function approve(id){
 
-          <div class="book">
-            <div class="book-title">
-              DREAM
-            </div>
-          </div>
+ let record=
+ attendance.find(a=>a.id===id);
 
-          <div class="book">
-            <div class="book-title">
-              ACHIEVE
-            </div>
-          </div>
+ if(!record)return;
 
-        </div>
+ record.status="approved";
 
+ save();
 
-        <div class="coffee"></div>
+ loadAdmin();
 
-      </div>
+ if(
+ currentStudent &&
+ currentStudent.id===record.studentId
+ ){
 
-    </section>
+  updateAttendance();
 
+ }
 
-    <!-- ================= FACILITIES ================= -->
+ alert(
+  record.studentName+
+  " ki attendance APPROVED ho gayi."
+ );
 
-    <section class="services" id="facilities">
+}
 
-      <div class="service-inner">
 
-        <div class="section-line">
-          Everything you need for a productive study session.
-        </div>
+function rejectAttendance(id){
 
+ let record=
+ attendance.find(a=>a.id===id);
 
-        <div class="cards">
+ if(!record)return;
 
-          <div class="card">
+ record.status="rejected";
 
-            <div class="icon">
-              📚
-            </div>
+ save();
 
-            <h3>
-              Dedicated Seat
-            </h3>
+ loadAdmin();
 
-            <p>
-              Comfortable personal study space
-              designed for long sessions.
-            </p>
+ if(
+ currentStudent &&
+ currentStudent.id===record.studentId
+ ){
 
-            <a href="#booking">
-              BOOK NOW →
-            </a>
+  updateAttendance();
 
-          </div>
+ }
 
+ alert(
+  record.studentName+
+  " ki attendance REJECTED ho gayi."
+ );
 
-          <div class="card">
+}
 
-            <div class="icon">
-              ❄
-            </div>
 
-            <h3>
-              AC Environment
-            </h3>
+/* ==================================================
+   ADMIN SEATS
+================================================== */
 
-            <p>
-              Clean, calm and comfortable
-              environment for focused preparation.
-            </p>
+function createAdminSeats(containerId,start,end){
 
-            <a href="#booking">
-              LEARN MORE →
-            </a>
+ let box=
+ document.getElementById(containerId);
 
-          </div>
+ box.innerHTML="";
 
+ for(let i=start;i<=end;i++){
 
-          <div class="card">
+  let prefix=
+   start===1?"A":
+   start===27?"B":"C";
 
-            <div class="icon">
-              📶
-            </div>
+  let seat=
+   prefix+
+   (prefix==="A"
+   ?String(i).padStart(2,"0")
+   :i);
 
-            <h3>
-              Fast Wi-Fi
-            </h3>
+  let btn=document.createElement("div");
 
-            <p>
-              Reliable internet and charging
-              access for digital study needs.
-            </p>
+  btn.className="seat";
 
-            <a href="#booking">
-              LEARN MORE →
-            </a>
+  btn.innerText=seat;
 
-          </div>
+  if(seatBooked(seat))
+   btn.classList.add("booked");
 
+  box.appendChild(btn);
 
-          <div class="card">
+ }
 
-            <div class="icon">
-              🤫
-            </div>
+}
 
-            <h3>
-              Silent Zone
-            </h3>
 
-            <p>
-              A disciplined atmosphere
-              with minimal distractions.
-            </p>
+/* ==================================================
+   ADMIN LOGOUT
+================================================== */
 
-            <a href="#booking">
-              JOIN US →
-            </a>
+function adminLogout(){
 
-          </div>
+ showPublic();
 
-        </div>
+}
 
-      </div>
 
-    </section>
+/* ==================================================
+   AUTO LOAD
+================================================== */
 
+showPublic();
 
-    <!-- ================= FEATURES ================= -->
-
-    <section class="intro" id="membership">
-
-      <h2 class="intro-title">
-        For students. For <em>dreams.</em>
-        For a future that matters.
-      </h2>
-
-
-      <div class="values">
-
-        <div class="value">
-
-          <div class="vicon">
-            ♡
-          </div>
-
-          <h4>
-            Focused Study
-          </h4>
-
-          <p>
-            A peaceful environment
-            that helps you stay consistent.
-          </p>
-
-        </div>
-
-
-        <div class="value">
-
-          <div class="vicon">
-            ▱
-          </div>
-
-          <h4>
-            Comfortable Space
-          </h4>
-
-          <p>
-            Ergonomic seating, lighting
-            and charging at your desk.
-          </p>
-
-        </div>
-
-
-        <div class="value">
-
-          <div class="vicon">
-            ⌁
-          </div>
-
-          <h4>
-            Flexible Plans
-          </h4>
-
-          <p>
-            Daily, weekly, monthly
-            and yearly membership options.
-          </p>
-
-        </div>
-
-
-        <div class="value">
-
-          <div class="vicon">
-            ✦
-          </div>
-
-          <h4>
-            Student Friendly
-          </h4>
-
-          <p>
-            Built around the needs of
-            school and competitive-exam students.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= BOOKING ================= -->
-
-    <section class="booking" id="booking">
-
-      <div class="booking-inner">
-
-        <h2>
-          Book Your Study Seat
-        </h2>
-
-        <p class="sub">
-          Submit your details and the booking
-          message will open in WhatsApp.
-        </p>
-
-
-        <form id="bookingForm">
-
-          <div class="grid">
-
-            <div class="field">
-
-              <label>
-                Full Name
-              </label>
-
-              <input
-                id="name"
-                type="text"
-                placeholder="Your name"
-                required
-              >
-
-            </div>
-
-
-            <div class="field">
-
-              <label>
-                Mobile Number
-              </label>
-
-              <input
-                id="mobile"
-                type="tel"
-                inputmode="numeric"
-                placeholder="Your mobile number"
-                required
-              >
-
-            </div>
-
-          </div>
-
-
-          <div class="grid">
-
-            <div class="field">
-
-              <label>
-                Date
-              </label>
-
-              <input
-                id="date"
-                type="date"
-                required
-              >
-
-            </div>
-
-
-            <div class="field">
-
-              <label>
-                Seat
-              </label>
-
-              <select id="seat" required>
-
-                <option value="">
-                  Select seat
-                </option>
-
-                <option>A01</option>
-                <option>A02</option>
-                <option>A03</option>
-                <option>A04</option>
-                <option>A05</option>
-                <option>A06</option>
-                <option>A07</option>
-                <option>A08</option>
-
-                <option>B01</option>
-                <option>B02</option>
-                <option>B03</option>
-                <option>B04</option>
-                <option>B05</option>
-                <option>B06</option>
-                <option>B07</option>
-                <option>B08</option>
-
-              </select>
-
-            </div>
-
-          </div>
-
-
-          <div class="grid">
-
-            <div class="field">
-
-              <label>
-                Membership
-              </label>
-
-              <select id="plan" required>
-
-                <option value="">
-                  Select plan
-                </option>
-
-                <option>
-                  Daily
-                </option>
-
-                <option>
-                  Weekly
-                </option>
-
-                <option>
-                  Monthly
-                </option>
-
-                <option>
-                  Yearly
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <div class="field">
-
-              <label>
-                Preferred Time
-              </label>
-
-              <input
-                id="time"
-                type="time"
-                required
-              >
-
-            </div>
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Message
-            </label>
-
-            <textarea
-              id="message"
-              placeholder="Any special request?"
-            ></textarea>
-
-          </div>
-
-
-          <button
-            class="submit"
-            type="submit"
-          >
-            SEND BOOKING ON WHATSAPP
-          </button>
-
-
-          <div class="note">
-            Your booking details will be prepared
-            as a WhatsApp message for the library.
-          </div>
-
-        </form>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= ABOUT ================= -->
-
-    <section class="about" id="about">
-
-      <div class="about-box">
-
-        <h2>
-          Study better.
-          Achieve more.
-        </h2>
-
-        <p>
-          StudyNest gives students a dedicated
-          place to study without the distractions
-          of home or a busy public space.
-        </p>
-
-        <p>
-          Whether you are preparing for board exams,
-          JEE, NEET or other competitive examinations,
-          our goal is simple: give you the environment
-          to stay focused.
-        </p>
-
-        <a href="#booking" class="primary">
-          GET STARTED TODAY
-        </a>
-
-      </div>
-
-
-      <div class="photo"></div>
-
-    </section>
-
-
-    <!-- ================= CONTACT ================= -->
-
-    <section class="contact" id="contact">
-
-      <h2 class="contact-title">
-        Visit <em>StudyNest</em>
-      </h2>
-
-
-      <div class="contact-grid">
-
-        <div class="contact-card">
-
-          <div class="contact-icon">
-            📍
-          </div>
-
-          <h3>
-            Location
-          </h3>
-
-          <p>
-            Your City, Rajasthan, India
-          </p>
-
-        </div>
-
-
-        <div class="contact-card">
-
-          <div class="contact-icon">
-            📞
-          </div>
-
-          <h3>
-            Call / WhatsApp
-          </h3>
-
-          <p>
-            7726938070
-          </p>
-
-        </div>
-
-
-        <div class="contact-card">
-
-          <div class="contact-icon">
-            ✉️
-          </div>
-
-          <h3>
-            Email
-          </h3>
-
-          <p>
-            info@studynestlibrary.com
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- ================= FOOTER ================= -->
-
-  <footer>
-
-    <div class="footer-inner">
-
-      <div>
-
-        <h3>
-          StudyNest Library
-        </h3>
-
-        <p>
-          A quiet place for focused minds.
-        </p>
-
-      </div>
-
-
-      <div>
-
-        <h3>
-          Quick Links
-        </h3>
-
-        <a href="#home">
-          Home
-        </a>
-
-        <a href="#facilities">
-          Facilities
-        </a>
-
-        <a href="#membership">
-          Membership
-        </a>
-
-        <a href="#booking">
-          Book a Seat
-        </a>
-
-      </div>
-
-
-      <div>
-
-        <h3>
-          Contact
-        </h3>
-
-        <p>
-          WhatsApp: 7726938070
-        </p>
-
-        <p>
-          Instagram: @studynestlibrary
-        </p>
-
-        <p>
-          Your City, Rajasthan
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="copy">
-
-      © 2026 StudyNest Library.
-      All Rights Reserved.
-
-    </div>
-
-  </footer>
-
-
-  <!-- ================= JAVASCRIPT ================= -->
-
-  <script>
-
-    /*
-      TODAY'S DATE
-      Past dates are not allowed.
-    */
-
-    const today =
-      new Date()
-        .toISOString()
-        .split("T")[0];
-
-    document.getElementById("date").min =
-      today;
-
-
-    /*
-      BOOKING FORM
-    */
-
-    document
-      .getElementById("bookingForm")
-      .addEventListener(
-        "submit",
-        function(event) {
-
-          event.preventDefault();
-
-
-          const name =
-            document
-              .getElementById("name")
-              .value
-              .trim();
-
-
-          const mobile =
-            document
-              .getElementById("mobile")
-              .value
-              .trim();
-
-
-          const date =
-            document
-              .getElementById("date")
-              .value;
-
-
-          const seat =
-            document
-              .getElementById("seat")
-              .value;
-
-
-          const plan =
-            document
-              .getElementById("plan")
-              .value;
-
-
-          const time =
-            document
-              .getElementById("time")
-              .value;
-
-
-          const message =
-            document
-              .getElementById("message")
-              .value
-              .trim();
-
-
-          /*
-            IMPORTANT:
-
-            Your library WhatsApp number
-            is written here.
-
-            91 = India country code
-            7726938070 = your number
-          */
-
-          const libraryNumber =
-            "917726938070";
-
-
-          /*
-            WhatsApp message
-          */
-
-          const whatsappMessage =
-`📚 *StudyNest Library - New Booking*
-
-👤 *Name:* ${name}
-
-📱 *Student Mobile:* ${mobile}
-
-📅 *Date:* ${date}
-
-⏰ *Time:* ${time}
-
-💺 *Seat:* ${seat}
-
-💳 *Membership:* ${plan}
-
-📝 *Message:* ${message || "None"}
-
-Please confirm this booking.`;
-
-
-          /*
-            Open WhatsApp
-          */
-
-          const whatsappURL =
-            "https://wa.me/" +
-            libraryNumber +
-            "?text=" +
-            encodeURIComponent(
-              whatsappMessage
-            );
-
-
-          window.open(
-            whatsappURL,
-            "_blank"
-          );
-
-        }
-      );
-
-  </script>
+</script>
 
 </body>
 </html>
