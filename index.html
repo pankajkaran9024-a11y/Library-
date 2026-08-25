@@ -2,2588 +2,2598 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>StudyNest Library</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SkillPath Learning</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:Georgia,"Times New Roman",serif;background:#f7efe5;color:#38252d}
-button,input,select{font:inherit}
-button{cursor:pointer}
-a{text-decoration:none;color:inherit}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --primary:#7b1499;
+    --primary2:#a817b8;
+    --dark:#16131a;
+    --light:#ffffff;
+    --bg:#f8f7fa;
+    --border:#e7e1ea;
+    --muted:#77727b;
+    --green:#238b45;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:#171419;
+    min-height:100vh;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-page{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:
+        linear-gradient(
+            135deg,
+            #faf6fb,
+            #f1e8f5
+        );
+}
+
+.login-card{
+    width:100%;
+    max-width:420px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 20px 60px rgba(60,20,70,.12);
+}
+
+.brand{
+    text-align:center;
+    margin-bottom:28px;
+}
+
+.logo{
+    width:58px;
+    height:58px;
+    margin:auto;
+    border:3px solid var(--primary);
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--primary);
+    font-size:28px;
+    font-weight:bold;
+}
+
+.brand h1{
+    margin-top:12px;
+    font-size:25px;
+}
+
+.brand p{
+    margin-top:6px;
+    color:var(--muted);
+    font-size:14px;
+}
+
+.input-group{
+    margin-bottom:18px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:7px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.input-group input{
+    width:100%;
+    height:48px;
+    border:1px solid #d8d2dc;
+    border-radius:9px;
+    padding:0 14px;
+    font-size:15px;
+    outline:none;
+}
+
+.input-group input:focus{
+    border-color:var(--primary);
+}
+
+.login-btn{
+    width:100%;
+    height:48px;
+    border:none;
+    border-radius:9px;
+    background:var(--primary);
+    color:#fff;
+    font-weight:bold;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.login-btn:hover{
+    background:#68117f;
+}
+
+.login-message{
+    min-height:20px;
+    margin-top:12px;
+    text-align:center;
+    color:#d12c2c;
+    font-size:13px;
+}
+
+/* =========================
+   APP
+========================= */
+
+.app{
+    display:none;
+    min-height:100vh;
+}
+
+/* =========================
+   HEADER
+========================= */
 
 header{
- position:sticky;top:0;z-index:1000;
- background:rgba(251,244,234,.97);
- border-bottom:1px solid #ead9ca
+    height:68px;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 28px;
+    position:sticky;
+    top:0;
+    z-index:100;
 }
-.nav{
- max-width:1180px;height:74px;margin:auto;padding:0 22px;
- display:flex;align-items:center;justify-content:space-between
+
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
-.logo{font-size:25px;font-weight:bold;color:#4b2638}
-.logo span{color:#a88b6a;font-style:italic}
-nav{display:flex;gap:22px;font-family:Arial;font-size:12px;text-transform:uppercase}
-nav a:hover{color:#8a4b67}
-.nav-buttons{display:flex;gap:7px}
-.nav-btn,.primary,.submit,.auth-btn{
- background:#57283f;color:white;border:0;border-radius:5px;
- padding:12px 17px;font-family:Arial;font-size:12px
+
+.small-logo{
+    width:40px;
+    height:40px;
+    border:2px solid var(--primary);
+    border-radius:10px;
+    color:var(--primary);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
 }
-.nav-btn:hover,.primary:hover,.submit:hover,.auth-btn:hover{background:#713650}
+
+.site-name{
+    font-size:19px;
+    font-weight:bold;
+}
+
+.profile-button{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid var(--border);
+    background:#fff;
+    border-radius:22px;
+    padding:5px 12px 5px 5px;
+    cursor:pointer;
+}
+
+.profile-button img,
+.profile-button .profile-placeholder{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+}
+
+.profile-button img{
+    object-fit:cover;
+}
+
+.profile-placeholder{
+    background:var(--primary);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard{
+    max-width:1250px;
+    margin:auto;
+    padding:30px 22px 50px;
+}
 
 .hero{
- max-width:1180px;min-height:560px;margin:auto;
- display:grid;grid-template-columns:1fr 1fr
-}
-.hero-copy{
- padding:90px 55px 70px 30px;
- display:flex;flex-direction:column;justify-content:center
-}
-.kicker{
- color:#9b765d;font:12px Arial;text-transform:uppercase;
- letter-spacing:3px;margin-bottom:18px
-}
-h1{font-size:62px;line-height:1.02;font-weight:500;margin-bottom:24px}
-h1 em{color:#9c8068}
-.hero-copy p{
- max-width:470px;margin-bottom:28px;color:#5f5550;
- font:16px/1.8 Arial
-}
-.primary{align-self:flex-start}
-
-.hero-art{
- min-height:560px;position:relative;overflow:hidden;
- background:linear-gradient(135deg,#d7c1ae,#eadccf)
-}
-.hero-art:before{
- content:"";position:absolute;inset:0;
- background:linear-gradient(110deg,transparent 42%,#654151 43% 76%,#3d2930 77%);
- opacity:.85
-}
-.books{position:absolute;right:10%;bottom:9%;width:70%;height:60%;transform:rotate(-3deg)}
-.book{
- position:absolute;bottom:0;width:24%;height:88%;
- border-radius:4px 8px 8px 4px;box-shadow:8px 8px 18px #4b303333
-}
-.book:nth-child(1){left:5%;height:70%;background:#7b5362;transform:rotate(-7deg)}
-.book:nth-child(2){left:28%;height:94%;background:#563447;transform:rotate(2deg)}
-.book:nth-child(3){left:52%;height:78%;background:#9b785f;transform:rotate(7deg)}
-.book:nth-child(4){left:72%;height:68%;background:#46313a;transform:rotate(10deg)}
-.book-title{
- position:absolute;top:35%;left:15%;right:15%;
- color:#f6e9d7;text-align:center;font-size:17px
-}
-.quote{
- position:absolute;right:5%;top:9%;width:190px;padding:24px;
- background:#63394d;color:#f6e9d7;font-size:16px;line-height:1.5;z-index:2
+    background:linear-gradient(
+        120deg,
+        #fff,
+        #faf2fc
+    );
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:28px;
+    margin-bottom:22px;
 }
 
-.services{padding:55px 22px;background:#52283e;color:#f7eadb}
-.service-inner{max-width:1180px;margin:auto}
-.section-line{text-align:center;font-size:22px;margin-bottom:30px}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.hero small{
+    color:var(--primary);
+    font-weight:bold;
+}
+
+.hero h2{
+    margin-top:8px;
+    font-size:30px;
+}
+
+.hero p{
+    margin-top:9px;
+    color:var(--muted);
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:17px;
+}
+
 .card{
- min-height:210px;padding:28px 20px;background:#f7eee4;
- color:#4c3a39;border-radius:8px;text-align:center
-}
-.icon{
- width:58px;height:58px;margin:0 auto 15px;display:grid;
- place-items:center;border:1px solid #b99786;border-radius:50%;font-size:26px
-}
-.card h3{margin-bottom:10px;font-size:17px}
-.card p{color:#6c625e;font:13px/1.65 Arial}
-
-.intro{max-width:1180px;margin:auto;padding:65px 22px}
-.intro-title{text-align:center;font-size:30px;font-weight:500;margin-bottom:45px}
-.intro-title em{color:#9b8068}
-.values{display:grid;grid-template-columns:repeat(4,1fr);gap:25px;text-align:center}
-.vicon{color:#7f5366;font-size:28px;margin-bottom:10px}
-.value h4{margin-bottom:8px}
-.value p{color:#6d625c;font:12px/1.6 Arial}
-
-.booking{padding:70px 22px;background:#efe0d1}
-.booking-inner{max-width:900px;margin:auto}
-.booking h2{text-align:center;font-size:34px;font-weight:500;margin-bottom:10px}
-.sub{text-align:center;color:#756760;font:14px Arial;margin-bottom:28px}
-.form-box{
- padding:28px;background:#fffaf4;border:1px solid #ead7c6;
- border-radius:10px;box-shadow:0 10px 30px #5a294315
-}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.field{margin-bottom:16px}
-label{
- display:block;margin-bottom:7px;color:#5c4748;
- font:12px Arial;text-transform:uppercase
-}
-input,select{
- width:100%;padding:13px;background:white;border:1px solid #d9c6b6;
- border-radius:5px;outline:none;color:#3d3030
-}
-.submit{width:100%;padding:15px;font-weight:bold}
-.success{
- margin-top:15px;padding:13px;background:#dff0df;color:#28602d;
- border-radius:5px;font:13px Arial;display:none
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:20px;
 }
 
-.about{
- max-width:1180px;margin:auto;padding:65px 22px;
- display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center
-}
-.about h2{font-size:38px;font-weight:500;margin-bottom:18px}
-.about p{color:#665b56;font:14px/1.8 Arial;margin-bottom:15px}
-.photo{
- height:350px;border-radius:8px;
- background:linear-gradient(135deg,#d8c3b0,#806170);
- display:grid;place-items:center;color:#f8eadc;font-size:45px;
- letter-spacing:5px;text-align:center
+.card h3{
+    margin-bottom:7px;
+    font-size:18px;
 }
 
-.contact{max-width:1180px;margin:auto;padding:40px 22px 70px}
-.contact h2{text-align:center;font-size:32px;font-weight:500;margin-bottom:35px}
-.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.contact-card{
- padding:25px;background:#fffaf4;border:1px solid #ead7c6;
- border-radius:8px;text-align:center
-}
-.contact-card h3{margin:8px}
-.contact-card p{font:13px Arial;color:#6d625c}
-
-footer{padding:40px 22px 20px;background:#351b2a;color:#e9dacc}
-.footer-inner{
- max-width:1180px;margin:auto;display:grid;
- grid-template-columns:1.5fr 1fr 1fr;gap:35px
-}
-footer h3{margin-bottom:12px}
-footer p,footer a{display:block;color:#cdbab0;font:12px/1.7 Arial;margin:4px 0}
-.copy{
- margin-top:30px;padding-top:18px;border-top:1px solid #654452;
- color:#a99188;text-align:center;font:11px Arial
+.card p{
+    color:var(--muted);
+    line-height:1.5;
+    font-size:14px;
 }
 
-/* AUTH */
-.screen{
- display:none;min-height:100vh;padding:30px 20px;
- background:#f7efe5;align-items:center;justify-content:center
-}
-.auth-box{
- width:100%;max-width:430px;padding:35px;background:#fffaf4;
- border:1px solid #ead7c6;border-radius:12px;
- box-shadow:0 15px 40px #5a294320
-}
-.auth-box h2{text-align:center;font-size:30px;font-weight:500;margin-bottom:8px}
-.auth-sub{text-align:center;color:#766963;font:13px Arial;margin-bottom:25px}
-.auth-btn{width:100%;padding:14px;font-weight:bold}
-.switch{text-align:center;font:13px Arial;color:#665b56;margin-top:16px}
-.switch button{border:0;background:none;color:#6d3b53;font-weight:bold}
-
-/* PORTAL */
-.portal{display:none;min-height:100vh;background:#f7efe5}
-.portal-header{
- background:#351b2a;color:white;padding:17px 24px;
- display:flex;justify-content:space-between;align-items:center
-}
-.portal-header h2{font-size:22px;font-weight:500}
-.logout{
- padding:9px 15px;border:1px solid #c9aebc;
- border-radius:5px;background:transparent;color:white
-}
-.layout{display:flex;min-height:calc(100vh - 63px)}
-.sidebar{width:235px;background:#52283e;padding:22px 14px}
-.sidebar button{
- width:100%;padding:13px;margin-bottom:7px;border:0;border-radius:5px;
- background:transparent;color:#f8eade;text-align:left
-}
-.sidebar button:hover,.sidebar button.active{background:#713650}
-.main{flex:1;padding:30px}
-.section{display:none}
-.section.active{display:block}
-.title{font-size:32px;font-weight:500;margin-bottom:25px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:25px}
-.stat{
- padding:20px;background:#fffaf4;border:1px solid #ead7c6;border-radius:8px
-}
-.stat small{display:block;color:#766963;font:12px Arial;margin-bottom:8px}
-.stat strong{font-size:25px}
-.box{
- padding:22px;background:#fffaf4;border:1px solid #ead7c6;
- border-radius:8px;margin-bottom:20px
-}
-.box h3{margin-bottom:15px}
-.row{
- display:flex;justify-content:space-between;
- padding:13px 0;border-bottom:1px solid #ead7c6;
- font:13px Arial
-}
-.present{
- padding:14px 20px;background:#57283f;color:white;border:0;border-radius:5px
-}
-.status{
- display:inline-block;padding:6px 10px;border-radius:20px;
- font:11px Arial;font-weight:bold
-}
-.active{background:#dcefdc;color:#236328}
-.pending{background:#f8e9bd;color:#795a00}
-.approved{background:#d7f0dc;color:#24612e}
-.rejected{background:#f4d7d7;color:#842525}
-table{width:100%;border-collapse:collapse;font:13px Arial}
-th,td{padding:12px;border-bottom:1px solid #ead7c6;text-align:left}
-th{background:#f2e5d8}
-.table-wrap{overflow-x:auto}
-.ok,.reject{
- border:0;border-radius:4px;color:white;padding:7px 11px;font-size:11px
-}
-.ok{background:#3f7046}
-.reject{background:#914545}
-.profile-id{
- font-family:Arial;font-size:15px;color:#713650;font-weight:bold
-}
-.seat-grid{
- display:grid;grid-template-columns:repeat(8,1fr);gap:8px
-}
-.seat{
- padding:10px 3px;border-radius:5px;text-align:center;
- font:12px Arial;border:1px solid #d9c6b6;background:#dff0df;color:#285e2d
-}
-.seat.booked{background:#f0cccc;color:#842525}
-.seat.mine{background:#d7d0ee;color:#4c356e}
-.notice{
- padding:14px;background:#efe0d1;border-radius:6px;
- font:13px Arial;margin-bottom:18px
+.live-class-card{
+    border:2px solid #dcb3e6;
 }
 
-@media(max-width:850px){
- nav{display:none}
- .hero{grid-template-columns:1fr}
- .hero-art{min-height:400px}
- .cards,.values{grid-template-columns:1fr 1fr}
- .about{grid-template-columns:1fr}
- .contact-grid{grid-template-columns:1fr}
- .stats{grid-template-columns:1fr 1fr}
- .layout{flex-direction:column}
- .sidebar{width:100%;display:flex;overflow-x:auto;gap:5px}
- .sidebar button{min-width:max-content}
+.class-time{
+    color:var(--primary);
+    font-weight:bold;
+    margin:12px 0;
 }
-@media(max-width:560px){
- .hero-copy{padding:50px 20px 35px}
- h1{font-size:43px}
- .cards,.values,.grid,.footer-inner{grid-template-columns:1fr}
- .stats{grid-template-columns:1fr}
- .main{padding:20px 15px}
- .title{font-size:27px}
- .auth-box{padding:25px 20px}
- .seat-grid{grid-template-columns:repeat(4,1fr)}
+
+.primary-btn{
+    border:none;
+    background:var(--primary);
+    color:#fff;
+    padding:11px 18px;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
 }
+
+.primary-btn:hover{
+    background:#68117f;
+}
+
+.secondary-btn{
+    border:1px solid var(--primary);
+    background:#fff;
+    color:var(--primary);
+    padding:10px 17px;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-section{
+    display:none;
+    max-width:800px;
+    margin:auto;
+    padding:30px 22px;
+}
+
+.profile-box{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:30px;
+}
+
+.profile-photo-area{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.profile-photo,
+.profile-photo-placeholder{
+    width:120px;
+    height:120px;
+    margin:auto;
+    border-radius:50%;
+}
+
+.profile-photo{
+    object-fit:cover;
+    display:none;
+}
+
+.profile-photo-placeholder{
+    background:var(--primary);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    font-weight:bold;
+}
+
+.photo-btn{
+    display:inline-block;
+    margin-top:14px;
+    padding:9px 15px;
+    border:1px solid var(--primary);
+    color:var(--primary);
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.profile-input{
+    width:100%;
+    height:46px;
+    border:1px solid #d8d2dc;
+    border-radius:8px;
+    padding:0 12px;
+    margin-top:7px;
+    margin-bottom:18px;
+}
+
+.profile-label{
+    font-size:14px;
+    font-weight:bold;
+}
+
+/* =========================
+   CLASS PAGE
+========================= */
+
+.class-page{
+    display:none;
+    max-width:1400px;
+    margin:auto;
+    padding:20px;
+}
+
+.class-header{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:17px 20px;
+    margin-bottom:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.class-header h2{
+    font-size:21px;
+}
+
+.class-header span{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.video-area{
+    position:relative;
+    width:100%;
+    background:#000;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 15px 50px rgba(0,0,0,.3);
+}
+
+#classVideo{
+    width:100%;
+    max-height:76vh;
+    display:block;
+    background:#000;
+}
+
+/* =========================
+   CAMERA CIRCLE
+========================= */
+
+.camera-circle{
+    position:absolute;
+    width:145px;
+    height:145px;
+    right:25px;
+    bottom:70px;
+    border-radius:50%;
+    overflow:hidden;
+    border:4px solid #fff;
+    background:#111;
+    box-shadow:0 5px 30px rgba(0,0,0,.65);
+    z-index:15;
+}
+
+#frontCamera{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transform:scaleX(-1);
+}
+
+.camera-off{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#aaa;
+    font-size:12px;
+    text-align:center;
+}
+
+/* =========================
+   BREAK
+========================= */
+
+.break-screen{
+    position:absolute;
+    inset:0;
+    background:rgba(5,6,10,.97);
+    z-index:30;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+}
+
+.break-screen.active{
+    display:flex;
+}
+
+.break-screen h2{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.break-screen p{
+    color:#aaa;
+    margin-bottom:25px;
+}
+
+.break-timer{
+    font-size:78px;
+    font-weight:800;
+}
+
+.break-note{
+    margin-top:10px;
+    color:#aaa;
+}
+
+/* =========================
+   CLASS START
+========================= */
+
+.class-start{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.76);
+    z-index:25;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.class-start.hidden{
+    display:none;
+}
+
+.class-start-box{
+    text-align:center;
+}
+
+.class-start-box h2{
+    font-size:27px;
+    margin-bottom:9px;
+}
+
+.class-start-box p{
+    color:#bbb;
+    margin-bottom:20px;
+}
+
+.start-class-btn{
+    border:none;
+    background:var(--primary);
+    color:#fff;
+    padding:13px 24px;
+    border-radius:9px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* =========================
+   CUSTOM CONTROLS
+========================= */
+
+.custom-controls{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:62px;
+    z-index:20;
+    display:flex;
+    align-items:flex-end;
+    gap:10px;
+    padding:9px 15px;
+    background:linear-gradient(
+        transparent,
+        rgba(0,0,0,.95)
+    );
+}
+
+.ctrl{
+    border:none;
+    background:#ffffff20;
+    color:#fff;
+    padding:8px 12px;
+    border-radius:7px;
+    cursor:pointer;
+}
+
+.ctrl:hover{
+    background:#ffffff35;
+}
+
+.fake-progress{
+    flex:1;
+    height:5px;
+    background:#ffffff35;
+    border-radius:10px;
+    margin-bottom:12px;
+    overflow:hidden;
+}
+
+.fake-progress-inner{
+    width:0;
+    height:100%;
+    background:#fff;
+}
+
+/* =========================
+   CLASS INFO
+========================= */
+
+.class-info{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+    margin-top:18px;
+}
+
+.info-box{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:16px;
+}
+
+.info-box small{
+    display:block;
+    color:var(--muted);
+    margin-bottom:7px;
+}
+
+.info-box strong{
+    font-size:17px;
+}
+
+/* =========================
+   VIDEO SELECT
+========================= */
+
+.video-select{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:15px;
+}
+
+.video-select label{
+    display:inline-block;
+    background:var(--primary);
+    color:#fff;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.video-select input{
+    display:none;
+}
+
+#selectedVideo{
+    margin-left:10px;
+    color:var(--muted);
+    font-size:13px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+    header{
+        padding:0 13px;
+    }
+
+    .site-name{
+        font-size:16px;
+    }
+
+    .dashboard,
+    .profile-section,
+    .class-page{
+        padding:15px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .class-header{
+        align-items:flex-start;
+        gap:10px;
+        flex-direction:column;
+    }
+
+    .camera-circle{
+        width:90px;
+        height:90px;
+        right:12px;
+        bottom:68px;
+    }
+
+    .break-timer{
+        font-size:52px;
+    }
+
+    .break-screen h2{
+        font-size:23px;
+    }
+
+    .class-info{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- ==================================================
-     PUBLIC WEBSITE
-================================================== -->
 
-<div id="public">
+<!-- ======================================================
+     LOGIN PAGE
+====================================================== -->
+
+<section class="login-page" id="loginPage">
+
+    <div class="login-card">
+
+        <div class="brand">
+
+            <div class="logo">
+                SP
+            </div>
+
+            <h1>SkillPath</h1>
+
+            <p>
+                Learn. Practice. Grow.
+            </p>
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label>
+                Mobile Number
+            </label>
+
+            <input
+                type="tel"
+                id="loginMobile"
+                placeholder="Enter mobile number"
+                maxlength="10"
+            >
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label>
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter password"
+            >
+
+        </div>
+
+
+        <button
+            class="login-btn"
+            id="loginButton"
+        >
+            Login
+        </button>
+
+
+        <div
+            class="login-message"
+            id="loginMessage"
+        ></div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     MAIN APP
+====================================================== -->
+
+<div class="app" id="app">
 
 <header>
-<div class="nav">
 
-<div class="logo">StudyNest <span>Library</span></div>
+    <div class="header-left">
 
-<nav>
-<a href="#home">Home</a>
-<a href="#facilities">Facilities</a>
-<a href="#membership">Membership</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-</nav>
+        <div class="small-logo">
+            SP
+        </div>
 
-<div class="nav-buttons">
-<button class="nav-btn" onclick="showStudentLogin()">LOGIN</button>
-<button class="nav-btn" onclick="showRegister()">REGISTER</button>
-</div>
+        <div class="site-name">
+            SkillPath
+        </div>
 
-</div>
+    </div>
+
+
+    <button
+        class="profile-button"
+        id="profileButton"
+    >
+
+        <div
+            class="profile-placeholder"
+            id="headerInitial"
+        >
+            P
+        </div>
+
+        <span id="headerName">
+            Profile
+        </span>
+
+    </button>
+
 </header>
 
-<section class="hero" id="home">
 
-<div class="hero-copy">
+<!-- ======================================================
+     DASHBOARD
+====================================================== -->
 
-<div class="kicker">A quiet place for focused minds</div>
+<section
+    class="dashboard"
+    id="dashboard"
+>
 
-<h1>
-Every hour of study <em>matters.</em>
-</h1>
+    <div class="hero">
 
-<p>
-StudyNest is a peaceful, premium study library
-where students can focus, prepare and move closer
-to their goals.
-</p>
+        <small>
+            LEARNING DASHBOARD
+        </small>
 
-<button class="primary" onclick="showRegister()">REGISTER NOW</button>
+        <h2>
+            Welcome back, <span id="welcomeName">Pankaj</span>
+        </h2>
 
-</div>
+        <p>
+            Continue your learning journey and join your upcoming live class.
+        </p>
 
-<div class="hero-art">
-
-<div class="quote">
-“A calm space. A clear mind. A better future.”
-</div>
-
-<div class="books">
-<div class="book"><div class="book-title">FOCUS</div></div>
-<div class="book"><div class="book-title">STUDY<br>SMART</div></div>
-<div class="book"><div class="book-title">DREAM</div></div>
-<div class="book"><div class="book-title">ACHIEVE</div></div>
-</div>
-
-</div>
-</section>
+    </div>
 
 
-<section class="services" id="facilities">
-
-<div class="service-inner">
-
-<div class="section-line">
-Everything you need for a productive study session.
-</div>
-
-<div class="cards">
-
-<div class="card">
-<div class="icon">📚</div>
-<h3>Dedicated Seat</h3>
-<p>Comfortable personal study space designed for long sessions.</p>
-</div>
-
-<div class="card">
-<div class="icon">❄</div>
-<h3>AC Environment</h3>
-<p>Clean, calm and comfortable environment for focused preparation.</p>
-</div>
-
-<div class="card">
-<div class="icon">📶</div>
-<h3>Fast Wi-Fi</h3>
-<p>Reliable internet and charging access for digital study needs.</p>
-</div>
-
-<div class="card">
-<div class="icon">🤫</div>
-<h3>Silent Zone</h3>
-<p>A disciplined atmosphere with minimal distractions.</p>
-</div>
-
-</div>
-</div>
-</section>
+    <div class="cards">
 
 
-<section class="intro" id="membership">
+        <div class="card live-class-card">
 
-<h2 class="intro-title">
-For students. For <em>dreams.</em> For a future that matters.
-</h2>
+            <h3>
+                Live Class
+            </h3>
 
-<div class="values">
+            <p>
+                Your scheduled live learning session.
+            </p>
 
-<div class="value">
-<div class="vicon">♡</div>
-<h4>Focused Study</h4>
-<p>A peaceful environment that helps you stay consistent.</p>
-</div>
+            <div class="class-time">
+                26 August 2026 · 8:20 AM
+            </div>
 
-<div class="value">
-<div class="vicon">▱</div>
-<h4>Comfortable Space</h4>
-<p>Ergonomic seating, lighting and charging at your desk.</p>
-</div>
+            <button
+                class="primary-btn"
+                id="goClassButton"
+            >
+                Go to Live Class
+            </button>
 
-<div class="value">
-<div class="vicon">⌁</div>
-<h4>Flexible Plans</h4>
-<p>Daily, weekly, monthly and yearly membership options.</p>
-</div>
-
-<div class="value">
-<div class="vicon">✦</div>
-<h4>Student Friendly</h4>
-<p>Built around the needs of school and competitive-exam students.</p>
-</div>
-
-</div>
-</section>
+        </div>
 
 
-<!-- PUBLIC BOOKING -->
+        <div class="card">
 
-<section class="booking">
+            <h3>
+                My Course
+            </h3>
 
-<div class="booking-inner">
+            <p>
+                Continue your course and complete your lessons.
+            </p>
 
-<h2>Book Your Study Seat</h2>
+            <br>
 
-<p class="sub">
-Login/Register karke seat book karein.
-</p>
+            <button class="secondary-btn">
+                View Course
+            </button>
 
-<div class="form-box">
-
-<div class="grid">
-
-<div class="field">
-<label>Date</label>
-<input type="date" id="publicDate">
-</div>
-
-<div class="field">
-<label>Seat</label>
-<select id="publicSeat"></select>
-</div>
-
-</div>
-
-<button class="submit" onclick="publicBooking()">
-BOOK SEAT
-</button>
-
-<div class="success" id="bookingSuccess"></div>
-
-</div>
-</div>
-</section>
+        </div>
 
 
-<section class="about" id="about">
+        <div class="card">
 
-<div>
-<h2>About StudyNest</h2>
+            <h3>
+                Progress
+            </h3>
 
-<p>
-StudyNest is designed for students who need a calm,
-disciplined and comfortable place to study.
-</p>
+            <p>
+                Keep learning consistently and track your progress.
+            </p>
 
-<p>
-A focused environment for school, college and
-competitive-exam preparation.
-</p>
-</div>
+            <br>
 
-<div class="photo">
-STUDY<br>NEST
-</div>
+            <strong>
+                Learning Active
+            </strong>
+
+        </div>
+
+
+    </div>
 
 </section>
 
 
-<section class="contact" id="contact">
+<!-- ======================================================
+     PROFILE
+====================================================== -->
 
-<h2>Contact StudyNest</h2>
+<section
+    class="profile-section"
+    id="profileSection"
+>
 
-<div class="contact-grid">
+    <div class="profile-box">
 
-<div class="contact-card">
-<div>📍</div>
-<h3>Location</h3>
-<p>StudyNest Library</p>
-</div>
+        <h2>
+            My Profile
+        </h2>
 
-<div class="contact-card">
-<div>📞</div>
-<h3>Phone</h3>
-<p>Library In-charge</p>
-</div>
+        <br>
 
-<div class="contact-card">
-<div>✉️</div>
-<h3>Email</h3>
-<p>studynest@example.com</p>
-</div>
 
-</div>
+        <div class="profile-photo-area">
+
+            <div
+                class="profile-photo-placeholder"
+                id="profilePlaceholder"
+            >
+                P
+            </div>
+
+            <img
+                class="profile-photo"
+                id="profilePhoto"
+                alt="Profile"
+            >
+
+            <br>
+
+            <label
+                class="photo-btn"
+                for="profileImage"
+            >
+                Change Profile Photo
+            </label>
+
+            <input
+                type="file"
+                id="profileImage"
+                accept="image/*"
+                style="display:none;"
+            >
+
+        </div>
+
+
+        <label class="profile-label">
+            Name
+        </label>
+
+        <input
+            class="profile-input"
+            type="text"
+            id="profileName"
+            placeholder="Enter your name"
+        >
+
+
+        <label class="profile-label">
+            Mobile Number
+        </label>
+
+        <input
+            class="profile-input"
+            type="text"
+            id="profileMobile"
+            readonly
+        >
+
+
+        <button
+            class="primary-btn"
+            id="saveProfile"
+        >
+            Save Profile
+        </button>
+
+
+        <button
+            class="secondary-btn"
+            id="backDashboard"
+            style="margin-left:8px;"
+        >
+            Dashboard
+        </button>
+
+    </div>
+
 </section>
 
 
-<footer>
+<!-- ======================================================
+     CLASS PAGE
+====================================================== -->
 
-<div class="footer-inner">
-
-<div>
-<h3>StudyNest Library</h3>
-<p>A calm place for focused minds.</p>
-</div>
-
-<div>
-<h3>Account</h3>
-<a href="#" onclick="showStudentLogin();return false">Student Login</a>
-<a href="#" onclick="showRegister();return false">Student Register</a>
-<a href="#" onclick="showAdminLogin();return false">In-charge Login</a>
-</div>
-
-<div>
-<h3>StudyNest</h3>
-<p>Study. Focus. Achieve.</p>
-</div>
-
-</div>
-
-<div class="copy">
-© 2026 StudyNest Library. All Rights Reserved.
-</div>
-
-</footer>
-
-</div>
+<section
+    class="class-page"
+    id="classPage"
+>
 
 
-<!-- ==================================================
-     STUDENT REGISTER / LOGIN
-================================================== -->
+    <div class="class-header">
 
-<section class="screen" id="studentAuth">
+        <div>
 
-<div class="auth-box">
+            <h2>
+                Live Python Class
+            </h2>
 
-<h2 id="authTitle">Student Login</h2>
+            <span>
+                Scheduled: 26 August 2026 · 8:20 AM
+            </span>
 
-<p class="auth-sub" id="authText">
-Login to access your Student Portal.
-</p>
+        </div>
 
-<form id="studentForm">
 
-<div id="registerOnly" style="display:none">
+        <button
+            class="secondary-btn"
+            id="backFromClass"
+        >
+            ← Dashboard
+        </button>
 
-<div class="field">
-<label>Full Name</label>
-<input id="regName" type="text" placeholder="Your full name">
-</div>
+    </div>
 
-<div class="field">
-<label>Mobile Number</label>
-<input id="regMobile" type="tel" inputmode="numeric"
-placeholder="Your mobile number">
-</div>
 
-</div>
+    <!-- VIDEO SELECT -->
 
-<div class="field">
-<label>Mobile / Login Number</label>
-<input id="loginMobile" type="tel" inputmode="numeric"
-placeholder="Your mobile number" required>
-</div>
+    <div class="video-select">
 
-<div class="field">
-<label>Password</label>
-<input id="loginPassword" type="password"
-placeholder="Create / enter password" required>
-</div>
+        <label for="classVideoFile">
+            Select Class Video
+        </label>
 
-<button class="auth-btn" id="studentSubmit">
-LOGIN
-</button>
+        <input
+            type="file"
+            id="classVideoFile"
+            accept="video/*"
+        >
 
-</form>
+        <span id="selectedVideo">
+            No video selected
+        </span>
 
-<div class="switch" id="switchText">
-New student?
-<button onclick="showRegister()">Register</button>
-</div>
+    </div>
 
-<div class="switch">
-<button onclick="showPublic()">← Back to Website</button>
-</div>
 
-</div>
+    <!-- VIDEO PLAYER -->
+
+    <div class="video-area">
+
+        <video
+            id="classVideo"
+            playsinline
+            preload="metadata"
+        ></video>
+
+
+        <!-- CAMERA -->
+
+        <div
+            class="camera-circle"
+            id="cameraCircle"
+        >
+
+            <video
+                id="frontCamera"
+                autoplay
+                muted
+                playsinline
+            ></video>
+
+            <div
+                class="camera-off"
+                id="cameraOff"
+            >
+                Camera Off
+            </div>
+
+        </div>
+
+
+        <!-- CLASS START -->
+
+        <div
+            class="class-start"
+            id="classStart"
+        >
+
+            <div class="class-start-box">
+
+                <h2>
+                    Live Class
+                </h2>
+
+                <p id="classStartMessage">
+                    Your class will start at 8:20 AM.
+                </p>
+
+                <button
+                    class="start-class-btn"
+                    id="startClassButton"
+                >
+                    Start Class
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- BREAK -->
+
+        <div
+            class="break-screen"
+            id="breakScreen"
+        >
+
+            <h2>
+                10 Minute Break
+            </h2>
+
+            <p>
+                Your class is temporarily paused.
+            </p>
+
+            <div
+                class="break-timer"
+                id="breakTimer"
+            >
+                10:00
+            </div>
+
+            <div class="break-note">
+                Camera is off during the break.
+                Class will resume automatically.
+            </div>
+
+        </div>
+
+
+        <!-- CUSTOM CONTROLS -->
+
+        <div class="custom-controls">
+
+            <button
+                class="ctrl"
+                id="muteBtn"
+            >
+                🔊
+            </button>
+
+            <button
+                class="ctrl"
+                id="fullscreenBtn"
+            >
+                ⛶
+            </button>
+
+            <div class="fake-progress">
+
+                <div
+                    class="fake-progress-inner"
+                    id="progressBar"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- INFO -->
+
+    <div class="class-info">
+
+        <div class="info-box">
+
+            <small>
+                Class Status
+            </small>
+
+            <strong id="classStatus">
+                Scheduled
+            </strong>
+
+        </div>
+
+
+        <div class="info-box">
+
+            <small>
+                Session Time
+            </small>
+
+            <strong id="sessionTime">
+                00:00:00
+            </strong>
+
+        </div>
+
+
+        <div class="info-box">
+
+            <small>
+                Next Break
+            </small>
+
+            <strong id="nextBreak">
+                01:30:00
+            </strong>
+
+        </div>
+
+
+        <div class="info-box">
+
+            <small>
+                Camera
+            </small>
+
+            <strong id="cameraStatus">
+                OFF
+            </strong>
+
+        </div>
+
+    </div>
+
 </section>
 
-
-<!-- ==================================================
-     STUDENT PORTAL
-================================================== -->
-
-<section class="portal" id="studentPortal">
-
-<div class="portal-header">
-
-<h2>StudyNest Student Portal</h2>
-
-<div>
-<span id="headerStudentName"></span>
-<button class="logout" onclick="studentLogout()">Logout</button>
 </div>
-
-</div>
-
-
-<div class="layout">
-
-<aside class="sidebar">
-
-<button class="active" onclick="studentPage('sdashboard',this)">
-🏠 Dashboard
-</button>
-
-<button onclick="studentPage('sschedule',this)">
-📅 Monthly Schedule
-</button>
-
-<button onclick="studentPage('smembership',this)">
-💳 Membership
-</button>
-
-<button onclick="studentPage('sattendance',this)">
-✅ Attendance
-</button>
-
-<button onclick="studentPage('sprofile',this)">
-👤 Profile
-</button>
-
-<button onclick="studentPage('sseats',this)">
-💺 Seats
-</button>
-
-</aside>
-
-
-<main class="main">
-
-
-<!-- DASHBOARD -->
-
-<div class="section active" id="sdashboard">
-
-<h1 class="title">
-Welcome, <span id="welcomeName"></span>
-</h1>
-
-<div class="notice">
-Your Student ID: <strong id="welcomeId"></strong>
-</div>
-
-<div class="stats">
-
-<div class="stat">
-<small>Student ID</small>
-<strong id="statId">---</strong>
-</div>
-
-<div class="stat">
-<small>Membership</small>
-<strong>Monthly</strong>
-</div>
-
-<div class="stat">
-<small>Attendance</small>
-<strong id="statAttendance">0%</strong>
-</div>
-
-<div class="stat">
-<small>Seat</small>
-<strong id="statSeat">Not Selected</strong>
-</div>
-
-</div>
-
-<div class="box">
-
-<h3>Today's Attendance</h3>
-
-<p id="todayAttendanceText">
-You have not marked attendance today.
-</p>
-
-<br>
-
-<button class="present" onclick="markPresent()">
-🟢 I AM PRESENT
-</button>
-
-</div>
-
-<div class="box">
-
-<h3>My Current Seat</h3>
-
-<div class="row">
-<span>Seat</span>
-<strong id="dashboardSeat">Not Selected</strong>
-</div>
-
-<div class="row">
-<span>Membership</span>
-<strong>Monthly</strong>
-</div>
-
-<div class="row">
-<span>Status</span>
-<span class="status active">ACTIVE</span>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- MONTHLY SCHEDULE -->
-
-<div class="section" id="sschedule">
-
-<h1 class="title">Monthly Schedule</h1>
-
-<div class="box">
-
-<h3>Library Schedule</h3>
-
-<div class="row">
-<span>Library Opening</span>
-<strong>08:00 AM</strong>
-</div>
-
-<div class="row">
-<span>Library Closing</span>
-<strong>08:00 PM</strong>
-</div>
-
-<div class="row">
-<span>Monthly Plan</span>
-<strong>Active</strong>
-</div>
-
-</div>
-
-<div class="box">
-
-<h3>My Booking Schedule</h3>
-
-<div id="studentBookings"></div>
-
-</div>
-
-</div>
-
-
-<!-- MEMBERSHIP -->
-
-<div class="section" id="smembership">
-
-<h1 class="title">My Membership</h1>
-
-<div class="box">
-
-<div class="row">
-<span>Student ID</span>
-<strong id="membershipId"></strong>
-</div>
-
-<div class="row">
-<span>Plan</span>
-<strong>Monthly</strong>
-</div>
-
-<div class="row">
-<span>Start Date</span>
-<strong id="membershipStart"></strong>
-</div>
-
-<div class="row">
-<span>Expiry Date</span>
-<strong id="membershipExpiry"></strong>
-</div>
-
-<div class="row">
-<span>Status</span>
-<span class="status active">ACTIVE</span>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ATTENDANCE -->
-
-<div class="section" id="sattendance">
-
-<h1 class="title">My Attendance</h1>
-
-<div class="stats">
-
-<div class="stat">
-<small>Total Requests</small>
-<strong id="totalAtt">0</strong>
-</div>
-
-<div class="stat">
-<small>Present</small>
-<strong id="presentAtt">0</strong>
-</div>
-
-<div class="stat">
-<small>Pending</small>
-<strong id="pendingAtt">0</strong>
-</div>
-
-<div class="stat">
-<small>Percentage</small>
-<strong id="percentAtt">0%</strong>
-</div>
-
-</div>
-
-<div class="box">
-
-<h3>Attendance History</h3>
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-<tr>
-<th>Date</th>
-<th>Time</th>
-<th>Status</th>
-</tr>
-</thead>
-
-<tbody id="studentAttTable"></tbody>
-
-</table>
-
-</div>
-</div>
-
-</div>
-
-
-<!-- PROFILE -->
-
-<div class="section" id="sprofile">
-
-<h1 class="title">My Profile</h1>
-
-<div class="box">
-
-<div class="row">
-<span>Name</span>
-<strong id="profileName"></strong>
-</div>
-
-<div class="row">
-<span>Student ID</span>
-<strong class="profile-id" id="profileId"></strong>
-</div>
-
-<div class="row">
-<span>Mobile</span>
-<strong id="profileMobile"></strong>
-</div>
-
-<div class="row">
-<span>Seat</span>
-<strong id="profileSeat"></strong>
-</div>
-
-<div class="row">
-<span>Membership</span>
-<strong>Monthly</strong>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- SEATS -->
-
-<div class="section" id="sseats">
-
-<h1 class="title">Select Your Seat</h1>
-
-<div class="notice">
-Green = Available &nbsp; | &nbsp;
-Purple = Your Seat &nbsp; | &nbsp;
-Red = Booked
-</div>
-
-<div class="box">
-
-<h3>A Section — A01 to A26</h3>
-<div class="seat-grid" id="aSeats"></div>
-
-</div>
-
-<div class="box">
-
-<h3>B Section — B27 to B52</h3>
-<div class="seat-grid" id="bSeats"></div>
-
-</div>
-
-<div class="box">
-
-<h3>C Section — C53 to C80</h3>
-<div class="seat-grid" id="cSeats"></div>
-
-</div>
-
-</div>
-
-
-</main>
-</div>
-</section>
-
-
-<!-- ==================================================
-     ADMIN LOGIN
-================================================== -->
-
-<section class="screen" id="adminAuth">
-
-<div class="auth-box">
-
-<h2>In-charge Login</h2>
-
-<p class="auth-sub">
-StudyNest Library Main In-charge
-</p>
-
-<form id="adminForm">
-
-<div class="field">
-<label>In-charge Mobile</label>
-<input id="adminMobile" type="tel"
-value="7726938070" readonly>
-</div>
-
-<div id="adminCreate">
-
-<div class="field">
-<label>Create Password</label>
-<input id="adminNewPassword" type="password"
-placeholder="Create your password">
-</div>
-
-<div class="field">
-<label>Confirm Password</label>
-<input id="adminConfirmPassword" type="password"
-placeholder="Confirm password">
-</div>
-
-</div>
-
-<div id="adminLoginFields" style="display:none">
-
-<div class="field">
-<label>Password</label>
-<input id="adminPassword" type="password"
-placeholder="Enter password">
-</div>
-
-</div>
-
-<button class="auth-btn" id="adminSubmit">
-CREATE PASSWORD
-</button>
-
-</form>
-
-<div class="switch">
-<button onclick="showPublic()">← Back to Website</button>
-</div>
-
-</div>
-</section>
-
-
-<!-- ==================================================
-     ADMIN PORTAL
-================================================== -->
-
-<section class="portal" id="adminPortal">
-
-<div class="portal-header">
-
-<h2>StudyNest In-charge Portal</h2>
-
-<button class="logout" onclick="adminLogout()">Logout</button>
-
-</div>
-
-<div class="layout">
-
-<aside class="sidebar">
-
-<button class="active" onclick="adminPage('adashboard',this)">
-🏠 Dashboard
-</button>
-
-<button onclick="adminPage('astudents',this)">
-👥 Students
-</button>
-
-<button onclick="adminPage('aattendance',this)">
-✅ Attendance
-</button>
-
-<button onclick="adminPage('amembership',this)">
-💳 Membership
-</button>
-
-<button onclick="adminPage('aseats',this)">
-💺 Seats
-</button>
-
-<button onclick="adminPage('abookings',this)">
-📅 Bookings
-</button>
-
-</aside>
-
-
-<main class="main">
-
-
-<!-- ADMIN DASHBOARD -->
-
-<div class="section active" id="adashboard">
-
-<h1 class="title">Library Dashboard</h1>
-
-<div class="stats">
-
-<div class="stat">
-<small>Total Students</small>
-<strong id="adminStudents">0</strong>
-</div>
-
-<div class="stat">
-<small>Pending Attendance</small>
-<strong id="adminPending">0</strong>
-</div>
-
-<div class="stat">
-<small>Present Today</small>
-<strong id="adminPresent">0</strong>
-</div>
-
-<div class="stat">
-<small>Booked Seats</small>
-<strong id="adminBookedSeats">0</strong>
-</div>
-
-</div>
-
-<div class="box">
-
-<h3>Pending Attendance</h3>
-
-<div id="adminQuickAttendance">
-No pending attendance.
-</div>
-
-</div>
-
-</div>
-
-
-<!-- STUDENTS -->
-
-<div class="section" id="astudents">
-
-<h1 class="title">Students</h1>
-
-<div class="box">
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-<tr>
-<th>Name</th>
-<th>Student ID</th>
-<th>Mobile</th>
-<th>Seat</th>
-<th>Status</th>
-</tr>
-</thead>
-
-<tbody id="studentsTable"></tbody>
-
-</table>
-
-</div>
-</div>
-
-</div>
-
-
-<!-- ATTENDANCE -->
-
-<div class="section" id="aattendance">
-
-<h1 class="title">Attendance</h1>
-
-<div class="box">
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-<tr>
-<th>Student</th>
-<th>ID</th>
-<th>Date</th>
-<th>Time</th>
-<th>Status</th>
-<th>Action</th>
-</tr>
-</thead>
-
-<tbody id="adminAttendanceTable"></tbody>
-
-</table>
-
-</div>
-</div>
-
-</div>
-
-
-<!-- MEMBERSHIP -->
-
-<div class="section" id="amembership">
-
-<h1 class="title">Membership</h1>
-
-<div class="box">
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-<tr>
-<th>Student</th>
-<th>ID</th>
-<th>Plan</th>
-<th>Status</th>
-</tr>
-</thead>
-
-<tbody id="membershipTable"></tbody>
-
-</table>
-
-</div>
-</div>
-
-</div>
-
-
-<!-- SEATS -->
-
-<div class="section" id="aseats">
-
-<h1 class="title">All Library Seats</h1>
-
-<div class="box">
-<h3>A Section — A01 to A26</h3>
-<div class="seat-grid" id="adminASeats"></div>
-</div>
-
-<div class="box">
-<h3>B Section — B27 to B52</h3>
-<div class="seat-grid" id="adminBSeats"></div>
-</div>
-
-<div class="box">
-<h3>C Section — C53 to C80</h3>
-<div class="seat-grid" id="adminCSeats"></div>
-</div>
-
-</div>
-
-
-<!-- BOOKINGS -->
-
-<div class="section" id="abookings">
-
-<h1 class="title">Bookings</h1>
-
-<div class="box">
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-<tr>
-<th>Student</th>
-<th>ID</th>
-<th>Date</th>
-<th>Seat</th>
-<th>Status</th>
-</tr>
-</thead>
-
-<tbody id="bookingTable"></tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</div>
-
-
-</main>
-</div>
-</section>
 
 
 <script>
 
-/* ==================================================
-   DATA
-================================================== */
+/* ==========================================================
+   LOGIN
+========================================================== */
 
-let students =
-JSON.parse(localStorage.getItem("SN_students") || "[]");
+/*
+   IMPORTANT:
+   This is a FRONTEND DEMO LOGIN.
 
-let attendance =
-JSON.parse(localStorage.getItem("SN_attendance") || "[]");
+   A real production login should use a backend.
+   Never store an important real password directly
+   inside frontend JavaScript.
+*/
 
-let bookings =
-JSON.parse(localStorage.getItem("SN_bookings") || "[]");
-
-let currentStudent =
-JSON.parse(localStorage.getItem("SN_current") || "null");
+const DEMO_MOBILE = "7726938070";
+const DEMO_PASSWORD = "@pankaj2007";
 
 
-function save(){
+const loginPage =
+    document.getElementById("loginPage");
 
- localStorage.setItem("SN_students",JSON.stringify(students));
- localStorage.setItem("SN_attendance",JSON.stringify(attendance));
- localStorage.setItem("SN_bookings",JSON.stringify(bookings));
+const app =
+    document.getElementById("app");
+
+const loginButton =
+    document.getElementById("loginButton");
+
+const loginMobile =
+    document.getElementById("loginMobile");
+
+const loginPassword =
+    document.getElementById("loginPassword");
+
+const loginMessage =
+    document.getElementById("loginMessage");
+
+
+loginButton.addEventListener(
+    "click",
+    login
+);
+
+
+loginPassword.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key === "Enter"){
+            login();
+        }
+
+    }
+);
+
+
+function login(){
+
+    const mobile =
+        loginMobile.value.trim();
+
+    const password =
+        loginPassword.value;
+
+    if(
+        mobile === DEMO_MOBILE &&
+        password === DEMO_PASSWORD
+    ){
+
+        localStorage.setItem(
+            "skillpathLoggedIn",
+            "true"
+        );
+
+        localStorage.setItem(
+            "skillpathMobile",
+            mobile
+        );
+
+        loginPage.style.display =
+            "none";
+
+        app.style.display =
+            "block";
+
+        loadProfile();
+
+    }
+    else{
+
+        loginMessage.textContent =
+            "Incorrect mobile number or password.";
+
+    }
 
 }
 
 
-/* ==================================================
-   SCREEN CONTROL
-================================================== */
+/* ==========================================================
+   PROFILE
+========================================================== */
 
-function hideEverything(){
+const profileButton =
+    document.getElementById("profileButton");
 
- document.getElementById("public").style.display="none";
- document.getElementById("studentAuth").style.display="none";
- document.getElementById("studentPortal").style.display="none";
- document.getElementById("adminAuth").style.display="none";
- document.getElementById("adminPortal").style.display="none";
+const profileSection =
+    document.getElementById("profileSection");
 
-}
+const dashboard =
+    document.getElementById("dashboard");
 
-function showPublic(){
+const profileName =
+    document.getElementById("profileName");
 
- hideEverything();
+const profileMobile =
+    document.getElementById("profileMobile");
 
- document.getElementById("public").style.display="block";
+const profileImage =
+    document.getElementById("profileImage");
 
- window.scrollTo(0,0);
+const profilePhoto =
+    document.getElementById("profilePhoto");
 
-}
+const profilePlaceholder =
+    document.getElementById("profilePlaceholder");
 
-function showStudentLogin(){
+const headerInitial =
+    document.getElementById("headerInitial");
 
- hideEverything();
+const headerName =
+    document.getElementById("headerName");
 
- document.getElementById("studentAuth").style.display="flex";
+const welcomeName =
+    document.getElementById("welcomeName");
 
- document.getElementById("authTitle").innerText="Student Login";
- document.getElementById("authText").innerText=
- "Login with your mobile number and password.";
 
- document.getElementById("registerOnly").style.display="none";
+profileButton.addEventListener(
+    "click",
+    function(){
 
- document.getElementById("studentSubmit").innerText="LOGIN";
+        dashboard.style.display =
+            "none";
 
- document.getElementById("switchText").innerHTML=
- `New student?
- <button onclick="showRegister()">Register</button>`;
+        classPage.style.display =
+            "none";
 
- document.getElementById("studentForm").dataset.mode="login";
+        profileSection.style.display =
+            "block";
 
-}
+    }
+);
 
-function showRegister(){
 
- hideEverything();
+function loadProfile(){
 
- document.getElementById("studentAuth").style.display="flex";
+    const savedName =
+        localStorage.getItem(
+            "skillpathName"
+        ) || "Pankaj";
 
- document.getElementById("authTitle").innerText="Student Registration";
+    const savedImage =
+        localStorage.getItem(
+            "skillpathImage"
+        );
 
- document.getElementById("authText").innerText=
- "Create your StudyNest student account.";
+    profileName.value =
+        savedName;
 
- document.getElementById("registerOnly").style.display="block";
+    profileMobile.value =
+        localStorage.getItem(
+            "skillpathMobile"
+        ) || DEMO_MOBILE;
 
- document.getElementById("studentSubmit").innerText="REGISTER";
+    updateName(savedName);
 
- document.getElementById("switchText").innerHTML=
- `Already registered?
- <button onclick="showStudentLogin()">Login</button>`;
+    if(savedImage){
 
- document.getElementById("studentForm").dataset.mode="register";
+        showProfileImage(savedImage);
 
-}
-
-
-/* ==================================================
-   STUDENT REGISTER / LOGIN
-================================================== */
-
-document.getElementById("studentForm").addEventListener(
-"submit",function(e){
-
- e.preventDefault();
-
- let mode=this.dataset.mode;
-
- let mobile=document.getElementById("loginMobile").value.trim();
-
- let password=document.getElementById("loginPassword").value;
-
- if(!/^[0-9]{10}$/.test(mobile)){
-
-  alert("Please enter a valid 10 digit mobile number.");
-  return;
-
- }
-
-
- /* REGISTER */
-
- if(mode==="register"){
-
-  let name=document.getElementById("regName").value.trim();
-
-  let registerMobile=
-  document.getElementById("regMobile").value.trim();
-
-  if(!name || !registerMobile){
-
-   alert("Please enter name and mobile number.");
-   return;
-
-  }
-
-  if(!/^[0-9]{10}$/.test(registerMobile)){
-
-   alert("Please enter a valid 10 digit mobile number.");
-   return;
-
-  }
-
-  if(password.length<4){
-
-   alert("Password must contain at least 4 characters.");
-   return;
-
-  }
-
-  if(students.some(s=>s.mobile===registerMobile)){
-
-   alert("This mobile number is already registered.");
-   return;
-
-  }
-
-
-  /*
-     ID:
-     @Name001
-     @Name002
-     ...
-     @Name953
-  */
-
-  if(students.length>=953){
-
-   alert("Student ID limit reached.");
-   return;
-
-  }
-
-  let number=
-  String(students.length+1).padStart(3,"0");
-
-  let cleanName=
-  name.replace(/[^a-zA-Z0-9]/g,"");
-
-  let studentId=
-  "@"+cleanName+number;
-
-
-  let student={
-
-   id:Date.now(),
-
-   studentId:studentId,
-
-   name:name,
-
-   mobile:registerMobile,
-
-   password:password,
-
-   seat:"",
-
-   membership:"Monthly",
-
-   membershipStatus:"Active",
-
-   createdAt:new Date().toLocaleDateString()
-
-  };
-
-
-  students.push(student);
-
-  save();
-
-  currentStudent=student;
-
-  localStorage.setItem(
-   "SN_current",
-   JSON.stringify(student)
-  );
-
-  alert(
-   "Registration successful!\n\nYour Student ID:\n"+
-   student.studentId
-  );
-
-  openStudent();
-
- }
-
-
- /* LOGIN */
-
- else{
-
-  let student=students.find(
-   s=>s.mobile===mobile &&
-   s.password===password
-  );
-
-  if(!student){
-
-   alert("Mobile number or password is incorrect.");
-   return;
-
-  }
-
-  currentStudent=student;
-
-  localStorage.setItem(
-   "SN_current",
-   JSON.stringify(student)
-  );
-
-  openStudent();
-
- }
-
-});
-
-
-/* ==================================================
-   STUDENT PORTAL
-================================================== */
-
-function openStudent(){
-
- hideEverything();
-
- document.getElementById("studentPortal").style.display="block";
-
- loadStudent();
+    }
 
 }
 
 
-function loadStudent(){
+function updateName(name){
 
- if(!currentStudent)return;
+    const cleanName =
+        name.trim() || "Pankaj";
 
- document.getElementById("headerStudentName").innerText=
- currentStudent.name;
+    welcomeName.textContent =
+        cleanName;
 
- document.getElementById("welcomeName").innerText=
- currentStudent.name;
+    headerName.textContent =
+        cleanName;
 
- document.getElementById("welcomeId").innerText=
- currentStudent.studentId;
+    headerInitial.textContent =
+        cleanName.charAt(0).toUpperCase();
 
- document.getElementById("statId").innerText=
- currentStudent.studentId;
-
- document.getElementById("profileName").innerText=
- currentStudent.name;
-
- document.getElementById("profileId").innerText=
- currentStudent.studentId;
-
- document.getElementById("profileMobile").innerText=
- currentStudent.mobile;
-
- document.getElementById("profileSeat").innerText=
- currentStudent.seat || "Not Selected";
-
- document.getElementById("statSeat").innerText=
- currentStudent.seat || "Not Selected";
-
- document.getElementById("dashboardSeat").innerText=
- currentStudent.seat || "Not Selected";
-
- document.getElementById("membershipId").innerText=
- currentStudent.studentId;
-
- loadMembershipDates();
-
- updateAttendance();
-
- loadSeats();
-
- loadStudentBookings();
+    profilePlaceholder.textContent =
+        cleanName.charAt(0).toUpperCase();
 
 }
 
 
-/* ==================================================
-   MEMBERSHIP DATES
-================================================== */
+document
+    .getElementById("saveProfile")
+    .addEventListener(
+        "click",
+        function(){
 
-function loadMembershipDates(){
+            const name =
+                profileName.value.trim();
 
- let now=new Date();
+            if(!name){
 
- let start=
- now.toLocaleDateString("en-IN");
+                alert("Please enter your name.");
 
- let expiry=new Date(
-  now.getFullYear(),
-  now.getMonth()+1,
-  0
- ).toLocaleDateString("en-IN");
+                return;
 
- document.getElementById("membershipStart").innerText=start;
+            }
 
- document.getElementById("membershipExpiry").innerText=expiry;
+            localStorage.setItem(
+                "skillpathName",
+                name
+            );
 
-}
+            updateName(name);
 
+            alert("Profile saved successfully.");
 
-/* ==================================================
-   STUDENT PAGE
-================================================== */
-
-function studentPage(id,button){
-
- document.querySelectorAll("#studentPortal .section")
- .forEach(x=>x.classList.remove("active"));
-
- document.getElementById(id).classList.add("active");
-
- document.querySelectorAll("#studentPortal .sidebar button")
- .forEach(x=>x.classList.remove("active"));
-
- button.classList.add("active");
-
- loadStudent();
-
-}
+        }
+    );
 
 
-/* ==================================================
-   ATTENDANCE
-================================================== */
+profileImage.addEventListener(
+    "change",
+    function(){
 
-function today(){
+        const file =
+            this.files[0];
 
- return new Date().toISOString().split("T")[0];
+        if(!file){
+            return;
+        }
 
-}
+        const reader =
+            new FileReader();
 
-function timeNow(){
+        reader.onload =
+            function(){
 
- return new Date().toLocaleTimeString([],{
-  hour:"2-digit",
-  minute:"2-digit"
- });
+                localStorage.setItem(
+                    "skillpathImage",
+                    reader.result
+                );
 
-}
+                showProfileImage(
+                    reader.result
+                );
 
+            };
 
-function markPresent(){
+        reader.readAsDataURL(file);
 
- if(!currentStudent)return;
-
- if(!currentStudent.seat){
-
-  alert("Please select/book your seat first.");
-  studentPage(
-   "sseats",
-   document.querySelector("#studentPortal .sidebar button:nth-child(6)")
-  );
-  return;
-
- }
-
- let old=attendance.find(
-  a=>a.studentId===currentStudent.id &&
-  a.date===today()
- );
-
- if(old){
-
-  if(old.status==="pending"){
-
-   alert("Your attendance is already waiting for In-charge approval.");
-   return;
-
-  }
-
-  if(old.status==="approved"){
-
-   alert("Your attendance is already approved today.");
-   return;
-
-  }
-
- }
+    }
+);
 
 
- attendance.push({
+function showProfileImage(src){
 
-  id:Date.now(),
+    profilePhoto.src =
+        src;
 
-  studentId:currentStudent.id,
+    profilePhoto.style.display =
+        "block";
 
-  studentName:currentStudent.name,
+    profilePlaceholder.style.display =
+        "none";
 
-  studentIdText:currentStudent.studentId,
+    headerInitial.innerHTML =
+        "";
 
-  seat:currentStudent.seat,
+    const image =
+        document.createElement("img");
 
-  date:today(),
+    image.src =
+        src;
 
-  time:timeNow(),
+    image.style.width =
+        "32px";
 
-  status:"pending"
+    image.style.height =
+        "32px";
 
- });
+    image.style.borderRadius =
+        "50%";
 
- save();
+    image.style.objectFit =
+        "cover";
 
- updateAttendance();
-
- alert(
-  "Attendance request sent successfully.\n\n"+
-  "Please wait for Library In-charge approval."
- );
+    headerInitial.replaceWith(image);
 
 }
 
 
-function updateAttendance(){
-
- if(!currentStudent)return;
-
- let list=attendance.filter(
-  a=>a.studentId===currentStudent.id
- );
-
- let present=list.filter(
-  a=>a.status==="approved"
- ).length;
-
- let pending=list.filter(
-  a=>a.status==="pending"
- ).length;
-
- let percent=list.length
- ? Math.round(present/list.length*100)
- : 0;
-
- document.getElementById("totalAtt").innerText=list.length;
-
- document.getElementById("presentAtt").innerText=present;
-
- document.getElementById("pendingAtt").innerText=pending;
-
- document.getElementById("percentAtt").innerText=percent+"%";
-
- document.getElementById("statAttendance").innerText=
- percent+"%";
+document
+    .getElementById("backDashboard")
+    .addEventListener(
+        "click",
+        showDashboard
+    );
 
 
- let todayRecord=list.find(
-  a=>a.date===today()
- );
+function showDashboard(){
 
- let message=document.getElementById("todayAttendanceText");
+    profileSection.style.display =
+        "none";
 
- if(!todayRecord){
+    classPage.style.display =
+        "none";
 
-  message.innerText=
-  "You have not marked attendance today.";
-
- }else if(todayRecord.status==="pending"){
-
-  message.innerHTML=
-  '<span class="status pending">WAITING FOR IN-CHARGE APPROVAL</span>';
-
- }else if(todayRecord.status==="approved"){
-
-  message.innerHTML=
-  '<span class="status approved">PRESENT — APPROVED</span>';
-
- }else{
-
-  message.innerHTML=
-  '<span class="status rejected">REJECTED</span>';
-
- }
-
-
- let table=document.getElementById("studentAttTable");
-
- table.innerHTML="";
-
- list.slice().reverse().forEach(a=>{
-
-  let status="";
-
-  if(a.status==="pending")
-   status='<span class="status pending">PENDING</span>';
-
-  if(a.status==="approved")
-   status='<span class="status approved">PRESENT</span>';
-
-  if(a.status==="rejected")
-   status='<span class="status rejected">REJECTED</span>';
-
-  table.innerHTML+=`
-   <tr>
-    <td>${a.date}</td>
-    <td>${a.time}</td>
-    <td>${status}</td>
-   </tr>
-  `;
-
- });
+    dashboard.style.display =
+        "block";
 
 }
 
 
-/* ==================================================
-   SEATS
-================================================== */
+/* ==========================================================
+   CLASS PAGE
+========================================================== */
 
-function allSeats(){
+const classPage =
+    document.getElementById("classPage");
 
- let seats=[];
+const goClassButton =
+    document.getElementById("goClassButton");
 
- for(let i=1;i<=26;i++)
-  seats.push("A"+String(i).padStart(2,"0"));
-
- for(let i=27;i<=52;i++)
-  seats.push("B"+i);
-
- for(let i=53;i<=80;i++)
-  seats.push("C"+i);
-
- return seats;
-
-}
+const backFromClass =
+    document.getElementById("backFromClass");
 
 
-function seatBooked(seat){
+goClassButton.addEventListener(
+    "click",
+    function(){
 
- return bookings.some(
-  b=>b.seat===seat
- );
+        dashboard.style.display =
+            "none";
 
-}
+        profileSection.style.display =
+            "none";
+
+        classPage.style.display =
+            "block";
+
+        checkClassTime();
+
+    }
+);
 
 
-function createSeatButtons(containerId,start,end){
+backFromClass.addEventListener(
+    "click",
+    showDashboard
+);
 
- let box=document.getElementById(containerId);
 
- box.innerHTML="";
+/* ==========================================================
+   CLASS DATE/TIME
+========================================================== */
 
- for(let i=start;i<=end;i++){
+/*
+   26 August 2026
+   8:20 AM
 
-  let prefix="";
+   Browser uses the user's local time.
+*/
 
-  if(start===1)prefix="A";
+const CLASS_YEAR = 2026;
+const CLASS_MONTH = 7;
+const CLASS_DAY = 26;
+const CLASS_HOUR = 8;
+const CLASS_MINUTE = 20;
 
-  if(start===27)prefix="B";
 
-  if(start===53)prefix="C";
+function getClassStart(){
 
-  let seat=
-   prefix+
-   (prefix==="A"
-   ?String(i).padStart(2,"0")
-   :i);
-
-  let btn=document.createElement("button");
-
-  btn.className="seat";
-
-  btn.innerText=seat;
-
-  if(currentStudent && currentStudent.seat===seat){
-
-   btn.classList.add("mine");
-
-   btn.title="Your Seat";
-
-  }else if(seatBooked(seat)){
-
-   btn.classList.add("booked");
-
-   btn.disabled=true;
-
-  }
-
-  btn.onclick=function(){
-
-   chooseSeat(seat);
-
-  };
-
-  box.appendChild(btn);
-
- }
+    return new Date(
+        CLASS_YEAR,
+        CLASS_MONTH,
+        CLASS_DAY,
+        CLASS_HOUR,
+        CLASS_MINUTE,
+        0
+    );
 
 }
 
 
-function loadSeats(){
+const classStart =
+    document.getElementById("classStart");
 
- createSeatButtons("aSeats",1,26);
+const classStartMessage =
+    document.getElementById(
+        "classStartMessage"
+    );
 
- createSeatButtons("bSeats",27,52);
-
- createSeatButtons("cSeats",53,80);
-
-}
-
-
-function chooseSeat(seat){
-
- if(!currentStudent)return;
-
- if(seatBooked(seat)){
-
-  alert("This seat is already booked.");
-  return;
-
- }
-
- currentStudent.seat=seat;
-
- students=students.map(
-  s=>s.id===currentStudent.id
-  ?currentStudent
-  :s
- );
-
- localStorage.setItem(
-  "SN_current",
-  JSON.stringify(currentStudent)
- );
-
- save();
-
- loadStudent();
-
- alert(
-  "Seat "+seat+" selected successfully."
- );
-
-}
+const startClassButton =
+    document.getElementById(
+        "startClassButton"
+    );
 
 
-/* ==================================================
-   PUBLIC BOOKING
-================================================== */
+function checkClassTime(){
 
-function loadPublicSeats(){
+    const now =
+        new Date();
 
- let select=document.getElementById("publicSeat");
+    const start =
+        getClassStart();
 
- select.innerHTML=
- '<option value="">Select Seat</option>';
+    if(now < start){
 
- allSeats().forEach(seat=>{
+        startClassButton.disabled =
+            true;
 
-  let option=document.createElement("option");
+        startClassButton.style.opacity =
+            ".5";
 
-  option.value=seat;
+        updateStartCountdown();
 
-  option.innerText=seat+
-  (seatBooked(seat)?" — BOOKED":" — AVAILABLE");
+        setTimeout(
+            checkClassTime,
+            1000
+        );
 
-  option.disabled=seatBooked(seat);
+    }
+    else{
 
-  select.appendChild(option);
+        startClassButton.disabled =
+            false;
 
- });
+        startClassButton.style.opacity =
+            "1";
+
+        classStartMessage.textContent =
+            "Your live class is ready.";
+
+    }
 
 }
 
 
-document.getElementById("publicDate").min=today();
+function updateStartCountdown(){
 
-loadPublicSeats();
+    const now =
+        new Date();
 
+    const start =
+        getClassStart();
 
-function publicBooking(){
+    let diff =
+        start - now;
 
- if(!currentStudent){
+    if(diff <= 0){
 
-  alert(
-   "Please Register/Login first to book a seat."
-  );
+        classStartMessage.textContent =
+            "Your live class is ready.";
 
-  showStudentLogin();
+        startClassButton.disabled =
+            false;
 
-  return;
+        startClassButton.style.opacity =
+            "1";
 
- }
+        return;
 
- let date=
- document.getElementById("publicDate").value;
+    }
 
- let seat=
- document.getElementById("publicSeat").value;
+    const hours =
+        Math.floor(
+            diff / 3600000
+        );
 
- if(!date || !seat){
+    diff %= 3600000;
 
-  alert("Please select date and seat.");
-  return;
+    const minutes =
+        Math.floor(
+            diff / 60000
+        );
 
- }
+    diff %= 60000;
 
- if(date<today()){
+    const seconds =
+        Math.floor(
+            diff / 1000
+        );
 
-  alert("Past date booking is not allowed.");
-  return;
-
- }
-
- if(bookings.some(
-  b=>b.date===date && b.seat===seat
- )){
-
-  alert(
-   "This seat is already booked for this date."
-  );
-
-  loadPublicSeats();
-
-  return;
-
- }
-
-
- bookings.push({
-
-  id:Date.now(),
-
-  studentId:currentStudent.id,
-
-  studentName:currentStudent.name,
-
-  studentIdText:currentStudent.studentId,
-
-  date:date,
-
-  seat:seat,
-
-  status:"Confirmed"
-
- });
-
-
- currentStudent.seat=seat;
-
- students=students.map(
-  s=>s.id===currentStudent.id
-  ?currentStudent
-  :s
- );
-
- save();
-
- localStorage.setItem(
-  "SN_current",
-  JSON.stringify(currentStudent)
- );
-
-
- let success=
- document.getElementById("bookingSuccess");
-
- success.style.display="block";
-
- success.innerHTML=
- "✅ Booking Successful!<br>"+
- "Student: <strong>"+currentStudent.name+"</strong><br>"+
- "Student ID: <strong>"+currentStudent.studentId+"</strong><br>"+
- "Seat: <strong>"+seat+"</strong><br>"+
- "Date: <strong>"+date+"</strong>";
-
- loadPublicSeats();
-
- loadStudent();
+    classStartMessage.textContent =
+        "Class starts in " +
+        String(hours).padStart(2,"0") +
+        ":" +
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(seconds).padStart(2,"0");
 
 }
 
 
-/* ==================================================
-   STUDENT BOOKINGS
-================================================== */
+/* ==========================================================
+   VIDEO
+========================================================== */
 
-function loadStudentBookings(){
+const classVideoFile =
+    document.getElementById(
+        "classVideoFile"
+    );
 
- let box=
- document.getElementById("studentBookings");
+const classVideo =
+    document.getElementById(
+        "classVideo"
+    );
 
- let list=bookings.filter(
-  b=>b.studentId===currentStudent.id
- );
+const selectedVideo =
+    document.getElementById(
+        "selectedVideo"
+    );
 
- if(!list.length){
 
-  box.innerHTML="No bookings yet.";
-  return;
+let videoURL = null;
 
- }
 
- box.innerHTML="";
+classVideoFile.addEventListener(
+    "change",
+    function(){
 
- list.slice().reverse().forEach(b=>{
+        const file =
+            this.files[0];
 
-  box.innerHTML+=`
-   <div class="row">
-    <span>${b.date}</span>
-    <strong>Seat ${b.seat}</strong>
-   </div>
-  `;
+        if(!file){
+            return;
+        }
 
- });
+        if(videoURL){
+
+            URL.revokeObjectURL(
+                videoURL
+            );
+
+        }
+
+        videoURL =
+            URL.createObjectURL(file);
+
+        classVideo.src =
+            videoURL;
+
+        selectedVideo.textContent =
+            file.name;
+
+    }
+);
+
+
+/* ==========================================================
+   CAMERA
+========================================================== */
+
+const frontCamera =
+    document.getElementById(
+        "frontCamera"
+    );
+
+const cameraOff =
+    document.getElementById(
+        "cameraOff"
+    );
+
+const cameraStatus =
+    document.getElementById(
+        "cameraStatus"
+    );
+
+
+let cameraStream = null;
+
+
+async function startCamera(){
+
+    try{
+
+        if(cameraStream){
+            return true;
+        }
+
+        cameraStream =
+            await navigator.mediaDevices.getUserMedia({
+
+                video:{
+                    facingMode:"user"
+                },
+
+                audio:false
+
+            });
+
+
+        frontCamera.srcObject =
+            cameraStream;
+
+        frontCamera.style.display =
+            "block";
+
+        cameraOff.style.display =
+            "none";
+
+        cameraStatus.textContent =
+            "ON";
+
+        return true;
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        cameraStatus.textContent =
+            "BLOCKED";
+
+        alert(
+            "Camera permission is required for the live class."
+        );
+
+        return false;
+
+    }
 
 }
 
 
-/* ==================================================
-   STUDENT LOGOUT
-================================================== */
+function stopCamera(){
 
-function studentLogout(){
+    if(!cameraStream){
+        return;
+    }
 
- currentStudent=null;
+    cameraStream
+        .getTracks()
+        .forEach(
+            track => track.stop()
+        );
 
- localStorage.removeItem("SN_current");
+    cameraStream = null;
 
- showPublic();
+    frontCamera.srcObject =
+        null;
 
-}
+    frontCamera.style.display =
+        "none";
 
+    cameraOff.style.display =
+        "flex";
 
-/* ==================================================
-   ADMIN
-================================================== */
-
-const ADMIN_NUMBER="7726938070";
-
-
-function showAdminLogin(){
-
- hideEverything();
-
- document.getElementById("adminAuth").style.display="flex";
-
- let saved=
- localStorage.getItem("SN_adminPassword");
-
- if(saved){
-
-  document.getElementById("adminCreate").style.display="none";
-
-  document.getElementById("adminLoginFields").style.display="block";
-
-  document.getElementById("adminSubmit").innerText=
-  "LOGIN";
-
- }else{
-
-  document.getElementById("adminCreate").style.display="block";
-
-  document.getElementById("adminLoginFields").style.display="none";
-
-  document.getElementById("adminSubmit").innerText=
-  "CREATE PASSWORD";
-
- }
+    cameraStatus.textContent =
+        "OFF";
 
 }
 
 
-document.getElementById("adminForm").addEventListener(
-"submit",function(e){
+/* ==========================================================
+   CLASS SESSION
+========================================================== */
 
- e.preventDefault();
+const classStatus =
+    document.getElementById(
+        "classStatus"
+    );
 
- let saved=
- localStorage.getItem("SN_adminPassword");
+const sessionTime =
+    document.getElementById(
+        "sessionTime"
+    );
 
-
- /* FIRST TIME PASSWORD */
-
- if(!saved){
-
-  let p=
-  document.getElementById("adminNewPassword").value;
-
-  let cp=
-  document.getElementById("adminConfirmPassword").value;
-
-  if(p.length<4){
-
-   alert("Password must contain at least 4 characters.");
-   return;
-
-  }
-
-  if(p!==cp){
-
-   alert("Passwords do not match.");
-   return;
-
-  }
-
-  localStorage.setItem("SN_adminPassword",p);
-
-  alert(
-   "In-charge password created successfully."
-  );
-
-  openAdmin();
-
-  return;
-
- }
+const nextBreak =
+    document.getElementById(
+        "nextBreak"
+    );
 
 
- /* LOGIN */
+const BREAK_INTERVAL =
+    5400;
 
- let password=
- document.getElementById("adminPassword").value;
+/*
+   5400 seconds =
+   1 hour 30 minutes
+*/
 
- if(password!==saved){
+const BREAK_DURATION =
+    600;
 
-  alert("Incorrect In-charge password.");
-  return;
-
- }
-
- openAdmin();
-
-});
+/*
+   600 seconds =
+   10 minutes
+*/
 
 
-function openAdmin(){
+let sessionStarted = false;
 
- hideEverything();
+let breakRunning = false;
 
- document.getElementById("adminPortal").style.display="block";
+let sessionClock = null;
 
- loadAdmin();
+let sessionSeconds = 0;
+
+let lastAllowedTime = 0;
+
+let lastBreakPoint = 0;
+
+let breakTimer = null;
+
+
+/* ==========================================================
+   START CLASS
+========================================================== */
+
+startClassButton.addEventListener(
+    "click",
+    async function(){
+
+        if(!classVideo.src){
+
+            alert(
+                "Please select your class video first."
+            );
+
+            return;
+
+        }
+
+
+        const cameraOK =
+            await startCamera();
+
+        if(!cameraOK){
+            return;
+        }
+
+
+        sessionStarted =
+            true;
+
+        classStart.classList.add(
+            "hidden"
+        );
+
+        classStatus.textContent =
+            "LIVE";
+
+
+        try{
+
+            await classVideo.play();
+
+        }
+        catch(error){
+
+            console.error(error);
+
+        }
+
+
+        startSessionClock();
+
+    }
+);
+
+
+/* ==========================================================
+   SESSION CLOCK
+========================================================== */
+
+function startSessionClock(){
+
+    if(sessionClock){
+        clearInterval(
+            sessionClock
+        );
+    }
+
+    sessionClock =
+        setInterval(
+            function(){
+
+                if(
+                    sessionStarted &&
+                    !breakRunning
+                ){
+
+                    sessionSeconds++;
+
+                    sessionTime.textContent =
+                        formatTime(
+                            sessionSeconds
+                        );
+
+                }
+
+            },
+            1000
+        );
 
 }
 
 
-/* ==================================================
-   ADMIN PAGES
-================================================== */
+/* ==========================================================
+   VIDEO TIME
+========================================================== */
 
-function adminPage(id,button){
+classVideo.addEventListener(
+    "timeupdate",
+    function(){
 
- document.querySelectorAll("#adminPortal .section")
- .forEach(x=>x.classList.remove("active"));
+        if(
+            !sessionStarted ||
+            breakRunning
+        ){
+            return;
+        }
 
- document.getElementById(id).classList.add("active");
 
- document.querySelectorAll("#adminPortal .sidebar button")
- .forEach(x=>x.classList.remove("active"));
+        /*
+           Prevent normal seeking.
+        */
 
- button.classList.add("active");
+        const difference =
+            Math.abs(
+                classVideo.currentTime -
+                lastAllowedTime
+            );
 
- loadAdmin();
+
+        if(difference > 2){
+
+            classVideo.currentTime =
+                lastAllowedTime;
+
+            return;
+
+        }
+
+
+        lastAllowedTime =
+            classVideo.currentTime;
+
+
+        /*
+           Progress
+        */
+
+        if(classVideo.duration){
+
+            const percent =
+                (
+                    classVideo.currentTime /
+                    classVideo.duration
+                ) * 100;
+
+            document
+                .getElementById(
+                    "progressBar"
+                )
+                .style.width =
+                percent + "%";
+
+        }
+
+
+        /*
+           Next break
+        */
+
+        const current =
+            Math.floor(
+                classVideo.currentTime
+            );
+
+
+        const remaining =
+            BREAK_INTERVAL -
+            (
+                current %
+                BREAK_INTERVAL
+            );
+
+
+        nextBreak.textContent =
+            formatTime(
+                remaining
+            );
+
+
+        /*
+           Break every 1:30:00
+        */
+
+        if(
+            current > 0 &&
+            current %
+            BREAK_INTERVAL === 0 &&
+            current !== lastBreakPoint
+        ){
+
+            lastBreakPoint =
+                current;
+
+            startBreak();
+
+        }
+
+    }
+);
+
+
+/* ==========================================================
+   BREAK
+========================================================== */
+
+const breakScreen =
+    document.getElementById(
+        "breakScreen"
+    );
+
+const breakTimerDisplay =
+    document.getElementById(
+        "breakTimer"
+    );
+
+
+async function startBreak(){
+
+    if(breakRunning){
+        return;
+    }
+
+    breakRunning =
+        true;
+
+    classVideo.pause();
+
+    classStatus.textContent =
+        "BREAK";
+
+    nextBreak.textContent =
+        "--:--:--";
+
+
+    /*
+       Camera completely off
+    */
+
+    stopCamera();
+
+
+    breakScreen.classList.add(
+        "active"
+    );
+
+
+    let remaining =
+        BREAK_DURATION;
+
+
+    updateBreakTimer(
+        remaining
+    );
+
+
+    breakTimer =
+        setInterval(
+            function(){
+
+                remaining--;
+
+                updateBreakTimer(
+                    remaining
+                );
+
+
+                if(
+                    remaining <= 0
+                ){
+
+                    clearInterval(
+                        breakTimer
+                    );
+
+                    breakTimer =
+                        null;
+
+                    finishBreak();
+
+                }
+
+            },
+            1000
+        );
 
 }
 
 
-/* ==================================================
-   ADMIN DATA
-================================================== */
+async function finishBreak(){
 
-function loadAdmin(){
+    breakRunning =
+        false;
 
- document.getElementById("adminStudents").innerText=
- students.length;
+    breakScreen.classList.remove(
+        "active"
+    );
 
- let pending=
- attendance.filter(a=>a.status==="pending").length;
+    classStatus.textContent =
+        "LIVE";
 
- document.getElementById("adminPending").innerText=
- pending;
 
- let present=
- attendance.filter(
-  a=>a.date===today() &&
-  a.status==="approved"
- ).length;
+    const cameraOK =
+        await startCamera();
 
- document.getElementById("adminPresent").innerText=
- present;
 
- let booked=
- bookings.filter(
-  b=>b.date===today()
- ).length;
+    if(cameraOK){
 
- document.getElementById("adminBookedSeats").innerText=
- booked;
+        try{
 
+            await classVideo.play();
 
- /* STUDENTS */
+        }
+        catch(error){
 
- let st=
- document.getElementById("studentsTable");
+            console.error(error);
 
- st.innerHTML="";
+        }
 
- students.forEach(s=>{
-
-  st.innerHTML+=`
-   <tr>
-    <td>${s.name}</td>
-    <td>${s.studentId}</td>
-    <td>${s.mobile}</td>
-    <td>${s.seat||"Not Selected"}</td>
-    <td><span class="status active">ACTIVE</span></td>
-   </tr>
-  `;
-
- });
-
-
- /* ATTENDANCE */
-
- let at=
- document.getElementById("adminAttendanceTable");
-
- at.innerHTML="";
-
- attendance.slice().reverse().forEach(a=>{
-
-  let status="";
-
-  if(a.status==="pending")
-   status='<span class="status pending">PENDING</span>';
-
-  if(a.status==="approved")
-   status='<span class="status approved">PRESENT</span>';
-
-  if(a.status==="rejected")
-   status='<span class="status rejected">REJECTED</span>';
-
-  let action="-";
-
-  if(a.status==="pending"){
-
-   action=`
-    <button class="ok"
-    onclick="approve(${a.id})">OK</button>
-
-    <button class="reject"
-    onclick="rejectAttendance(${a.id})">REJECT</button>
-   `;
-
-  }
-
-  at.innerHTML+=`
-   <tr>
-    <td>${a.studentName}</td>
-    <td>${a.studentIdText}</td>
-    <td>${a.date}</td>
-    <td>${a.time}</td>
-    <td>${status}</td>
-    <td>${action}</td>
-   </tr>
-  `;
-
- });
-
-
- /* MEMBERSHIP */
-
- let mt=
- document.getElementById("membershipTable");
-
- mt.innerHTML="";
-
- students.forEach(s=>{
-
-  mt.innerHTML+=`
-   <tr>
-    <td>${s.name}</td>
-    <td>${s.studentId}</td>
-    <td>Monthly</td>
-    <td>
-     <span class="status active">ACTIVE</span>
-    </td>
-   </tr>
-  `;
-
- });
-
-
- /* QUICK ATTENDANCE */
-
- let quick=
- document.getElementById("adminQuickAttendance");
-
- let pendingList=
- attendance.filter(a=>a.status==="pending");
-
- if(!pendingList.length){
-
-  quick.innerText="No pending attendance.";
-
- }else{
-
-  quick.innerHTML="";
-
-  pendingList.forEach(a=>{
-
-   quick.innerHTML+=`
-    <div class="row">
-
-     <span>
-      <strong>${a.studentName}</strong>
-      — ${a.studentIdText}
-      — Seat ${a.seat}
-     </span>
-
-     <span>
-
-      <button class="ok"
-      onclick="approve(${a.id})">OK</button>
-
-      <button class="reject"
-      onclick="rejectAttendance(${a.id})">
-      REJECT
-      </button>
-
-     </span>
-
-    </div>
-   `;
-
-  });
-
- }
-
-
- /* BOOKINGS */
-
- let bt=
- document.getElementById("bookingTable");
-
- bt.innerHTML="";
-
- bookings.slice().reverse().forEach(b=>{
-
-  bt.innerHTML+=`
-   <tr>
-    <td>${b.studentName}</td>
-    <td>${b.studentIdText}</td>
-    <td>${b.date}</td>
-    <td>${b.seat}</td>
-    <td>
-     <span class="status active">
-      ${b.status}
-     </span>
-    </td>
-   </tr>
-  `;
-
- });
-
-
- /* ADMIN SEATS */
-
- createAdminSeats("adminASeats",1,26);
-
- createAdminSeats("adminBSeats",27,52);
-
- createAdminSeats("adminCSeats",53,80);
+    }
 
 }
 
 
-/* ==================================================
-   ADMIN APPROVE / REJECT
-================================================== */
+function updateBreakTimer(seconds){
 
-function approve(id){
+    const minutes =
+        Math.floor(
+            seconds / 60
+        );
 
- let record=
- attendance.find(a=>a.id===id);
+    const secs =
+        seconds % 60;
 
- if(!record)return;
 
- record.status="approved";
-
- save();
-
- loadAdmin();
-
- if(
- currentStudent &&
- currentStudent.id===record.studentId
- ){
-
-  updateAttendance();
-
- }
-
- alert(
-  record.studentName+
-  " ki attendance APPROVED ho gayi."
- );
+    breakTimerDisplay.textContent =
+        String(minutes).padStart(2,"0")
+        + ":" +
+        String(secs).padStart(2,"0");
 
 }
 
 
-function rejectAttendance(id){
+/* ==========================================================
+   FORMAT TIME
+========================================================== */
 
- let record=
- attendance.find(a=>a.id===id);
+function formatTime(seconds){
 
- if(!record)return;
+    const hours =
+        Math.floor(
+            seconds / 3600
+        );
 
- record.status="rejected";
+    const minutes =
+        Math.floor(
+            (seconds % 3600) / 60
+        );
 
- save();
-
- loadAdmin();
-
- if(
- currentStudent &&
- currentStudent.id===record.studentId
- ){
-
-  updateAttendance();
-
- }
-
- alert(
-  record.studentName+
-  " ki attendance REJECTED ho gayi."
- );
-
-}
+    const secs =
+        Math.floor(
+            seconds % 60
+        );
 
 
-/* ==================================================
-   ADMIN SEATS
-================================================== */
-
-function createAdminSeats(containerId,start,end){
-
- let box=
- document.getElementById(containerId);
-
- box.innerHTML="";
-
- for(let i=start;i<=end;i++){
-
-  let prefix=
-   start===1?"A":
-   start===27?"B":"C";
-
-  let seat=
-   prefix+
-   (prefix==="A"
-   ?String(i).padStart(2,"0")
-   :i);
-
-  let btn=document.createElement("div");
-
-  btn.className="seat";
-
-  btn.innerText=seat;
-
-  if(seatBooked(seat))
-   btn.classList.add("booked");
-
-  box.appendChild(btn);
-
- }
+    return(
+        String(hours).padStart(2,"0")
+        + ":" +
+        String(minutes).padStart(2,"0")
+        + ":" +
+        String(secs).padStart(2,"0")
+    );
 
 }
 
 
-/* ==================================================
-   ADMIN LOGOUT
-================================================== */
+/* ==========================================================
+   PREVENT MANUAL PAUSE
+========================================================== */
 
-function adminLogout(){
+classVideo.addEventListener(
+    "pause",
+    function(){
 
- showPublic();
+        if(
+            sessionStarted &&
+            !breakRunning &&
+            !classVideo.ended
+        ){
 
-}
+            setTimeout(
+                function(){
+
+                    if(
+                        sessionStarted &&
+                        !breakRunning &&
+                        classVideo.paused
+                    ){
+
+                        classVideo
+                            .play()
+                            .catch(
+                                ()=>{}
+                            );
+
+                    }
+
+                },
+                100
+            );
+
+        }
+
+    }
+);
 
 
-/* ==================================================
-   AUTO LOAD
-================================================== */
+/* ==========================================================
+   MUTE
+========================================================== */
 
-showPublic();
+document
+    .getElementById("muteBtn")
+    .addEventListener(
+        "click",
+        function(){
+
+            classVideo.muted =
+                !classVideo.muted;
+
+            this.textContent =
+                classVideo.muted
+                ? "🔇"
+                : "🔊";
+
+        }
+    );
+
+
+/* ==========================================================
+   FULLSCREEN
+========================================================== */
+
+document
+    .getElementById("fullscreenBtn")
+    .addEventListener(
+        "click",
+        function(){
+
+            const player =
+                document.querySelector(
+                    ".video-area"
+                );
+
+
+            if(
+                !document.fullscreenElement
+            ){
+
+                player
+                    .requestFullscreen()
+                    .catch(
+                        ()=>{}
+                    );
+
+            }
+            else{
+
+                document.exitFullscreen();
+
+            }
+
+        }
+    );
+
+
+/* ==========================================================
+   BLOCK SEEK KEYS
+========================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(!sessionStarted){
+            return;
+        }
+
+
+        const blockedKeys = [
+
+            "ArrowLeft",
+            "ArrowRight",
+            "ArrowUp",
+            "ArrowDown",
+            "Home",
+            "End"
+
+        ];
+
+
+        if(
+            blockedKeys.includes(
+                event.key
+            )
+        ){
+
+            event.preventDefault();
+
+        }
+
+    }
+);
+
+
+/* ==========================================================
+   BLOCK CONTEXT MENU
+========================================================== */
+
+classVideo.addEventListener(
+    "contextmenu",
+    function(event){
+
+        event.preventDefault();
+
+    }
+);
+
+
+/* ==========================================================
+   BLOCK DRAG
+========================================================== */
+
+classVideo.addEventListener(
+    "dragstart",
+    function(event){
+
+        event.preventDefault();
+
+    }
+);
+
+
+/* ==========================================================
+   VIDEO ENDED
+========================================================== */
+
+classVideo.addEventListener(
+    "ended",
+    function(){
+
+        sessionStarted =
+            false;
+
+        breakRunning =
+            false;
+
+        if(sessionClock){
+
+            clearInterval(
+                sessionClock
+            );
+
+        }
+
+        stopCamera();
+
+        classStatus.textContent =
+            "COMPLETED";
+
+        nextBreak.textContent =
+            "Completed";
+
+    }
+);
+
+
+/* ==========================================================
+   LOGOUT / SESSION RESTORE
+========================================================== */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        const loggedIn =
+            localStorage.getItem(
+                "skillpathLoggedIn"
+            );
+
+        if(loggedIn === "true"){
+
+            loginPage.style.display =
+                "none";
+
+            app.style.display =
+                "block";
+
+            loadProfile();
+
+        }
+
+    }
+);
 
 </script>
 
