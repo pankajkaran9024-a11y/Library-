@@ -6,7 +6,11 @@
 <title>SkillPath Learning</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
 
 :root{
 --p:#75138f;
@@ -15,18 +19,22 @@
 --border:#e7e0e9;
 --muted:#77717c;
 --text:#18151a;
+--live:#e53935;
+--timeline:#73cfff
 }
 
 body{
 font-family:Arial,sans-serif;
 background:var(--bg);
-color:var(--text);
+color:var(--text)
 }
 
 button{
 font-family:inherit;
-cursor:pointer;
+cursor:pointer
 }
+
+/* ================= LOGIN ================= */
 
 #loginPage{
 min-height:100vh;
@@ -34,7 +42,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 padding:20px;
-background:linear-gradient(135deg,#fbf8fc,#efe3f4);
+background:linear-gradient(135deg,#fbf8fc,#efe3f4)
 }
 
 .loginCard{
@@ -44,12 +52,12 @@ background:#fff;
 border:1px solid var(--border);
 border-radius:20px;
 padding:34px;
-box-shadow:0 20px 60px #5b17621c;
+box-shadow:0 20px 60px #5b17621c
 }
 
 .brand{
 text-align:center;
-margin-bottom:25px;
+margin-bottom:25px
 }
 
 .logo{
@@ -63,24 +71,28 @@ align-items:center;
 justify-content:center;
 color:var(--p);
 font-size:24px;
-font-weight:bold;
+font-weight:bold
 }
 
-.brand h1{margin-top:10px}
+.brand h1{
+margin-top:10px
+}
 
 .brand p{
 margin-top:5px;
 color:var(--muted);
-font-size:14px;
+font-size:14px
 }
 
-.field{margin:16px 0}
+.field{
+margin:16px 0
+}
 
 .field label{
 display:block;
 font-size:13px;
 font-weight:bold;
-margin-bottom:7px;
+margin-bottom:7px
 }
 
 .field input{
@@ -90,7 +102,7 @@ border:1px solid #d8d0db;
 border-radius:9px;
 padding:0 13px;
 font-size:15px;
-outline:none;
+outline:none
 }
 
 .primary{
@@ -99,24 +111,30 @@ background:var(--p);
 color:white;
 border-radius:8px;
 padding:11px 17px;
-font-weight:bold;
+font-weight:bold
 }
 
-.primary:hover{background:var(--pd)}
+.primary:hover{
+background:var(--pd)
+}
 
 .loginBtn{
 width:100%;
-height:48px;
+height:48px
 }
 
 #error{
 color:#c62828;
 text-align:center;
 margin-top:12px;
-font-size:13px;
+font-size:13px
 }
 
-#app{display:none}
+/* ================= APP ================= */
+
+#app{
+display:none
+}
 
 header{
 height:68px;
@@ -128,14 +146,14 @@ justify-content:space-between;
 padding:0 25px;
 position:sticky;
 top:0;
-z-index:100;
+z-index:100
 }
 
 .headerBrand{
 display:flex;
 align-items:center;
 gap:9px;
-font-weight:bold;
+font-weight:bold
 }
 
 .miniLogo{
@@ -146,7 +164,7 @@ border-radius:10px;
 display:flex;
 align-items:center;
 justify-content:center;
-color:var(--p);
+color:var(--p)
 }
 
 .profileBtn{
@@ -156,7 +174,7 @@ border-radius:22px;
 padding:5px 12px 5px 5px;
 display:flex;
 align-items:center;
-gap:8px;
+gap:8px
 }
 
 .avatar{
@@ -169,67 +187,73 @@ display:flex;
 align-items:center;
 justify-content:center;
 font-weight:bold;
-object-fit:cover;
+object-fit:cover
 }
+
+/* ================= PAGE ================= */
 
 .page{
 max-width:1250px;
 margin:auto;
-padding:28px 20px;
+padding:28px 20px
 }
+
+/* ================= DASHBOARD ================= */
 
 .hero{
 background:linear-gradient(120deg,#fff,#faf1fc);
 border:1px solid var(--border);
 border-radius:18px;
 padding:27px;
-margin-bottom:20px;
+margin-bottom:20px
 }
 
 .hero small{
 color:var(--p);
-font-weight:bold;
+font-weight:bold
 }
 
 .hero h2{
 font-size:29px;
-margin-top:8px;
+margin-top:8px
 }
 
 .hero p{
 color:var(--muted);
-margin-top:8px;
+margin-top:8px
 }
 
 .grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:16px;
+gap:16px
 }
 
 .card{
 background:white;
 border:1px solid var(--border);
 border-radius:14px;
-padding:20px;
+padding:20px
 }
 
 .liveCard{
-border:2px solid #dab3e4;
+border:2px solid #dab3e4
 }
 
-.card h3{margin-bottom:8px}
+.card h3{
+margin-bottom:8px
+}
 
 .card p{
 color:var(--muted);
 font-size:14px;
-line-height:1.5;
+line-height:1.5
 }
 
 .classDate{
 color:var(--p);
 font-weight:bold;
-margin:14px 0;
+margin:14px 0
 }
 
 .secondary{
@@ -238,12 +262,14 @@ background:white;
 color:var(--p);
 padding:10px 16px;
 border-radius:8px;
-font-weight:bold;
+font-weight:bold
 }
+
+/* ================= PROFILE ================= */
 
 #profilePage,
 #classPage{
-display:none;
+display:none
 }
 
 .profileCard{
@@ -252,12 +278,12 @@ margin:auto;
 background:white;
 border:1px solid var(--border);
 border-radius:17px;
-padding:28px;
+padding:28px
 }
 
 .photoWrap{
 text-align:center;
-margin:22px 0;
+margin:22px 0
 }
 
 #profilePhoto{
@@ -266,7 +292,7 @@ height:120px;
 border-radius:50%;
 object-fit:cover;
 display:none;
-margin:auto;
+margin:auto
 }
 
 .bigAvatar{
@@ -280,7 +306,7 @@ align-items:center;
 justify-content:center;
 margin:auto;
 font-size:40px;
-font-weight:bold;
+font-weight:bold
 }
 
 .photoLabel{
@@ -290,7 +316,7 @@ border:1px solid var(--p);
 color:var(--p);
 padding:9px 14px;
 border-radius:8px;
-cursor:pointer;
+cursor:pointer
 }
 
 .profileInput{
@@ -299,8 +325,10 @@ height:46px;
 border:1px solid #d8d0db;
 border-radius:8px;
 padding:0 12px;
-margin:7px 0 16px;
+margin:7px 0 16px
 }
+
+/* ================= CLASS TOP ================= */
 
 .classTop{
 background:white;
@@ -310,14 +338,16 @@ padding:16px 19px;
 margin-bottom:15px;
 display:flex;
 justify-content:space-between;
-align-items:center;
+align-items:center
 }
 
 .classTop small{
 display:block;
 color:var(--muted);
-margin-top:5px;
+margin-top:5px
 }
+
+/* ================= VIDEO PLAYER ================= */
 
 .player{
 position:relative;
@@ -325,38 +355,73 @@ background:#000;
 border-radius:15px;
 overflow:hidden;
 aspect-ratio:16/9;
-box-shadow:0 15px 45px #00000040;
+box-shadow:0 15px 45px #00000040
 }
 
-#videoFrame{
+.videoFrame{
+position:absolute;
+inset:0;
 width:100%;
 height:100%;
 border:0;
-display:block;
-background:#000;
+background:#000
 }
 
-/* SMALL ROUND CAMERA */
+/* ================= LIVE BADGE ================= */
+
+.liveBadge{
+position:absolute;
+top:15px;
+left:15px;
+z-index:30;
+display:flex;
+align-items:center;
+gap:7px;
+background:#111d;
+color:white;
+padding:7px 11px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
+backdrop-filter:blur(5px)
+}
+
+.liveDot{
+width:8px;
+height:8px;
+background:var(--live);
+border-radius:50%;
+box-shadow:0 0 8px #e53935;
+animation:livePulse 1.3s infinite
+}
+
+@keyframes livePulse{
+0%{opacity:1}
+50%{opacity:.35}
+100%{opacity:1}
+}
+
+/* ================= CAMERA ================= */
 
 .camera{
 position:absolute;
-right:20px;
-bottom:60px;
-width:105px;
-height:105px;
+right:18px;
+bottom:55px;
+width:78px;
+height:78px;
 border-radius:50%;
 overflow:hidden;
 border:3px solid white;
 background:#111;
-z-index:10;
-box-shadow:0 5px 25px #0009;
+z-index:35;
+box-shadow:0 5px 20px #0009
 }
 
 #cameraVideo{
 width:100%;
 height:100%;
 object-fit:cover;
-transform:scaleX(-1);
+transform:scaleX(-1)
 }
 
 #cameraOff{
@@ -366,213 +431,185 @@ display:flex;
 align-items:center;
 justify-content:center;
 color:#aaa;
-font-size:11px;
-text-align:center;
+font-size:9px;
+text-align:center
 }
 
-.liveBadge{
-position:absolute;
-top:15px;
-left:15px;
-z-index:12;
-background:#d50000;
-color:white;
-padding:7px 12px;
-border-radius:20px;
-font-size:13px;
-font-weight:bold;
-box-shadow:0 3px 12px #0008;
-}
+/* ================= START OVERLAY ================= */
 
 .startOverlay{
 position:absolute;
 inset:0;
 background:#000c;
-z-index:20;
+z-index:40;
 display:flex;
 align-items:center;
 justify-content:center;
-text-align:center;
+text-align:center
 }
 
 .startOverlay.hidden{
-display:none;
+display:none
 }
 
 .startBox{
 padding:20px;
-color:white;
+color:white
 }
 
 .startBox h2{
 font-size:28px;
-margin-bottom:9px;
+margin-bottom:9px
 }
 
 .startBox p{
 color:#bbb;
-margin-bottom:18px;
+margin-bottom:18px
 }
 
 #startBtn:disabled{
 opacity:.5;
-cursor:not-allowed;
+cursor:not-allowed
 }
 
-.breakOverlay{
+/* ================= PAUSE OVERLAY ================= */
+
+.pauseOverlay{
 position:absolute;
 inset:0;
-background:#05060afa;
-z-index:30;
-display:none;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-text-align:center;
-color:white;
-}
-
-.breakOverlay.active{
-display:flex;
-}
-
-.breakOverlay h2{
-font-size:32px;
-margin-bottom:9px;
-}
-
-.breakOverlay p{
-color:#aaa;
-}
-
-#breakClock{
-font-size:76px;
-font-weight:800;
-margin:22px 0 8px;
-}
-
-.endOverlay{
-position:absolute;
-inset:0;
-background:#05060afa;
-z-index:40;
+background:#000b;
+z-index:38;
 display:none;
 align-items:center;
 justify-content:center;
 text-align:center;
-color:white;
+color:white
 }
 
-.endOverlay.active{
-display:flex;
+.pauseOverlay.active{
+display:flex
 }
 
-.endOverlay h2{
-font-size:34px;
-margin-bottom:10px;
+.pauseBox{
+padding:20px
 }
 
-.endOverlay p{
+.pauseBox h2{
+font-size:27px;
+margin-bottom:8px
+}
+
+.pauseBox p{
 color:#aaa;
+font-size:14px
 }
 
-.info{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:13px;
-margin-top:16px;
-}
+/* ================= TIMELINE ================= */
 
-.infoBox{
-background:white;
-border:1px solid var(--border);
-border-radius:11px;
-padding:15px;
-}
-
-.infoBox small{
-display:block;
-color:var(--muted);
-margin-bottom:6px;
-}
-
-.timelineBox{
-margin-top:16px;
-background:white;
-border:1px solid var(--border);
-border-radius:11px;
-padding:15px;
-}
-
-.timelineHeader{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:10px;
-}
-
-.timeline{
-height:7px;
-background:#e7e0e9;
-border-radius:10px;
+.timelineWrap{
+position:absolute;
+left:18px;
+right:18px;
+bottom:13px;
+height:5px;
+z-index:36;
+background:#ffffff38;
+border-radius:20px;
 overflow:hidden;
+pointer-events:none
 }
 
-.timelineFill{
+#timelineBar{
 height:100%;
 width:0%;
-background:var(--p);
+background:var(--timeline);
+border-radius:20px;
+transition:width .5s linear
 }
 
-.timelineLabels{
+/* ================= CLASS STATUS ================= */
+
+.classStatusRow{
+margin-top:14px;
+background:white;
+border:1px solid var(--border);
+border-radius:11px;
+padding:14px 16px;
 display:flex;
-justify-content:space-between;
-font-size:12px;
-color:var(--muted);
-margin-top:8px;
+align-items:center;
+justify-content:space-between
 }
+
+.statusLeft{
+display:flex;
+align-items:center;
+gap:9px;
+font-weight:bold
+}
+
+.statusDot{
+width:9px;
+height:9px;
+border-radius:50%;
+background:var(--live);
+box-shadow:0 0 7px #e53935
+}
+
+.statusText{
+color:var(--live);
+font-size:13px;
+font-weight:bold
+}
+
+/* ================= MOBILE ================= */
 
 @media(max-width:750px){
 
 header{
-padding:0 12px;
+padding:0 12px
 }
 
 .page{
-padding:15px;
+padding:15px
 }
 
 .grid{
-grid-template-columns:1fr;
+grid-template-columns:1fr
 }
 
 .classTop{
 align-items:flex-start;
 flex-direction:column;
-gap:10px;
+gap:10px
+}
+
+.player{
+border-radius:12px
 }
 
 .camera{
-width:75px;
-height:75px;
+width:64px;
+height:64px;
 right:10px;
-bottom:55px;
-border-width:2px;
-}
-
-.info{
-grid-template-columns:1fr 1fr;
-}
-
-#breakClock{
-font-size:50px;
+bottom:48px;
+border-width:2px
 }
 
 .liveBadge{
 top:10px;
 left:10px;
-font-size:11px;
-padding:6px 9px;
+font-size:10px;
+padding:6px 9px
+}
+
+.timelineWrap{
+left:12px;
+right:12px;
+bottom:10px
+}
+
+.classStatusRow{
+padding:12px
 }
 
 }
@@ -581,52 +618,86 @@ padding:6px 9px;
 
 <body>
 
+<!-- ================= LOGIN ================= -->
+
 <section id="loginPage">
 
 <div class="loginCard">
 
 <div class="brand">
-<div class="logo">SP</div>
-<h1>SkillPath</h1>
-<p>Learn. Practice. Grow.</p>
+
+<div class="logo">
+SP
+</div>
+
+<h1>
+SkillPath
+</h1>
+
+<p>
+Learn. Practice. Grow.
+</p>
+
 </div>
 
 <div class="field">
-<label>Mobile Number</label>
+
+<label>
+Mobile Number
+</label>
+
 <input
 id="mobile"
 type="tel"
 maxlength="10"
 placeholder="Enter mobile number">
+
 </div>
 
 <div class="field">
-<label>Password</label>
+
+<label>
+Password
+</label>
+
 <input
 id="password"
 type="password"
 placeholder="Enter password">
+
 </div>
 
 <button
 id="loginBtn"
 class="primary loginBtn">
+
 Login
+
 </button>
 
 <div id="error"></div>
 
 </div>
+
 </section>
 
+
+<!-- ================= APP ================= -->
 
 <div id="app">
 
 <header>
 
 <div class="headerBrand">
-<div class="miniLogo">SP</div>
-<span>SkillPath</span>
+
+<div class="miniLogo">
+SP
+</div>
+
+<span>
+SkillPath
+</span>
+
 </div>
 
 <button
@@ -636,7 +707,9 @@ id="profileBtn">
 <div
 class="avatar"
 id="headerAvatar">
+
 P
+
 </div>
 
 <span id="headerName">
@@ -648,17 +721,23 @@ Pankaj
 </header>
 
 
+<!-- ================= DASHBOARD ================= -->
+
 <section
 id="dashboard"
 class="page">
 
 <div class="hero">
 
-<small>LEARNING DASHBOARD</small>
+<small>
+LEARNING DASHBOARD
+</small>
 
 <h2>
 Welcome back,
-<span id="welcomeName">Pankaj</span>
+<span id="welcomeName">
+Pankaj
+</span>
 </h2>
 
 <p>
@@ -667,13 +746,19 @@ Continue your learning journey and join your scheduled class.
 
 </div>
 
+
 <div class="grid">
+
 
 <div class="card liveCard">
 
-<h3>🔴 Live Class</h3>
+<h3>
+🔴 Live Class
+</h3>
 
-<p>Your scheduled learning session.</p>
+<p>
+Your scheduled learning session.
+</p>
 
 <div class="classDate">
 26 August 2026 · 2:20 PM
@@ -682,14 +767,19 @@ Continue your learning journey and join your scheduled class.
 <button
 id="goClass"
 class="primary">
+
 Go to Live Class
+
 </button>
 
 </div>
 
+
 <div class="card">
 
-<h3>My Course</h3>
+<h3>
+My Course
+</h3>
 
 <p>
 Continue learning and complete your course modules.
@@ -697,15 +787,21 @@ Continue learning and complete your course modules.
 
 <br>
 
-<button class="secondary">
+<button
+class="secondary">
+
 View Course
+
 </button>
 
 </div>
 
+
 <div class="card">
 
-<h3>Learning Progress</h3>
+<h3>
+Learning Progress
+</h3>
 
 <p>
 Track your learning activity and upcoming sessions.
@@ -713,13 +809,19 @@ Track your learning activity and upcoming sessions.
 
 <br>
 
-<strong>Learning Active</strong>
+<strong>
+Learning Active
+</strong>
 
 </div>
 
+
 </div>
+
 </section>
 
+
+<!-- ================= PROFILE ================= -->
 
 <section
 id="profilePage"
@@ -727,14 +829,18 @@ class="page">
 
 <div class="profileCard">
 
-<h2>My Profile</h2>
+<h2>
+My Profile
+</h2>
 
 <div class="photoWrap">
 
 <div
 id="profileAvatar"
 class="bigAvatar">
+
 P
+
 </div>
 
 <img
@@ -744,7 +850,9 @@ alt="Profile">
 <label
 class="photoLabel"
 for="photoInput">
+
 Change Profile Photo
+
 </label>
 
 <input
@@ -755,37 +863,49 @@ hidden>
 
 </div>
 
-<label>Name</label>
+
+<label>
+Name
+</label>
 
 <input
 id="nameInput"
 class="profileInput"
 value="Pankaj">
 
-<label>Mobile Number</label>
+
+<label>
+Mobile Number
+</label>
 
 <input
 id="profileMobile"
 class="profileInput"
 readonly>
 
-<br>
 
 <button
 id="saveProfile"
 class="primary">
+
 Save Profile
+
 </button>
 
 <button
 id="profileBack"
 class="secondary">
+
 Dashboard
+
 </button>
 
 </div>
+
 </section>
 
+
+<!-- ================= CLASS ================= -->
 
 <section
 id="classPage"
@@ -795,7 +915,9 @@ class="page">
 
 <div>
 
-<h2>Live Learning Class</h2>
+<h2>
+Live Learning Class
+</h2>
 
 <small>
 26 August 2026 · 2:20 PM
@@ -806,7 +928,9 @@ class="page">
 <button
 id="classBack"
 class="secondary">
+
 ← Dashboard
+
 </button>
 
 </div>
@@ -816,18 +940,31 @@ class="secondary">
 class="player"
 id="playerBox">
 
-<div class="liveBadge">
-🔴 LIVE
-</div>
 
+<!-- ================= Fembed Video ================= -->
 
 <iframe
 id="videoFrame"
+class="videoFrame"
 src="https://fembed.co/embed/JfVL-C_NrcSwG"
-allow="autoplay; fullscreen"
+title="SkillPath Live Class"
+allow="autoplay; fullscreen; picture-in-picture"
 allowfullscreen>
 </iframe>
 
+
+<!-- ================= LIVE BADGE ================= -->
+
+<div class="liveBadge">
+
+<span class="liveDot"></span>
+
+LIVE
+
+</div>
+
+
+<!-- ================= CAMERA ================= -->
 
 <div class="camera">
 
@@ -838,12 +975,17 @@ muted
 playsinline>
 </video>
 
-<div id="cameraOff">
+<div
+id="cameraOff">
+
 Camera Off
-</div>
 
 </div>
 
+</div>
+
+
+<!-- ================= START ================= -->
 
 <div
 class="startOverlay"
@@ -851,17 +993,20 @@ id="startOverlay">
 
 <div class="startBox">
 
-<h2>Live Class</h2>
+<h2>
+Live Class
+</h2>
 
 <p id="startMessage">
-Class starts at 2:20 PM.
+Your live class is ready.
 </p>
 
 <button
 id="startBtn"
-class="primary"
-disabled>
+class="primary">
+
 Start Class
+
 </button>
 
 </div>
@@ -869,125 +1014,63 @@ Start Class
 </div>
 
 
-<div
-class="breakOverlay"
-id="breakOverlay">
-
-<h2>10 Minute Break</h2>
-
-<p>
-Class and camera are temporarily paused.
-</p>
-
-<div id="breakClock">
-10:00
-</div>
-
-<p>
-Class will continue automatically.
-</p>
-
-</div>
-
+<!-- ================= PAUSE INFORMATION ================= -->
 
 <div
-class="endOverlay"
-id="endOverlay">
+class="pauseOverlay"
+id="pauseOverlay">
 
-<div>
+<div class="pauseBox">
 
-<h2>Class Completed</h2>
+<h2>
+Live Class
+</h2>
 
 <p>
-Today's live learning session has ended.
+Use the video player's controls to pause or resume.
 </p>
 
 </div>
 
 </div>
 
-</div>
 
+<!-- ================= LIGHT BLUE TIMELINE ================= -->
 
-<div class="timelineBox">
+<div class="timelineWrap">
 
-<div class="timelineHeader">
-
-<strong>Class Timeline</strong>
-
-<strong id="liveText">
-🔴 LIVE
-</strong>
-
-</div>
-
-<div class="timeline">
-
-<div
-id="timelineFill"
-class="timelineFill">
-</div>
-
-</div>
-
-<div class="timelineLabels">
-
-<span>2:00:20</span>
-
-<span>Break 1</span>
-
-<span>Break 2</span>
-
-<span>End</span>
-
-</div>
+<div id="timelineBar"></div>
 
 </div>
 
 
-<div class="info">
+</div>
 
-<div class="infoBox">
 
-<small>Class Status</small>
+<!-- ================= STATUS ================= -->
 
-<strong id="status">
-Scheduled
-</strong>
+<div class="classStatusRow">
+
+<div class="statusLeft">
+
+<span class="statusDot"></span>
+
+<span>
+LIVE CLASS
+</span>
 
 </div>
 
-<div class="infoBox">
+<span
+class="statusText"
+id="classStatus">
 
-<small>Video Start</small>
+LIVE
 
-<strong>
-02:00:20
-</strong>
-
-</div>
-
-<div class="infoBox">
-
-<small>Next Break / End</small>
-
-<strong id="nextTime">
-01:38:28
-</strong>
+</span>
 
 </div>
 
-<div class="infoBox">
-
-<small>Camera</small>
-
-<strong id="cameraStatus">
-OFF
-</strong>
-
-</div>
-
-</div>
 
 </section>
 
@@ -996,315 +1079,482 @@ OFF
 
 <script>
 
-/* ================= LOGIN ================= */
+/* =========================================================
+   LOGIN
+========================================================= */
 
-const LOGIN_NUMBER="7726938070";
-const LOGIN_PASSWORD="@pankaj2007";
+const LOGIN_NUMBER = "7726938070";
 
-const loginPage=document.getElementById("loginPage");
-const app=document.getElementById("app");
-const dashboard=document.getElementById("dashboard");
-const profilePage=document.getElementById("profilePage");
-const classPage=document.getElementById("classPage");
+const LOGIN_PASSWORD = "@pankaj2007";
+
+
+const loginPage =
+document.getElementById("loginPage");
+
+const app =
+document.getElementById("app");
+
+const dashboard =
+document.getElementById("dashboard");
+
+const profilePage =
+document.getElementById("profilePage");
+
+const classPage =
+document.getElementById("classPage");
+
 
 function doLogin(){
 
-const user=document.getElementById("mobile").value.trim();
-const pass=document.getElementById("password").value;
+const user =
+document
+.getElementById("mobile")
+.value
+.trim();
 
-if(user===LOGIN_NUMBER && pass===LOGIN_PASSWORD){
+const pass =
+document
+.getElementById("password")
+.value;
 
-sessionStorage.setItem("skillpathLogin","1");
 
-loginPage.style.display="none";
-app.style.display="block";
+if(
+user === LOGIN_NUMBER &&
+pass === LOGIN_PASSWORD
+){
+
+sessionStorage.setItem(
+"skillpathLogin",
+"1"
+);
+
+loginPage.style.display =
+"none";
+
+app.style.display =
+"block";
 
 loadProfile();
 
-}else{
+}
+else{
 
-document.getElementById("error").textContent=
+document
+.getElementById("error")
+.textContent =
 "Incorrect mobile number or password.";
 
 }
 
 }
 
-document.getElementById("loginBtn").onclick=doLogin;
 
-document.getElementById("password").addEventListener(
+document
+.getElementById("loginBtn")
+.onclick =
+doLogin;
+
+
+document
+.getElementById("password")
+.addEventListener(
 "keydown",
-function(e){
+function(event){
 
-if(e.key==="Enter"){
+if(event.key === "Enter"){
+
 doLogin();
-}
 
 }
-);
+
+});
 
 
-/* ================= NAVIGATION ================= */
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 function showDashboard(){
 
-dashboard.style.display="block";
-profilePage.style.display="none";
-classPage.style.display="none";
+dashboard.style.display =
+"block";
+
+profilePage.style.display =
+"none";
+
+classPage.style.display =
+"none";
 
 }
 
-document.getElementById("profileBtn").onclick=function(){
 
-dashboard.style.display="none";
-classPage.style.display="none";
-profilePage.style.display="block";
+document
+.getElementById("profileBtn")
+.onclick =
+function(){
 
-};
+dashboard.style.display =
+"none";
 
-document.getElementById("profileBack").onclick=showDashboard;
-document.getElementById("classBack").onclick=showDashboard;
+classPage.style.display =
+"none";
 
-document.getElementById("goClass").onclick=function(){
-
-dashboard.style.display="none";
-profilePage.style.display="none";
-classPage.style.display="block";
-
-updateClassAvailability();
+profilePage.style.display =
+"block";
 
 };
 
 
-/* ================= PROFILE ================= */
+document
+.getElementById("profileBack")
+.onclick =
+showDashboard;
+
+
+document
+.getElementById("classBack")
+.onclick =
+showDashboard;
+
+
+document
+.getElementById("goClass")
+.onclick =
+function(){
+
+dashboard.style.display =
+"none";
+
+profilePage.style.display =
+"none";
+
+classPage.style.display =
+"block";
+
+startOverlay.classList.remove(
+"hidden"
+);
+
+};
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
 
 function loadProfile(){
 
-const name=localStorage.getItem("spName")||"Pankaj";
-const image=localStorage.getItem("spPhoto");
+const name =
+localStorage.getItem("spName")
+|| "Pankaj";
 
-document.getElementById("nameInput").value=name;
-document.getElementById("profileMobile").value=LOGIN_NUMBER;
+const image =
+localStorage.getItem("spPhoto");
+
+
+document
+.getElementById("nameInput")
+.value =
+name;
+
+
+document
+.getElementById("profileMobile")
+.value =
+LOGIN_NUMBER;
+
 
 updateProfileName(name);
 
+
 if(image){
+
 showPhoto(image);
+
 }
 
 }
+
 
 function updateProfileName(name){
 
-name=name.trim()||"Pankaj";
+name =
+name.trim()
+|| "Pankaj";
 
-document.getElementById("welcomeName").textContent=name;
-document.getElementById("headerName").textContent=name;
 
-const letter=name.charAt(0).toUpperCase();
+document
+.getElementById("welcomeName")
+.textContent =
+name;
 
-const avatar=document.getElementById("headerAvatar");
 
-if(avatar && avatar.tagName!=="IMG"){
-avatar.textContent=letter;
+document
+.getElementById("headerName")
+.textContent =
+name;
+
+
+const letter =
+name
+.charAt(0)
+.toUpperCase();
+
+
+const headerAvatar =
+document.getElementById(
+"headerAvatar"
+);
+
+
+if(
+headerAvatar &&
+headerAvatar.tagName !== "IMG"
+){
+
+headerAvatar.textContent =
+letter;
+
 }
 
-document.getElementById("profileAvatar").textContent=letter;
+
+const profileAvatar =
+document.getElementById(
+"profileAvatar"
+);
+
+
+if(profileAvatar){
+
+profileAvatar.textContent =
+letter;
 
 }
 
-document.getElementById("saveProfile").onclick=function(){
+}
 
-const name=document.getElementById("nameInput").value.trim();
+
+document
+.getElementById("saveProfile")
+.onclick =
+function(){
+
+const name =
+document
+.getElementById("nameInput")
+.value
+.trim();
+
 
 if(!name){
 
 alert("Enter your name.");
+
 return;
 
 }
 
-localStorage.setItem("spName",name);
+
+localStorage.setItem(
+"spName",
+name
+);
+
+
 updateProfileName(name);
 
 alert("Profile saved.");
 
 };
 
-document.getElementById("photoInput").onchange=function(){
 
-const file=this.files[0];
+document
+.getElementById("photoInput")
+.onchange =
+function(){
 
-if(!file)return;
+const file =
+this.files[0];
 
-const reader=new FileReader();
-
-reader.onload=function(){
-
-localStorage.setItem("spPhoto",reader.result);
-showPhoto(reader.result);
-
-};
-
-reader.readAsDataURL(file);
-
-};
-
-function showPhoto(src){
-
-const profilePhoto=document.getElementById("profilePhoto");
-const profileAvatar=document.getElementById("profileAvatar");
-
-profilePhoto.src=src;
-profilePhoto.style.display="block";
-profileAvatar.style.display="none";
-
-const old=document.getElementById("headerPhoto");
-
-if(old)old.remove();
-
-const img=document.createElement("img");
-
-img.id="headerPhoto";
-img.className="avatar";
-img.src=src;
-
-const oldAvatar=document.getElementById("headerAvatar");
-
-if(oldAvatar){
-oldAvatar.replaceWith(img);
-}
-
-}
-
-
-/* ================= CLASS TIME ================= */
-
-/*
-The displayed timeline starts at 02:00:20.
-
-Because the VdoHide player is an iframe,
-the parent page cannot directly set the internal
-player's currentTime without a supported player API.
-*/
-
-const CLASS_START=new Date(
-2026,
-7,
-26,
-14,
-20,
-0
-);
-
-const VIDEO_START=2*3600+20;
-
-const BREAK_ONE_OFFSET=
-1*3600+38*60+28;
-
-const BREAK_TWO_OFFSET=
-2*3600+49*60+8;
-
-const CLASS_LENGTH=
-4*3600+7*60+57;
-
-const BREAK_DURATION=10*60;
-
-let breakTimer=null;
-
-
-/* ================= AVAILABILITY ================= */
-
-function updateClassAvailability(){
-
-const button=document.getElementById("startBtn");
-const message=document.getElementById("startMessage");
-
-const difference=CLASS_START.getTime()-Date.now();
-
-if(difference<=0){
-
-button.disabled=false;
-message.textContent="Your live class is ready.";
+if(!file){
 
 return;
 
 }
 
-button.disabled=true;
 
-let total=Math.floor(difference/1000);
+const reader =
+new FileReader();
 
-const days=Math.floor(total/86400);
 
-total%=86400;
+reader.onload =
+function(){
 
-const hours=Math.floor(total/3600);
+localStorage.setItem(
+"spPhoto",
+reader.result
+);
 
-total%=3600;
+showPhoto(
+reader.result
+);
 
-const minutes=Math.floor(total/60);
+};
 
-const seconds=total%60;
 
-message.textContent=
-"Class starts in "
-+(days?days+"d ":"")
-+String(hours).padStart(2,"0")
-+":"
-+String(minutes).padStart(2,"0")
-+":"
-+String(seconds).padStart(2,"0");
+reader.readAsDataURL(file);
+
+};
+
+
+function showPhoto(src){
+
+const profilePhoto =
+document.getElementById(
+"profilePhoto"
+);
+
+const profileAvatar =
+document.getElementById(
+"profileAvatar"
+);
+
+
+profilePhoto.src =
+src;
+
+profilePhoto.style.display =
+"block";
+
+profileAvatar.style.display =
+"none";
+
+
+const oldHeader =
+document.getElementById(
+"headerPhoto"
+);
+
+
+if(oldHeader){
+
+oldHeader.remove();
 
 }
 
-setInterval(updateClassAvailability,1000);
+
+const img =
+document.createElement("img");
 
 
-/* ================= CAMERA ================= */
+img.id =
+"headerPhoto";
 
-let cameraStream=null;
+img.className =
+"avatar";
 
-const cameraVideo=document.getElementById("cameraVideo");
-const cameraOff=document.getElementById("cameraOff");
-const cameraStatus=document.getElementById("cameraStatus");
+img.src =
+src;
 
-cameraVideo.style.display="none";
+
+const headerAvatar =
+document.getElementById(
+"headerAvatar"
+);
+
+
+if(headerAvatar){
+
+headerAvatar.replaceWith(img);
+
+}
+
+}
+
+
+/* =========================================================
+   CAMERA
+========================================================= */
+
+let cameraStream = null;
+
+
+const cameraVideo =
+document.getElementById(
+"cameraVideo"
+);
+
+const cameraOff =
+document.getElementById(
+"cameraOff"
+);
+
+
+cameraVideo.style.display =
+"none";
+
 
 async function startCamera(){
 
 try{
 
-if(cameraStream)return true;
+if(cameraStream){
+
+return true;
+
+}
+
 
 if(
 !navigator.mediaDevices ||
 !navigator.mediaDevices.getUserMedia
 ){
 
-throw new Error("Camera unavailable");
+throw new Error(
+"Camera unavailable"
+);
 
 }
 
-cameraStream=await navigator.mediaDevices.getUserMedia({
-video:{facingMode:"user"},
+
+cameraStream =
+await navigator
+.mediaDevices
+.getUserMedia({
+
+video:{
+facingMode:"user"
+},
+
 audio:false
+
 });
 
-cameraVideo.srcObject=cameraStream;
-cameraVideo.style.display="block";
-cameraOff.style.display="none";
-cameraStatus.textContent="ON";
+
+cameraVideo.srcObject =
+cameraStream;
+
+
+cameraVideo.style.display =
+"block";
+
+cameraOff.style.display =
+"none";
+
 
 return true;
 
-}catch(error){
+}
+catch(error){
 
 console.error(error);
 
-cameraStatus.textContent="BLOCKED";
+cameraOff.style.display =
+"flex";
 
-alert("Please allow camera permission to join the class.");
+alert(
+"Please allow camera permission to join the class."
+);
 
 return false;
 
@@ -1312,262 +1562,286 @@ return false;
 
 }
 
+
 function stopCamera(){
 
 if(cameraStream){
 
-cameraStream.getTracks().forEach(
-track=>track.stop()
+cameraStream
+.getTracks()
+.forEach(
+track =>
+track.stop()
 );
 
-cameraStream=null;
-
-}
-
-cameraVideo.srcObject=null;
-cameraVideo.style.display="none";
-cameraOff.style.display="flex";
-cameraStatus.textContent="OFF";
+cameraStream =
+null;
 
 }
 
 
-/* ================= START ================= */
+cameraVideo.srcObject =
+null;
 
-document.getElementById("startBtn").onclick=async function(){
+cameraVideo.style.display =
+"none";
 
-if(Date.now()<CLASS_START.getTime()){
+cameraOff.style.display =
+"flex";
 
-updateClassAvailability();
+}
+
+
+/* =========================================================
+   CLASS START
+========================================================= */
+
+const startOverlay =
+document.getElementById(
+"startOverlay"
+);
+
+const startBtn =
+document.getElementById(
+"startBtn"
+);
+
+
+startBtn.onclick =
+async function(){
+
+const cameraOK =
+await startCamera();
+
+
+if(!cameraOK){
+
 return;
 
 }
 
-const cameraOK=await startCamera();
 
-if(!cameraOK)return;
+startOverlay
+.classList
+.add("hidden");
 
-document.getElementById("startOverlay").classList.add("hidden");
 
-document.getElementById("status").textContent="LIVE";
+document
+.getElementById("classStatus")
+.textContent =
+"LIVE";
 
-document.getElementById("liveText").textContent="🔴 LIVE";
+
+startTimeline();
 
 };
 
 
-/* ================= SIMPLE CLASS TIMELINE ================= */
+/* =========================================================
+   LIGHT BLUE TIMELINE
+=========================================================
 
-let classRunning=false;
-let classSeconds=0;
+   This is a visual timeline for the class page.
+   Fembed controls the actual video playback because
+   the video is inside a cross-origin iframe.
+========================================================= */
 
-document.getElementById("startBtn").addEventListener(
-"click",
-function(){
-
-classRunning=true;
-
-classSeconds=0;
-
-startClassClock();
-
-}
+const timelineBar =
+document.getElementById(
+"timelineBar"
 );
 
-function startClassClock(){
 
-const interval=setInterval(function(){
+/*
+   Original video begins from 02:00:20.
+   Total class duration used here:
+   04:07:57
+*/
 
-if(!classRunning){
+const VIDEO_START_SECONDS =
+2 * 3600 +
+20;
 
-clearInterval(interval);
-return;
 
-}
+const CLASS_DURATION_SECONDS =
+4 * 3600 +
+7 * 60 +
+57;
 
-classSeconds++;
 
-const breakOne=BREAK_ONE_OFFSET;
-const breakTwo=BREAK_TWO_OFFSET;
+let timelineSeconds =
+0;
 
-if(
-classSeconds>=breakOne &&
-classSeconds<breakOne+BREAK_DURATION
-){
+let timelineTimer =
+null;
 
-showBreak();
 
-}
+function startTimeline(){
 
-if(
-classSeconds>=breakTwo &&
-classSeconds<breakTwo+BREAK_DURATION
-){
+if(timelineTimer){
 
-showBreak();
-
-}
-
-if(classSeconds>=CLASS_LENGTH){
-
-classRunning=false;
-
-clearInterval(interval);
-
-finishClass();
-
-return;
+clearInterval(
+timelineTimer
+);
 
 }
 
-const percent=
+
+timelineSeconds =
+0;
+
+
+timelineBar.style.width =
+"0%";
+
+
+timelineTimer =
+setInterval(
+function(){
+
+timelineSeconds++;
+
+
+const percent =
 Math.min(
-(classSeconds/CLASS_LENGTH)*100,
+timelineSeconds /
+CLASS_DURATION_SECONDS *
+100,
 100
 );
 
-document.getElementById("timelineFill").style.width=
-percent+"%";
 
-if(classSeconds<breakOne){
+timelineBar.style.width =
+percent +
+"%";
 
-document.getElementById("nextTime").textContent=
-formatDuration(breakOne-classSeconds);
-
-}else if(classSeconds<breakTwo){
-
-document.getElementById("nextTime").textContent=
-formatDuration(breakTwo-classSeconds);
-
-}else{
-
-document.getElementById("nextTime").textContent=
-"Ends in "+formatDuration(CLASS_LENGTH-classSeconds);
-
-}
-
-},1000);
-
-}
-
-
-/* ================= BREAK DISPLAY ================= */
-
-let currentBreakShown=false;
-
-function showBreak(){
-
-if(currentBreakShown)return;
-
-currentBreakShown=true;
-
-stopCamera();
-
-document.getElementById("status").textContent="BREAK";
-
-const overlay=document.getElementById("breakOverlay");
-
-overlay.classList.add("active");
-
-let remaining=BREAK_DURATION;
-
-document.getElementById("breakClock").textContent=
-formatDuration(remaining);
-
-clearInterval(breakTimer);
-
-breakTimer=setInterval(async function(){
-
-remaining--;
-
-document.getElementById("breakClock").textContent=
-formatDuration(remaining);
-
-if(remaining<=0){
-
-clearInterval(breakTimer);
-
-overlay.classList.remove("active");
-
-currentBreakShown=false;
-
-await startCamera();
-
-document.getElementById("status").textContent="LIVE";
-
-}
-
-},1000);
-
-}
-
-
-/* ================= END ================= */
-
-function finishClass(){
-
-classRunning=false;
-
-stopCamera();
-
-document.getElementById("status").textContent="COMPLETED";
-
-document.getElementById("nextTime").textContent="Class Ended";
-
-document.getElementById("timelineFill").style.width="100%";
-
-document.getElementById("liveText").textContent="● ENDED";
-
-document.getElementById("endOverlay").classList.add("active");
-
-}
-
-
-/* ================= FORMAT ================= */
-
-function formatDuration(seconds){
-
-seconds=Math.max(0,Math.floor(seconds));
-
-const h=Math.floor(seconds/3600);
-
-const m=Math.floor((seconds%3600)/60);
-
-const s=seconds%60;
-
-if(h>0){
-
-return String(h).padStart(2,"0")
-+":"
-+String(m).padStart(2,"0")
-+":"
-+String(s).padStart(2,"0");
-
-}
-
-return String(m).padStart(2,"0")
-+":"
-+String(s).padStart(2,"0");
-
-}
-
-
-/* ================= RESTORE LOGIN ================= */
-
-window.addEventListener("load",function(){
 
 if(
-sessionStorage.getItem("skillpathLogin")==="1"
+timelineSeconds >=
+CLASS_DURATION_SECONDS
 ){
 
-loginPage.style.display="none";
-app.style.display="block";
+clearInterval(
+timelineTimer
+);
+
+document
+.getElementById("classStatus")
+.textContent =
+"COMPLETED";
+
+}
+
+},
+1000
+);
+
+}
+
+
+/* =========================================================
+   FULLSCREEN
+========================================================= */
+
+const playerBox =
+document.getElementById(
+"playerBox"
+);
+
+
+playerBox.addEventListener(
+"dblclick",
+async function(){
+
+try{
+
+if(
+!document.fullscreenElement
+){
+
+await playerBox.requestFullscreen();
+
+}
+else{
+
+await document.exitFullscreen();
+
+}
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+});
+
+
+/* =========================================================
+   PAGE VISIBILITY
+========================================================= */
+
+document
+.addEventListener(
+"visibilitychange",
+function(){
+
+if(
+document.visibilityState === "visible" &&
+cameraStream
+){
+
+cameraVideo.play()
+.catch(
+function(){}
+);
+
+}
+
+});
+
+
+/* =========================================================
+   RESTORE LOGIN
+========================================================= */
+
+window
+.addEventListener(
+"load",
+function(){
+
+if(
+sessionStorage.getItem(
+"skillpathLogin"
+)
+===
+"1"
+){
+
+loginPage.style.display =
+"none";
+
+app.style.display =
+"block";
 
 loadProfile();
 
 }
 
-updateClassAvailability();
+});
+
+
+/* =========================================================
+   CLEAN CAMERA WHEN PAGE IS CLOSED
+========================================================= */
+
+window
+.addEventListener(
+"beforeunload",
+function(){
+
+stopCamera();
 
 });
 
